@@ -1,5 +1,9 @@
 def extract_int_from_str(string)
-  (string =~ /(\d+)/ ? $1 : -1).to_i
+  if string =~ /(\d+)/
+    return $1.to_i
+  else
+    return -1
+  end
 end
 
 def funny_sort(string_array)
