@@ -1,3 +1,9 @@
+*
+{
+	margin: 0px;
+	padding: 0px;
+}
+
 .endPanelDiv
 {
 	clear: both;
@@ -8,6 +14,12 @@
 	font-family: Tahoma;
 	font-size: 13px;
 	text-decoration: none;
+}
+
+.tabs
+{
+	float: left;
+	width: 400px;
 }
 
 a.tab:link
@@ -23,13 +35,14 @@ a.tab:hover
 
 .navbar
 {
+	margin: 3px;
 	width: 100%;
 }
 
 .leftColumn
 {
 	float: left;
-	width: 195px;
+	width: 196px;
 	border-bottom: 1px solid #cccccc;
 }
 
@@ -68,7 +81,8 @@ a.tab:hover
 .midColumn
 {
 	float: left;
-	width: 150px;
+	width: 71px;
+	border-bottom: 1px solid white;
 }
 
 .selectedTab
@@ -83,6 +97,7 @@ a.tab:hover
 	width: 2px;
 	height: 20px;
 
+	margin-left: -1px;
 	padding-left: 1px;
 }
 
@@ -107,10 +122,20 @@ a.tab:hover
 	padding-left: 1px;
 }
 
-/*
 .rightColumn
 {
 	float: left;
 	border-bottom: 1px solid #cccccc;
+	margin-left: -2px;
+	padding-left: 1px;
 }
-*/
+
+.endColumn
+{
+	border-bottom: 1px solid #cccccc;
+	height: 20px;
+	margin-left: -1px;
+	padding-left: 10px;	
+	margin-left: 3px;
+	margin-right: 3px;
+}
