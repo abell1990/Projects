@@ -29,7 +29,7 @@ a.tab:link
 
 a.tab:hover
 {
-	color: #cc6600;
+	color: #CC6600;
 	cursor: pointer;
 }
 
@@ -44,7 +44,7 @@ a.tab:hover
 {
 	float: left;
 	width: 204px;
-	border-bottom: 1px solid #cccccc;
+	border-bottom: 1px solid #CCCCCC;
 	margin-left: 8px;
 }
 
@@ -139,14 +139,14 @@ a.tab:hover
 .rightColumn
 {
 	float: left;
-	border-bottom: 1px solid #cccccc;
+	border-bottom: 1px solid #CCCCCC;
 	margin-left: -5px;
 	padding-left: 1px;
 }
 
 .endColumn
 {
-	border-bottom: 1px solid #cccccc;
+	border-bottom: 1px solid #CCCCCC;
 	height: 23px;
 	padding-left: 10px;	
 	margin-left: 8px;
