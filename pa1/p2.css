@@ -95,7 +95,7 @@ a.tab:hover
 .midColumn
 {
 	float: left;
-	width: 78px; /**/
+	padding-right: 4px;
 	border-bottom: 1px solid white;
 }
 
