@@ -43,9 +43,9 @@ a.tab:hover
 .leftColumn
 {
 	float: left;
-	width: 204px; /**/
 	border-bottom: 1px solid #CCCCCC;
 	margin-left: 8px;
+	padding-right: 3px;
 }
 
 .leftUnselectedTab
