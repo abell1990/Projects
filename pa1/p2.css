@@ -18,7 +18,6 @@
 
 .tabs
 {
-	float: left;
 	width: 2560px; /* Max tab width (= Max Apple display resolution)
 					  keeps tabs from wrapping to next line if window is downsized. */
 }
