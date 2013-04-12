@@ -85,10 +85,6 @@ a.tabLink:hover
 	padding-right: 2px;
 	
 	margin-left: 2px;
-
-	/*border-bottom: 1px solid white;*/
-	/*position: relative;
-	top: 2px;*/
 }
 
 .midSelectedTab
@@ -101,8 +97,6 @@ a.tabLink:hover
 	padding-right: 5px;
 
 	border-bottom: 1px solid white;
-	/*position: relative;
-	top: 2px;*/
 }
 
 .rightSelectedTab
@@ -113,29 +107,9 @@ a.tabLink:hover
 	padding-bottom: 3px;
 	padding-left: 3px;
 	padding-right: 3px;
-	
-
-	/*border: -bottom: 1px solid white;*/
-	/*position: relative;
-	top: 2px;*/
 }
 
 .selectedTab
 {
 	font-weight: bold;
 }
-
-
-/*.endPanelDiv
-{
-	clear: both;
-}*/
-
-/*.border
-{
-	float: left;
-	width: 100%;
-	border-top: 1px solid #CCCCCC;
-	position: relative;
-	top: 1px;
-}*/
