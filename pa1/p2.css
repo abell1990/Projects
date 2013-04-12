@@ -85,6 +85,8 @@ a.tabLink:hover
 	padding-right: 2px;
 	
 	margin-left: 2px;
+
+	border-bottom: 2px solid white;
 }
 
 .midSelectedTab
@@ -96,7 +98,7 @@ a.tabLink:hover
 	padding-left: 5px;
 	padding-right: 5px;
 
-	border-bottom: 1px solid white;
+	border-bottom: 2px solid white;
 }
 
 .rightSelectedTab
@@ -107,6 +109,8 @@ a.tabLink:hover
 	padding-bottom: 3px;
 	padding-left: 3px;
 	padding-right: 3px;
+
+	border-bottom: 2px solid white;
 }
 
 .selectedTab
