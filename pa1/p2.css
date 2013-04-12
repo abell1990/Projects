@@ -4,77 +4,62 @@
 	padding: 0px;
 }
 
-.endPanelDiv
+.navbar
 {
-	clear: both;
+	margin-top:10px;
+	margin-left: 8px;
+	margin-right: 8px;
+
+	min-width: 500px;
+	width: 98%;
+
+	border-bottom: 1px solid #CCCCCC;
+	float: left;
+	padding-bottom: 2px;
+	padding-left: 3px;
 }
 
 .tab
 {
+	float: left;
+}
+
+.tabLink
+{
+	/* Set text formatting for tab text only */
 	font-family: Tahoma;
 	font-size: 13px;
-	text-decoration: none;
+	text-decoration: none;	
 }
 
-.tabs
-{
-	width: 2560px; /* Max tab width (= Max Apple display resolution)
-					  keeps tabs from wrapping to next line if window is downsized. */
-}
-
-a.tab:link
+a.tabLink:link
 {
 	color: black;
 }
 
-a.tab:hover
+a.tabLink:hover
 {
 	color: #CC6600;
 	cursor: pointer;
 }
 
-.navbar
-{
-	margin: 3px;
-	width: 100%;
-	margin-top: 8px;
-}
-
-.leftColumn
-{
-	float: left;
-	border-bottom: 1px solid #CCCCCC;
-	margin-left: 8px;
-	padding-right: 3px;
-}
-
 .leftUnselectedTab
 {
-	float: left;
 	background-image: url('left.gif');
-	width: 2px;
-	height: 23px; /**/
 
+	padding-top: 3px;
+	padding-bottom: 3px;
+	padding-left: 1px;
+	padding-right: 2px;
+	
 	margin-left: 2px;
-	padding-left: 1px;
-}
-
-.leftUnselectedTab2
-{
-	float: left;
-	background-image: url('left.gif');
-	width: 2px;
-	height: 23px; /**/
-
-	margin-left: 5px;
-	padding-left: 1px;
 }
 
 .midUnselectedTab
 {
-	float: left;
 	background-image: url('mid.gif');	
-	padding-top: 4px;
+
+	padding-top: 3px;
 	padding-bottom: 3px;
 	padding-left: 5px;
 	padding-right: 5px;
@@ -82,20 +67,57 @@ a.tab:hover
 
 .rightUnselectedTab
 {
-	float: left;
 	background-image: url('right.gif');
-	width: 2px;
-	height: 23px; /**/
 
-	padding-left: 1px;
-	margin-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	padding-left: 3px;
+	padding-right: 3px;
 }
 
-.midColumn
+.leftSelectedTab
 {
-	float: left;
-	padding-right: 4px;
+	background-image: url('left-selected.gif');
+
+	padding-top: 3px;
+	padding-bottom: 3px;
+	padding-left: 1px;
+	padding-right: 2px;
+	
+	margin-left: 2px;
+
+	/*border-bottom: 1px solid white;*/
+	/*position: relative;
+	top: 2px;*/
+}
+
+.midSelectedTab
+{
+	background-image: url('mid-selected.gif');	
+
+	padding-top: 3px;
+	padding-bottom: 3px;
+	padding-left: 5px;
+	padding-right: 5px;
+
 	border-bottom: 1px solid white;
+	/*position: relative;
+	top: 2px;*/
+}
+
+.rightSelectedTab
+{
+	background-image: url('right-selected.gif');
+
+	padding-top: 3px;
+	padding-bottom: 3px;
+	padding-left: 3px;
+	padding-right: 3px;
+	
+
+	/*border: -bottom: 1px solid white;*/
+	/*position: relative;
+	top: 2px;*/
 }
 
 .selectedTab
@@ -103,51 +125,17 @@ a.tab:hover
 	font-weight: bold;
 }
 
-.leftSelectedTab
+
+/*.endPanelDiv
+{
+	clear: both;
+}*/
+
+/*.border
 {
 	float: left;
-	background-image: url('left-selected.gif');
-	width: 2px;
-	height: 23px; /**/
-
-	margin-left: -1px;
-	padding-left: 1px;
-}
-
-.midSelectedTab
-{
-	float: left;
-	background-image: url('mid-selected.gif');	
-	height: 17px; /**/
-	padding-top: 4px;
-	padding-bottom: 2px;
-	padding-left: 5px;
-	padding-right: 5px;
-}
-
-.rightSelectedTab
-{
-	float: left;
-	background-image: url('right-selected.gif');
-	width: 2px;
-	height: 23px; /**/
-
-	padding-left: 1px;
-}
-
-.rightColumn
-{
-	float: left;
-	border-bottom: 1px solid #CCCCCC;
-	margin-left: -5px;
-	padding-left: 1px;
-}
-
-.endColumn
-{
-	border-bottom: 1px solid #CCCCCC;
-	height: 23px; /**/
-	padding-left: 10px;	
-	margin-left: 8px;
-	margin-right: 5px;
-}
+	width: 100%;
+	border-top: 1px solid #CCCCCC;
+	position: relative;
+	top: 1px;
+}*/
