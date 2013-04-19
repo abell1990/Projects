@@ -6,7 +6,7 @@ class Adder
   def method_missing(symbol, *args)
     methodName = symbol.id2name
     if methodName =~ /^plus(\d+)$/
-      method_definition = "def "+methodName+"() return @value + " + $1 + " end"
+      method_definition = "def " + methodName + "() return @value + " + $1 + " end"
       self.class.class_eval(method_definition)
       eval methodName
     else
