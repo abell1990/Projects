@@ -20,7 +20,18 @@ def filter(array, *params)
 end
 
 
-
+puts "nums = [6, -5, 319, 400, 18, 94, 11]"
 nums = [6, -5, 319, 400, 18, 94, 11]
-filter(nums, :min => 10, :max => 350, :odd => 1, :scale => 2) {|n| puts n}
+puts " "
 
+puts "filter(nums, :min => 10, :max => 350, :odd => 1, :scale => 2) {|n| puts n} : "
+filter(nums, :min => 10, :max => 350, :odd => 1, :scale => 2) {|n| puts n}
+puts " "
+
+puts "filter(nums, :max => 0) {|n| puts n} : "
+filter(nums, :max => 0) {|n| puts n}
+puts " "
+
+puts "filter(nums) {|n| puts n} : "
+filter(nums) {|n| puts n}
+puts " "
