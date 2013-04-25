@@ -1,0 +1,19 @@
+<div class="navbar">
+	<% tabs1.each do |tab| %>
+		<% if tab[:label] != selectedTab1 %>
+			<div class="tab">
+				<a class="tabLink" href="<%= tab[:url] %>">
+					<span class="leftUnselectedTab"></span>
+					<span class="midUnselectedTab"><%= tab[:label] %></span><span class="rightUnselectedTab"></span>
+				</a>
+			</div>
+		<% else %>
+			<div class="tab selectedTab">
+				<a class="tabLink" href="<%= tab[:url] %>">
+					<span class="leftSelectedTab"></span>
+					<span class="midSelectedTab"><%= tab[:label] %></span><span class="rightSelectedTab"></span>
+				</a>
+			</div>
+		<% end %>
+	<% end %>
+</div>
