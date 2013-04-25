@@ -18,8 +18,13 @@ pickle-email-*.html
 
 *.DS_Store
 
-
 .idea/*
 proj2/.idea/*
 .*~
 *~
+
+# Project 3 specific:
+pa3/.bundle
+pa3/db/*.sqlite3
+pa3/log/*.log
+pa3/tmp
