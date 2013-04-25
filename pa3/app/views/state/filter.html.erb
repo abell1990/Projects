@@ -1,0 +1,16 @@
+<% if !@results.empty? %>
+  <p>
+    The state names that contain the substring '<%= @substring %>' are:
+  </p>
+  <table class="oddEven" cellspacing="0">
+    <% @results.each do |state| %>
+      <tr class="<%= cycle('odd', 'even') %>">
+        <td><%= state %></td>
+      </tr>
+    <% end %>
+  </table>
+<% else %>
+  <p>
+    There are no state names that contain the substring '<%= @substring %>'.
+  </p>
+<% end %>
