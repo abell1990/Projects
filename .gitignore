@@ -28,3 +28,9 @@ pa3/.bundle
 pa3/db/*.sqlite3
 pa3/log/*.log
 pa3/tmp
+
+# Project 4 specific:
+pa4/.bundle
+pa4/db/*.sqlite3
+pa4/log/*.log
+pa4/tmp
