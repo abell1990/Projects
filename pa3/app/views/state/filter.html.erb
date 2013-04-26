@@ -4,10 +4,10 @@
   <p>
     The state names that contain the substring '<%= @substring %>' are:
   </p>
-  <table cellspacing="0">
+  <table cellspacing="0" class="stateTable">
     <% @results.each do |state| %>
       <tr class="<%= cycle('odd', 'even') %>">
-        <td><%= state %></td>
+        <td class="stateTableCell"><%= state %></td>
       </tr>
     <% end %>
   </table>

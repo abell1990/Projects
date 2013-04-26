@@ -2,18 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-body{
-   font-family: Tahoma;
-   font-size: 13px;
-}
-
-table{
+.stateTable
+{
    border: 1px solid black;
    margin: 20px;
    padding: 1px;
 }
 
-td{
+.stateTableCell
+{
    white-space: nowrap;
    border-top: 1px solid white;
    padding-top: 2px;
@@ -22,10 +19,12 @@ td{
    padding-bottom: 2px;
 }
 
-.odd{
+.odd
+{
     background: #DFE1E7;
 }
 
-.even{
+.even
+{
     background: #EEEFF2;
 }

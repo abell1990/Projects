@@ -11,3 +11,11 @@
  *= require_self
  *= require_tree .
  */
+
+*
+{
+   	font-family: Tahoma;
+	font-size: 13px;
+	margin: 0px;
+	padding: 0px;
+}
