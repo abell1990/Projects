@@ -1,2 +1,61 @@
-<h1>Photos#index</h1>
-<p>Find me in app/views/photos/index.html.erb</p>
+<% if @user %>
+  
+  <% @pageTitle = "Photos of " + @user.full_name %>
+
+  <p>
+    <%= @user.full_name %>'s photos:
+  </p>
+
+  <ul>
+    <% @user.photos.each do |photo| %>
+      <li>
+
+        <ul>
+
+          <li>
+            <img src="/<%= photo.file_name %>" alt="Photo of <%= @user.full_name %>"/>
+          </li>
+
+          <li>
+            Date Created: <%= photo.date_time %>
+          </li>
+          
+          <li>
+            <% photo.comments.each do |comment| %>
+              
+              <ul>
+
+                <li> By: 
+                  <a href="/photos/index/<%= comment.user_id %>">
+                    <%= comment.user.full_name %>
+                  </a>
+                </li>
+
+                <li> On: 
+                  <%= comment.date_time %>
+                </li>
+
+                <li> Comment: 
+                  <%= comment.comment %>
+                </li>
+
+              </ul>
+            
+            <% end %>
+          </li>
+
+        </ul>
+
+      </li>
+    <% end %>
+  </ul>
+
+<% else %>
+  
+  <% @pageTitle = "User not found" %>
+
+  <p>
+    That user does not exist, or you did not provide a user id.
+  </p>
+
+<% end %>
