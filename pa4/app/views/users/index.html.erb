@@ -1,0 +1,29 @@
+<% @pageTitle = "Index of Users" %>
+
+<% if !@all_users.empty? %>
+
+  <p>
+    List of users:
+  </p>
+
+  <table cellspacing="0" class="stateTable">
+    <% @all_users.each do |user| %>
+
+      <tr class="<%= cycle('odd', 'even') %>">
+        <td class="stateTableCell">
+          <a href="/photos/index/<%= user.id %>"> 
+            <%= user.last_name %>, <%= user.first_name %> 
+          </a>
+        </td>
+      </tr>
+
+    <% end %>
+  </table>
+
+<% else %>
+
+  <p>
+    There are no users registered.
+  </p>
+
+<% end %>
