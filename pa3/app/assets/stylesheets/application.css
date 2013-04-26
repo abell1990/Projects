@@ -16,6 +16,34 @@
 {
    	font-family: Tahoma;
 	font-size: 13px;
-	margin: 0px;
-	padding: 0px;
+	/*margin: 0px;
+	padding: 0px;*/
 }
+
+/******** Header Styles ********/
+
+.header
+{
+	margin-left: 50px;
+	width: 1000px;
+	height: 200px;
+	background-image: url("/images/cover11_.jpg");
+	background-repeat: no-repeat;
+}
+
+.banner
+{
+	float: left;
+	padding-left: 40px;
+	padding-top: 0px;
+
+}
+
+.endPanelDiv
+{
+	clear: both;
+}
+
+
+
+/****** End Header Styles ******/
