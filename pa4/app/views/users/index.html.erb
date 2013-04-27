@@ -15,14 +15,17 @@
                     </a>
             
                     <% if user.photos.first %>
-                        <a href="/photos/index/<%= user.id %>">
-                            <span class="mugshot" style="background-image: url('/images/<%= user.photos.first.file_name %>'); background-repeat: no-repeat;"></span>
-                        </a>
+                        <% file_name = "/images/" + user.photos.first.file_name %>
                     <% else %>
-                        <a href="/photos/index/<%= user.id %>">
-                            <span class="mugshot" style="background-image: url('/images/enigma.jpeg'); background-repeat: no-repeat;"></span>
-                        </a>
+                        <% file_name = "/images/enigma.jpeg" %>
                     <% end %>
+
+                    <!--<a href="/photos/index/<%= user.id %>">
+                        <img class="mugshot" src="<%= file_name %>" />
+                    </a>-->
+                    <a href="/photos/index/<%= user.id %>">
+                        <span class="mugshot" style="background-image: url('<%=file_name%>'); background-repeat: no-repeat; background-position: center; background-size: cover;"></span>
+                    </a>
                 </div>
         <% end %>
 

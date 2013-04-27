@@ -21,7 +21,6 @@ h4
 
 .mugshotFrame
 {
-
 	float: left;
 }
 
@@ -32,11 +31,15 @@ h4
 
 .mugshot 
 {
-	background-color: #F4F4F4;
+	background-repeat: no-repeat; 
+	background-position: center; 
+	background-size: cover;
 	padding: 15px;
 	margin: 20px;
 	border-radius: 10px 10px 10px 10px;
 	box-shadow: 4px 4px 8px rgba(0,0,0,.15);
+
+	/* opacity: 0.68 */
 
 	float: left;
 	width: 190px;
@@ -44,6 +47,12 @@ h4
 	margin-left: 25px;
 	margin-right: 25px;
 
+}
+
+.mugshot:hover
+{
+	opacity: 0.5;
+	/* opacity: 1.0 */
 }
 
 a
