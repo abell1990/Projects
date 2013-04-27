@@ -4,22 +4,22 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 	
 	<head>
-	  <title><%= @pageTitle %></title>
-	  <%= stylesheet_link_tag    "application", :media => "all" %>
-	  <%= javascript_include_tag "application" %>
-	  <%= csrf_meta_tags %>
+		<title><%= @pageTitle %></title>
+	  	<%= stylesheet_link_tag    "application", :media => "all" %>
+	  	<%= javascript_include_tag "application" %>
+	  	<%= csrf_meta_tags %>
 	</head>
 	
 	<body>
 
- 	<div class="header">
- 		<h1>Rafael Moreno Ferrer</h1>
- 		<h2>CS142 Project <%= $project_number %></h2>
- 	</div>
+	 	<div class="header">
+	 		<h1>Rafael Moreno Ferrer</h1>
+	 		<h2>CS142 Project <%= $project_number %></h2>
+	 	</div>
 
- 	<div class="bodyContent">
-		<%= yield %>
- 	</div>
+	 	<div class="bodyContent">
+			<%= yield %>
+	 	</div>
 
  	</body>
 
