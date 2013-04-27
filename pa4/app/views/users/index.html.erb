@@ -11,7 +11,7 @@
         <% @all_users.each do |user| %>
                 <div class="mugshotFrame">
                     <a href="/photos/index/<%= user.id %>">
-                        <h4><%= user.full_name %></h4>
+                        <span class="mugshotName"><%= user.full_name %></span>
                     </a>
             
                     <% if user.photos.first %>
@@ -24,7 +24,7 @@
                         <img class="mugshot" src="<%= file_name %>" />
                     </a>-->
                     <a href="/photos/index/<%= user.id %>">
-                        <span class="mugshot" style="background-image: url('<%=file_name%>'); background-repeat: no-repeat; background-position: center; background-size: cover;"></span>
+                        <span class="mugshot" style="background-image: url('<%=file_name%>');"></span>
                     </a>
                 </div>
         <% end %>
