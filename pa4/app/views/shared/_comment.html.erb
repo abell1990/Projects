@@ -1,0 +1,36 @@
+<div class="<%= commentClass %>">
+
+    <% if comment.user.photos.first %>
+        <% file_name = "/images/" + comment.user.photos.first.file_name %>
+    <% else %>
+        <% file_name = "/images/enigma.jpeg" %>
+    <% end %>
+
+    <div class="lc">
+        <a href="/photos/index/<%= comment.user_id %>">
+            <span class="thumbnail" style="background-image: url('<%=file_name%>');"></span>
+        </a> 
+    </div>
+    <div class="rc">
+        <div class="ip">
+            <div class="ilc">
+                <a href="/photos/index/<%= comment.user_id %>">
+                    <span class="commentName">
+                        <%= comment.user.full_name %>
+                    </span>
+                </a>
+            </div>
+            <div class="irc">
+                <span class="commentDate">
+                    <%= comment.date_time.to_formatted_s(:long) %>
+                </span>
+            </div>
+        </div>
+        <div class="ic">
+            <%= comment.comment %>
+        </div>
+    </div>
+
+
+    <div class="clearBothDiv"></div>         
+</div>
