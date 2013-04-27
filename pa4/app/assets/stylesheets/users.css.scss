@@ -17,6 +17,7 @@
 .mugshotFrame
 {
 	float: left;
+	margin-bottom: 25px;
 }
 
 .mugshotName
@@ -37,9 +38,7 @@
 	
 	float: left;
 	
-	margin: 20px;
-	margin-left: 25px;
-	margin-right: 25px;
+	margin: 20px 25px;
 	padding: 15px;
 	
 	border-radius: 10px 10px 10px 10px;
@@ -71,4 +70,3 @@ a:hover
 {
 	clear: both;
 }
-

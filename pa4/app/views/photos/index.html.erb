@@ -1,61 +1,63 @@
+<a class="backLink" href="/users/index">&lt;&lt; Back to Index of Users</a>
+
 <% if @user %>
-  
-  <% @pageTitle = "Photos of " + @user.full_name %>
 
-  <p>
-    <%= @user.full_name %>'s photos:
-  </p>
+    <% @pageTitle = @user.full_name + "'s Photos" %>
 
-  <ul>
-    <% @user.photos.each do |photo| %>
-      <li>
+    <h1 class="contentTitle">
+        <%= @user.full_name %>'s Photos:
+    </h1>
 
-        <ul>
+    <ul>
+        <% @user.photos.each do |photo| %>
+            <li>
 
-          <li>
-            <img src="/images/<%= photo.file_name %>" alt="Photo of <%= @user.full_name %>"/>
-          </li>
+                <ul>
 
-          <li>
-            Date Created: <%= photo.date_time %>
-          </li>
-          
-          <li>
-            <% photo.comments.each do |comment| %>
-              
-              <ul>
+                    <li>
+                        <img src="/images/<%= photo.file_name %>" alt="Photo of <%= @user.full_name %>"/>
+                    </li>
 
-                <li> By: 
-                  <a href="/photos/index/<%= comment.user_id %>">
-                    <%= comment.user.full_name %>
-                  </a>
-                </li>
+                    <li>
+                        Date Created: <%= photo.date_time %>
+                    </li>
 
-                <li> On: 
-                  <%= comment.date_time %>
-                </li>
+                    <li>
+                        <% photo.comments.each do |comment| %>
 
-                <li> Comment: 
-                  <%= comment.comment %>
-                </li>
+                            <ul>
 
-              </ul>
-            
-            <% end %>
-          </li>
+                                <li> By: 
+                                    <a href="/photos/index/<%= comment.user_id %>">
+                                        <%= comment.user.full_name %>
+                                    </a>
+                                </li>
 
-        </ul>
+                                <li> On: 
+                                    <%= comment.date_time %>
+                                </li>
 
-      </li>
-    <% end %>
-  </ul>
+                                <li> Comment: 
+                                    <%= comment.comment %>
+                                </li>
+
+                            </ul>
+
+                        <% end %>
+                    </li>
+
+                </ul>
+
+            </li>
+        <% end %>
+    </ul>
 
 <% else %>
-  
-  <% @pageTitle = "User not found" %>
 
-  <p>
-    That user does not exist, or you did not provide a user id.
-  </p>
+    <% @pageTitle = "User not found" %>
+
+    <p>
+        That user does not exist, or you did not provide a user id.
+    </p>
 
 <% end %>

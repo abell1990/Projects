@@ -39,7 +39,7 @@ body
     width: 940px;
 
     margin: 0px auto;
-    margin-bottom: 100px;
+    margin-bottom: 40px;
     padding: 45px;
 
     border-top: 1px solid #DBDBDB;
@@ -70,3 +70,13 @@ body
     border-radius: 10px;
     box-shadow: 4px 4px 8px rgba(0,0,0,.15);
 }
+
+.footer
+{
+    margin: 0px auto;
+    padding-bottom: 30px;
+    width: 600px;
+    text-align: center;
+    font-size: 13px;
+}
+
