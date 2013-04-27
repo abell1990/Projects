@@ -1,29 +1,39 @@
 <% @pageTitle = "Index of Users" %>
 
 <% if !@all_users.empty? %>
+    
+    <h1 class="contentTitle">
+        Index of Users
+    </h1>
 
-  <p>
-    List of users:
-  </p>
+    <div class="mugshotGrid">
+        
+        <% @all_users.each do |user| %>
+                <div class="mugshotFrame">
+                    <a href="/photos/index/<%= user.id %>">
+                        <h4><%= user.full_name %></h4>
+                    </a>
+            
+                    <% if user.photos.first %>
+                        <a href="/photos/index/<%= user.id %>">
+                            <span class="mugshot" style="background-image: url('/images/<%= user.photos.first.file_name %>'); background-repeat: no-repeat;"></span>
+                        </a>
+                    <% else %>
+                        <a href="/photos/index/<%= user.id %>">
+                            <span class="mugshot" style="background-image: url('/images/enigma.jpeg'); background-repeat: no-repeat;"></span>
+                        </a>
+                    <% end %>
+                </div>
+        <% end %>
 
-  <table cellspacing="0" class="stateTable">
-    <% @all_users.each do |user| %>
+        <div class="endPanelDiv"></div>
 
-      <tr class="<%= cycle('odd', 'even') %>">
-        <td class="stateTableCell">
-          <a href="/photos/index/<%= user.id %>"> 
-            <%= user.full_name %> 
-          </a>
-        </td>
-      </tr>
-
-    <% end %>
-  </table>
+    </div>
 
 <% else %>
-
-  <p>
-    There are no users registered.
-  </p>
+    
+    <p>
+        There are no users registered.
+    </p>
 
 <% end %>

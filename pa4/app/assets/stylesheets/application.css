@@ -20,6 +20,8 @@
 
 body 
 {
+    font-family: Tahoma;
+
     background-color: #F4F4F4;
     background-image: url("/images/grid.png");
     background-repeat: repeat-x;
@@ -38,7 +40,7 @@ body
 
     margin-left: 100px;
     margin-bottom: 100px;
-    padding: 35px;
+    padding: 45px;
 
     border-top: 1px solid #DBDBDB;
     border-left: 1px solid #DBDBDB;
@@ -56,8 +58,8 @@ body
     text-align: right;
     color: #FFFFFF;
 
-    width: 1050px;
-    height: 120px;
+    width: 1100px;
+    height: 125px;
     line-height: 40px;
 
     margin-left: 52px;
