@@ -1,6 +1,7 @@
 <div class="navbar">
-	<% tabs1.each do |tab| %>
-		<% if tab[:label] != selectedTab1 %>
+	<% tabs.each do |tab| %>
+		<!-- Check if this is the selected tab and render appropriately -->
+		<% if tab[:label] != selectedTab %>
 			<div class="tab">
 				<a class="tabLink" href="<%= tab[:url] %>">
 					<span class="leftUnselectedTab"></span>
