@@ -1,4 +1,5 @@
 <a class="backLink" href="/users/index">&lt;&lt; Back to Index of Users</a>
+<div class="clearBothDiv"></div>
 
 <% if @user %>
 
@@ -8,56 +9,74 @@
         <%= @user.full_name %>'s Photos:
     </h1>
 
-    <ul>
-        <% @user.photos.each do |photo| %>
-            <li>
+    <% @user.photos.each do |photo| %>
+        <div class="photoPanel">
+            <% if !photo.comments.empty? %>
+                <% columnClass = "leftColumn" %>
+            <% else %>
+                <% columnClass = "singleColumn" %>
+            <% end %>
+            
+            <div class="<%= columnClass %>">
+                <img class="photo" src="/images/<%= photo.file_name %>" alt="Photo of <%= @user.full_name %>"/>
+                <div class="creationDate">Date Created: <%= photo.date_time.to_formatted_s(:long) %></div>
+            </div>
 
-                <ul>
+            <% if !photo.comments.empty? %>
+                <div class="rightColumn">
+                    <% photo.comments.each do |comment| %>
+                        <div class="<%= cycle('oddComment', 'evenComment') %>">
+                
+                            <% if comment.user.photos.first %>
+                                <% file_name = "/images/" + comment.user.photos.first.file_name %>
+                            <% else %>
+                                <% file_name = "/images/enigma.jpeg" %>
+                            <% end %>
 
-                    <li>
-                        <img src="/images/<%= photo.file_name %>" alt="Photo of <%= @user.full_name %>"/>
-                    </li>
-
-                    <li>
-                        Date Created: <%= photo.date_time %>
-                    </li>
-
-                    <li>
-                        <% photo.comments.each do |comment| %>
-
-                            <ul>
-
-                                <li> By: 
-                                    <a href="/photos/index/<%= comment.user_id %>">
-                                        <%= comment.user.full_name %>
-                                    </a>
-                                </li>
-
-                                <li> On: 
-                                    <%= comment.date_time %>
-                                </li>
-
-                                <li> Comment: 
+                            <div class="lc">
+                                <a href="/photos/index/<%= comment.user_id %>">
+                                    <span class="thumbnail" style="background-image: url('<%=file_name%>');"></span>
+                                </a> 
+                            </div>
+                            <div class="rc">
+                                <div class="ip">
+                                    <div class="ilc">
+                                        <a href="/photos/index/<%= comment.user_id %>">
+                                            <span class="commentName">
+                                                <%= comment.user.full_name %>
+                                            </span>
+                                        </a>
+                                    </div>
+                                    <div class="irc">
+                                        <span class="commentDate">
+                                            <%= comment.date_time.to_formatted_s(:long) %>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="ic">
                                     <%= comment.comment %>
-                                </li>
+                                </div>
+                            </div>
 
-                            </ul>
 
-                        <% end %>
-                    </li>
+                            <div class="clearBothDiv"></div>         
+                        </div>
+                    <% end %>
+                    
+                </div>
+            <% end %>
+                
+            <div class="clearBothDiv"></div>
 
-                </ul>
-
-            </li>
-        <% end %>
-    </ul>
+        </div>
+    <% end %>
 
 <% else %>
 
     <% @pageTitle = "User not found" %>
 
-    <p>
+    <h2 class="contentTitle">
         That user does not exist, or you did not provide a user id.
-    </p>
+    </h2    >
 
 <% end %>
