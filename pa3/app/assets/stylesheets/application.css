@@ -14,15 +14,15 @@
 
 *
 {
-	margin: 0px;
-	padding: 0px;
+  margin: 0px;
+  padding: 0px;
 }
 
 body 
 {
-	background-color: #F4F4F4;
-  	background-image: url("/images/grid.png");
-  	background-repeat: repeat-x;
+  background-color: #F4F4F4;
+  background-image: url("/images/grid.png");
+  background-repeat: repeat-x;
 }
 
 /* This is the styling for a div that wraps all the
@@ -31,42 +31,42 @@ body
    of the grey background. */
 .bodyContent
 {
-	background-color: #FFFFFF;
+  background-color: #FFFFFF;
 
-  	min-height: 600px;
-  	width: 940px;
+  min-height: 600px;
+  width: 940px;
 
-  	margin-left: 100px;
-  	margin-bottom: 100px;
-  	padding: 25px;
+  margin-left: 100px;
+  margin-bottom: 100px;
+  padding: 25px;
 
-  	border-top: 1px solid #DBDBDB;
-  	border-left: 1px solid #DBDBDB;
-  	border-right: 1px solid #DBDBDB;
+  border-top: 1px solid #DBDBDB;
+  border-left: 1px solid #DBDBDB;
+  border-right: 1px solid #DBDBDB;
 
-  	box-shadow: 2px 2px 2px #CCCCCC;
+  box-shadow: 2px 2px 2px #CCCCCC;
 }
 
 .header
 {
-  	background-image: url("/images/cover.jpg");
-  	
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  	font-size: 13px;
-  	text-align: right;
-	color: #FFFFFF;
-	
-	width: 1050px;
-	height: 120px;
-  	line-height: 40px;
-	
-	margin-left: 52px;
-  	margin-right: 40px;
-  	margin-top: 18px;
-  	margin-bottom: 20px;
-  	
-  	padding: 15px;
-  	
-  	border-radius: 10px;
-  	box-shadow: 4px 4px 8px rgba(0,0,0,.15);
+  background-image: url("/images/cover.jpg");
+    
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  text-align: right;
+  color: #FFFFFF;
+  
+  width: 1050px;
+  height: 120px;
+  line-height: 40px;
+  
+  margin-left: 52px;
+  margin-right: 40px;
+  margin-top: 18px;
+  margin-bottom: 20px;
+    
+  padding: 15px;
+    
+  border-radius: 10px;
+  box-shadow: 4px 4px 8px rgba(0,0,0,.15);
 }
