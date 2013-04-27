@@ -1,18 +1,20 @@
 <% @pageTitle = "Filter States" %>
 
 <% if !@results.empty? %>
-  <p>
-    The state names that contain the substring '<%= @substring %>' are:
-  </p>
-  <table cellspacing="0" class="stateTable">
-    <% @results.each do |state| %>
-      <tr class="<%= cycle('odd', 'even') %>">
-        <td class="stateTableCell"><%= state %></td>
-      </tr>
-    <% end %>
-  </table>
+    <p>
+        The state names that contain the substring '<%= @substring %>' are:
+    </p>
+    
+    <table cellspacing="0" class="stateTable">
+        <% @results.each do |state| %>
+            <tr class="<%= cycle('odd', 'even') %>">
+                <td class="stateTableCell"><%= state %></td>
+            </tr>
+        <% end %>
+    </table>
+
 <% else %>
-  <p>
-    There are no state names that contain the substring '<%= @substring %>'.
-  </p>
+    <p>
+        There are no state names that contain the substring '<%= @substring %>'.
+    </p>
 <% end %>
