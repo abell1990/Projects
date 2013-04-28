@@ -48,8 +48,6 @@
 
     <% @pageTitle = "User not found" %>
 
-    <h2 class="contentTitle">
-        That user does not exist, or you did not provide a user id.
-    </h2>
+    <%= render(:partial => "shared/alert", :locals => {:alertType => "error", :message => "That user does not exist, or you did not provide a user id."}) %>
 
 <% end %>
