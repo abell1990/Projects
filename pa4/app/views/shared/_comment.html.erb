@@ -6,27 +6,27 @@
         <% file_name = "/images/enigma.jpeg" %>
     <% end %>
 
-    <div class="lc">
+    <div class="commentLeftColumn">
         <a href="/photos/index/<%= comment.user_id %>">
-            <span class="thumbnail" style="background-image: url('<%=file_name%>');"></span>
+            <span class="commentThumbnail" style="background-image: url('<%=file_name%>');"></span>
         </a> 
     </div>
-    <div class="rc">
-        <div class="ip">
-            <div class="ilc">
+    <div class="commentRightColumn">
+        <div class="commentInternalPanel">
+            <div class="commentInternalLeftColumn">
                 <a href="/photos/index/<%= comment.user_id %>">
                     <span class="commentName">
                         <%= comment.user.full_name %>
                     </span>
                 </a>
             </div>
-            <div class="irc">
+            <div class="commentInternalRightColumn">
                 <span class="commentDate">
                     <%= comment.date_time.to_formatted_s(:long) %>
                 </span>
             </div>
         </div>
-        <div class="ic">
+        <div class="commentText">
             <%= comment.comment %>
         </div>
     </div>
