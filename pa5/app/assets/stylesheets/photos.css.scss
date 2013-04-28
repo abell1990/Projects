@@ -1,0 +1,43 @@
+// Place all the styles related to the Photos controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.photoPanel
+{
+	margin-bottom: 30px;
+	padding: 35px;
+}
+
+.photoImg
+{
+	display: block;
+    margin: 0px auto; 
+
+	border-radius: 10px 10px 10px 10px;
+	box-shadow: 4px 4px 8px rgba(0,0,0,.15);	
+}
+
+.photoCreationDate
+{
+	margin-top: 10px;
+	text-align: center;
+	font-size: 13px;
+}
+
+.photoSingleColumn
+{
+	width: 100%;
+	float: left;
+}
+
+.photoLeftColumn
+{
+	width: 65%;
+	float: left;
+}
+
+.photoRightColumn
+{
+	width: 35%;
+	float: left;
+}

@@ -1,0 +1,42 @@
+<% content_for :head do %>
+    <%= stylesheet_link_tag "users" %>
+<% end %>
+<% @pageTitle = "Index of Users" %>
+
+<% if !@all_users.empty? %>
+    
+    <h1 class="contentTitle">
+        Index of Users
+    </h1>
+
+    <div class="mugshotGrid">
+        
+        <% @all_users.each do |user| %>
+                <div class="mugshotFrame">
+                    <a href="/photos/index/<%= user.id %>">
+                        <span class="mugshotName"><%= user.full_name %></span>
+                    </a>
+            
+                    <% if user.photos.first %>
+                        <% file_name = "/images/" + user.photos.first.file_name %>
+                    <% else %>
+                        <% file_name = "/images/enigma.jpeg" %>
+                    <% end %>
+
+                    <a href="/photos/index/<%= user.id %>">
+                        <span class="mugshot" style="background-image: url('<%=file_name%>');"></span>
+                    </a>
+                </div>
+        <% end %>
+
+        <div class="clearBothDiv"></div>
+
+    </div>
+
+<% else %>
+    
+    <p>
+        There are no users registered.
+    </p>
+
+<% end %>
