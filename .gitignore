@@ -34,3 +34,6 @@ pa4/.bundle
 pa4/db/*.sqlite3
 pa4/log/*.log
 pa4/tmp
+
+# Heroku 
+heroku/*
