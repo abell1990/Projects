@@ -1,0 +1,101 @@
+.oddComment
+{
+    background-color: #EFEFEF;
+    border-radius: 8px 8px 8px 8px;
+    box-shadow: 4px 4px 8px rgba(0,0,0,.15);
+
+    padding: 10px;
+    margin: 20px 0px 0px 0px;
+    clear: both;
+}
+
+.evenComment
+{
+    background-color: #FFFFFF;
+    border-radius: 8px 8px 8px 8px;
+    box-shadow: 4px 4px 8px rgba(0,0,0,.15);
+
+    padding: 10px;
+    margin: 20px 0px 0px 0px;
+    clear: both;
+}
+
+
+.thumbnail 
+{
+	background-repeat: no-repeat; 
+	background-position: center; 
+	background-size: cover;
+	
+	width: 40px;
+	height: 40px;
+	
+	float: left;
+	
+	border-radius: 8px 8px 8px 8px;
+	box-shadow: 4px 4px 8px rgba(0,0,0,.15);
+}
+
+.commentName
+{
+	font-size: 12px;
+	font-weight: bold;
+	float: left;	
+}
+
+.commentDate
+{
+	font-size: 10px;
+	font-style: italic;
+	float: right;
+	margin-top: 2px;
+	margin-right: 2px;
+}
+
+.commentText
+{
+	font-size: 12px;
+}
+
+.lc 
+{
+	float: left;
+}
+
+.rc
+{
+	float: left;
+	margin-left: 10px;
+	width: 78%;
+}
+
+.commentText
+{
+	clear: both;
+}
+
+.ip
+{
+	clear: both;
+}
+
+.ilc
+{
+	font-size: 12px;
+	font-weight: bold;
+	float: left;
+}
+
+.irc
+{
+	font-size: 10px;
+	font-style: italic;
+	float: right;
+}
+
+.ic
+{
+	clear: both;
+	font-size: 12px;
+	margin-top: 17px;
+}

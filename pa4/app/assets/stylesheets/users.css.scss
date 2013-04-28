@@ -2,13 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
-.contentTitle
-{
-	text-align: center;
-	padding-bottom: 50px;
-}
-
 .mugshotGrid
 {
 	margin-left: 65px;
@@ -51,22 +44,4 @@
 {
 	/* opacity: 0.5; */
 	opacity: 1.0
-}
-
-a
-{
-	color: black;
-	text-decoration: none;	
-}
-
-
-a:hover
-{
-	color: #CC6600;
-	cursor: pointer;
-}
-
-.clearBothDiv
-{
-	clear: both;
 }

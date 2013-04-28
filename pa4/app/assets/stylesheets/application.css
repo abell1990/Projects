@@ -9,7 +9,6 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_tree .
  */
 
 *
@@ -78,5 +77,36 @@ body
     width: 600px;
     text-align: center;
     font-size: 13px;
+}
+
+.contentTitle
+{
+    text-align: center;
+    padding-bottom: 50px;
+}
+
+.backLink
+{
+    float: right;
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+a
+{
+    color: black;
+    text-decoration: none;  
+}
+
+
+a:hover
+{
+    color: #CC6600;
+    cursor: pointer;
+}
+
+.clearBothDiv
+{
+    clear: both;
 }
 

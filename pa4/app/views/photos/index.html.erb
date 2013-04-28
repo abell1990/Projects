@@ -1,3 +1,8 @@
+<% content_for :head do %>
+    <%= stylesheet_link_tag "photos" %>
+    <%= stylesheet_link_tag "comments" %>
+<% end %>
+
 <a class="backLink" href="/users/index">&lt;&lt; Back to Index of Users</a>
 <div class="clearBothDiv"></div>
 
@@ -27,7 +32,7 @@
                     
                     <% photo.comments.each do |comment| %>
 
-                        <%= render(:partial => "shared/comment", :locals => {:commentClass => cycle('oddComment', 'evenComment'), :comment => comment})%>
+                        <%= render(:partial => "shared/comment", :locals => {:commentClass => cycle('oddComment', 'evenComment'), :comment => comment}) %>
 
                     <% end %>
                     
