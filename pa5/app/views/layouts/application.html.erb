@@ -16,6 +16,12 @@
 	 	<div class="header">
 	 		<h1>Rafael Moreno Ferrer</h1>
 	 		<h2>CS142 Project <%= $project_number %></h2>
+
+            <% if session[:current_user_id] %>
+                Hi <%= User.find(session[:current_user_id]).first_name %>! <a href="/users/logout">Logout</a>
+            <% elsif %>
+                <a href="/users/login">Login</a>
+            <% end %>
 	 	</div>
 
 	 	<div class="bodyContent">
