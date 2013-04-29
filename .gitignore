@@ -1,27 +1,35 @@
+# RoR files
 *.rbc
 *.sassc
-.sass-cache
-capybara-*.html
-.rspec
-/.bundle
-/vendor/bundle
-/log/*
-/tmp/*
-/db/*.sqlite3
-/public/system/*
-/coverage/
-/spec/tmp/*
+*.sass-cache
+*capybara-*.html
+*.rspec
+*.rvmrc
+*.bundle
+*vendor/bundle
+*log/*
+*tmp/*
+*db/*.sqlite3
+*public/system/*
+*coverage/
+*spec/tmp/*
 **.orig
-rerun.txt
-pickle-email-*.html
+*rerun.txt
+*pickle-email-*.html
+*.project
 
+# Rubymine files
+*/.idea
 
-*.DS_Store
+# Heroku 
+heroku/*
 
-.idea/*
-proj2/.idea/*
+# Emacs tmp files
 .*~
 *~
+
+# Mac files
+*.DS_Store
 
 # Project 3 specific:
 pa3/.bundle
@@ -35,5 +43,3 @@ pa4/db/*.sqlite3
 pa4/log/*.log
 pa4/tmp
 
-# Heroku 
-heroku/*
