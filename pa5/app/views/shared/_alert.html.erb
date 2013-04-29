@@ -1,8 +1,19 @@
 <% if alertType == "error"%>
 
-	<div class="alertError">
-		<h2>Error!</h2>
+	<div class="alert alertError">
 		<p><%= message %></p>
 	</div>
+
+<% elsif alertType == "success" %>
+
+    <div class="alert alertSuccess">
+      <p><%= message %></p>
+    </div>
+
+<% elsif alertType == "info" %>
+
+    <div class="alert alertInfo">
+      <p><%= message %></p>
+    </div>
 
 <% end %>

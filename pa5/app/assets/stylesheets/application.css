@@ -92,17 +92,23 @@ body
     margin-bottom: 15px;
 }
 
-a
+.bodyContent a
 {
-    color: black;
+    color: #000000;
     text-decoration: none;  
 }
 
 
-a:hover
+.bodyContent a:hover
 {
     color: #CC6600;
     cursor: pointer;
+}
+
+.header a
+{
+    color: #FFFFFF;
+    text-decoration: none;
 }
 
 .clearBothDiv
@@ -110,6 +116,35 @@ a:hover
     clear: both;
 }
 
+.contentBox
+{
+    background-color: #F4F4F4;
+
+    border-radius: 8px 8px 8px 8px;
+    box-shadow: 4px 4px 8px rgba(0,0,0,.15);
+
+    padding: 10px;
+
+    clear: both;
+}
+
+.inputTextField
+{
+    display: block;
+    margin: 0px auto;
+    border-radius: 4px 4px 4px 4px;
+    height: 20px;
+    font-size: 13px;
+    border: 1px solid #E0E0E0;
+    padding: 3px;
+    margin-bottom: 15px;
+}
+
+.submitButton
+{
+    margin: 20px 0px 20px 70px;
+    font-size: 20px;
+}
 /*  CSS for distinct alert message banners */
 
 .alert
@@ -156,11 +191,17 @@ a:hover
 
 .alertInfo
 {
-    color: #3A87AD;
+    /*color: #3A87AD;*/
 
-    background-color: #D9EDF7;
+    /*background-color: #D9EDF7;*/
 
-    border: 1px solid #BCE8F1;
+    /*border: 1px solid #BCE8F1;*/
+
+    color: #808080;
+
+    background-color: #F0F0F0;
+
+    border: 1px solid #D0D0D0;
 }
 
 /* END CSS for alerts */
