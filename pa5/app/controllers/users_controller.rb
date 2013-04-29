@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   
   def index
-  	@all_users = User.find(:all)
+  	@all_users = User.all
   end
 
 end
