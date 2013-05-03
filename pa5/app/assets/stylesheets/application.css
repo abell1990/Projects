@@ -111,6 +111,14 @@ body
     text-decoration: none;
 }
 
+
+
+.header a:hover
+{
+    color: #CC6600;
+    cursor: pointer;
+}
+
 .clearBothDiv
 {
     clear: both;
