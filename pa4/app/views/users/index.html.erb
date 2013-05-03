@@ -16,7 +16,9 @@
                     <a href="/photos/index/<%= user.id %>">
                         <span class="mugshotName"><%= user.full_name %></span>
                     </a>
-            
+
+                    <!-- if user has photos choose the first photo as mugshot, otherwise use the
+                         'enigma'  photo as the default -->
                     <% if user.photos.first %>
                         <% file_name = "/images/" + user.photos.first.file_name %>
                     <% else %>

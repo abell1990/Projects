@@ -16,17 +16,22 @@
 
     <% @user.photos.each do |photo| %>
         <div class="photoPanel">
+
+            <!-- if there are comments on this photo, create two columns: one for the photo, one for the comments,
+                 otherwise create a single column to center the photo in the middle of the page -->
             <% if !photo.comments.empty? %>
                 <% columnClass = "photoLeftColumn" %>
             <% else %>
                 <% columnClass = "photoSingleColumn" %>
             <% end %>
-            
+
+            <!-- photo column -->
             <div class="<%= columnClass %>">
                 <img class="photoImg" src="/images/<%= photo.file_name %>" alt="Photo of <%= @user.full_name %>"/>
                 <div class="photoCreationDate">Date Created: <%= photo.date_time.to_formatted_s(:long) %></div>
             </div>
 
+            <!-- comments column (if any) -->
             <% if !photo.comments.empty? %>
                 <div class="photoRightColumn">
                     
