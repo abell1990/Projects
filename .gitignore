@@ -20,6 +20,7 @@
 
 # Rubymine files
 */.idea
+*.idea
 
 # Heroku 
 heroku/*
