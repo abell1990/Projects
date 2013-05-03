@@ -3,7 +3,7 @@
     <%= stylesheet_link_tag "comments" %>
 <% end %>
 
-<a class="backLink" href="/users/index">&lt;&lt; Back to Index of Users</a>
+<a class="backLink" href="/users/index">&lt;&lt; Index of Users</a>
 <div class="clearBothDiv"></div>
 
 <% if @user %>
@@ -16,29 +16,24 @@
 
     <% @user.photos.each do |photo| %>
         <div class="photoPanel">
-            <% if !photo.comments.empty? %>
-                <% columnClass = "photoLeftColumn" %>
-            <% else %>
-                <% columnClass = "photoSingleColumn" %>
-            <% end %>
-            
-            <div class="<%= columnClass %>">
+
+            <div class="photoLeftColumn">
                 <img class="photoImg" src="/images/<%= photo.file_name %>" alt="Photo of <%= @user.full_name %>"/>
                 <div class="photoCreationDate">Date Created: <%= photo.date_time.to_formatted_s(:long) %></div>
             </div>
 
-            <% if !photo.comments.empty? %>
-                <div class="photoRightColumn">
-                    
-                    <% photo.comments.each do |comment| %>
+            <div class="photoRightColumn">
 
-                        <%= render(:partial => "shared/comment", :locals => {:commentClass => cycle('commentOddPanel', 'commentEvenPanel'), :comment => comment}) %>
+                <% photo.comments.each do |comment| %>
 
-                    <% end %>
-                    
-                </div>
-            <% end %>
-                
+                    <%= render(:partial => "shared/comment", :locals => {:commentClass => cycle('commentOddPanel', 'commentEvenPanel'), :comment => comment}) %>
+
+                <% end %>
+
+                <%= link_to("Add new comment", :controller => :comments, :action => :new, :id => photo) %>
+
+            </div>
+
             <div class="clearBothDiv"></div>
 
         </div>

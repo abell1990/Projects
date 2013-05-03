@@ -1,0 +1,38 @@
+<% content_for :head do %>
+    <%= stylesheet_link_tag "photos" %>
+    <%= stylesheet_link_tag "comments" %>
+<% end %>
+
+<div class="photoPanel">
+
+    <div class="photoLeftColumn">
+        <img class="photoImg" src="/images/<%= @photo.file_name %>" alt="Photo of <%= @photo.user.full_name %>"/>
+        <div class="photoCreationDate">Date Created: <%= @photo.date_time.to_formatted_s(:long) %></div>
+    </div>
+
+    <div class="photoRightColumn">
+
+        <% @photo.comments.each do |comment| %>
+
+            <%= render(:partial => "shared/comment", :locals => {:commentClass => cycle('commentOddPanel', 'commentEvenPanel'), :comment => comment}) %>
+
+        <% end %>
+
+
+        <%= form_for(@comment, :url => {:action => :create, :id => @photo.id}) do |form| %>
+            <% @comment.errors.full_messages.each do |msg| %>
+                  <p><%= msg %></p>
+            <% end %>
+
+            <%= form.hidden_field(:photo_id, :value => @photo.id) %>
+            <%= form.hidden_field(:user_id, :value => session[:current_user_id]) %>
+            <%= form.hidden_field(:date_time, :value => DateTime.now) %>
+            <%= form.text_field(:comment) %>
+            <%= form.submit "Create Comment" %>
+        <% end %>
+
+    </div>
+
+    <div class="clearBothDiv"></div>
+
+</div>
