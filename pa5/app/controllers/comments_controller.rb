@@ -1,9 +1,22 @@
 class CommentsController < ApplicationController
+
+  # URL access: logged in users
+  # HTTP method: GET
   def new
-    @photo = Photo.find(params[:id])
-    @comment = Comment.new()
+    if !validate_login
+      return
+    end
+
+    # find photo to comment (if exists)
+    if params[:id] and Photo.exists?(params[:id])
+      @photo = Photo.find(params[:id])
+      @comment = Comment.new()
+    end
   end
 
+  # Action that handles HTTP POST requests to create comments
+  # URL access: logged in users
+  # HTTP method: POST
   def create
     @comment = Comment.create(params[:comment])
     if @comment.valid?

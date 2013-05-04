@@ -3,36 +3,48 @@
     <%= stylesheet_link_tag "comments" %>
 <% end %>
 
-<div class="photoPanel">
+<% if @photo %>
 
-    <div class="photoLeftColumn">
-        <img class="photoImg" src="/images/<%= @photo.file_name %>" alt="Photo of <%= @photo.user.full_name %>"/>
-        <div class="photoCreationDate">Date Created: <%= @photo.date_time.getlocal.to_formatted_s(:long) %></div>
-    </div>
+    <% @pageTitle = "New Comment" %>
 
-    <div class="photoRightColumn">
+    <div class="photoPanel">
 
-        <% @photo.comments.each do |comment| %>
+        <div class="photoLeftColumn">
+            <img class="photoImg" src="/images/<%= @photo.file_name %>" alt="Photo of <%= @photo.user.full_name %>"/>
+            <div class="photoCreationDate">Date Created: <%= @photo.date_time.getlocal.to_formatted_s(:long) %></div>
+        </div>
 
-            <%= render(:partial => "shared/comment", :locals => {:commentClass => cycle('commentOddPanel', 'commentEvenPanel'), :comment => comment}) %>
+        <div class="photoRightColumn">
 
-        <% end %>
+            <!--<% @photo.comments.each do |comment| %>-->
+
+                <!--<%= render(:partial => "shared/comment", :locals => {:commentClass => cycle('commentOddPanel', 'commentEvenPanel'), :comment => comment}) %>-->
+
+            <!--<% end %>-->
 
 
-        <%= form_for(@comment, :url => {:action => :create, :id => @photo.id}) do |form| %>
-            <% @comment.errors.full_messages.each do |msg| %>
-                  <p><%= msg %></p>
+            <%= form_for(@comment, :url => {:action => :create, :id => @photo.id}) do |form| %>
+                <% @comment.errors.full_messages.each do |msg| %>
+                      <p><%= msg %></p>
+                <% end %>
+
+                <%= form.hidden_field(:photo_id, :value => @photo.id) %>
+                <%= form.hidden_field(:user_id, :value => session[:current_user_id]) %>
+                <%= form.hidden_field(:date_time, :value => DateTime.now) %>
+                <%= form.text_field(:comment) %>
+                <%= form.submit "Create Comment" %>
             <% end %>
 
-            <%= form.hidden_field(:photo_id, :value => @photo.id) %>
-            <%= form.hidden_field(:user_id, :value => session[:current_user_id]) %>
-            <%= form.hidden_field(:date_time, :value => DateTime.now) %>
-            <%= form.text_field(:comment) %>
-            <%= form.submit "Create Comment" %>
-        <% end %>
+        </div>
+
+        <div class="clearBothDiv"></div>
 
     </div>
 
-    <div class="clearBothDiv"></div>
+<% else %>
 
-</div>
+    <% @pageTitle = "Photo not found" %>
+
+    <%= render(:partial => "shared/alert", :locals => {:alertType => "error", :message => "That photo does not exist, or you did not provide a photo id."}) %>
+
+<% end %>
