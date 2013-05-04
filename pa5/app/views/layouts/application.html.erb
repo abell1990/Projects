@@ -25,7 +25,22 @@
 	 	</div>
 
 	 	<div class="bodyContent">
-			<%= yield %>
+
+          <!-- display alerts (if any) at top of the page -->
+          <% if flash[:alert_error] %>
+              <%= render(:partial => "shared/alert", :locals => {:alertType => "error", :message => flash[:alert_error]}) %>
+          <% end %>
+
+          <% if flash[:alert_success] %>
+              <%= render(:partial => "shared/alert", :locals => {:alertType => "success", :message => flash[:alert_success]}) %>
+          <% end %>
+
+          <% if flash[:alert_info] %>
+              <%= render(:partial => "shared/alert", :locals => {:alertType => "info", :message => flash[:alert_info]}) %>
+          <% end %>
+
+
+          <%= yield %>
 	 	</div>
 
 	 	<div class="footer">

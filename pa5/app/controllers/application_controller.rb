@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   def validate_login
     if !session[:current_user_id]
-      flash[:login_info] = "You must be logged in to access this content."
+      flash[:alert_info] = "You must be logged in to access this content."
       redirect_to(:controller => :users, :action => :login)
       return false
     end

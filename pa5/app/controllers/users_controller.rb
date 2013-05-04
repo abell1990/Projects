@@ -19,7 +19,7 @@ class UsersController < ApplicationController
   # HTTP method: GET
   def logout
     if session[:current_user_id]
-      flash[:login_success] = "You have successfully logged out."
+      flash[:alert_success] = "You have successfully logged out."
     end
 
     session[:current_user_id] = nil
@@ -43,7 +43,7 @@ class UsersController < ApplicationController
       session[:current_user_id] = user.id
       redirect_to(:controller => :photos, :action => :index, :id => user.id)
     else     # invalid login, go back to login page with error msg
-      flash[:login_error] = "Invalid username."
+      flash[:alert_error] = "Invalid username."
       render(:controller => :users, :action => :login)
     end
 

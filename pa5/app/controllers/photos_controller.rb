@@ -11,7 +11,9 @@ class PhotosController < ApplicationController
     # find user they are looking for (if exists)
     if params[:id] and User.exists?(params[:id])
   		@user = User.find(params[:id])
-  	end
+    else
+      flash[:alert_error] = "That user does not exist, or you did not provide a user id."
+    end
   end
 
 end

@@ -1,19 +1,8 @@
 <% content_for :head do %>
     <%= stylesheet_link_tag "users" %>
 <% end %>
+
 <% @pageTitle = "Login" %>
-
-<% if flash[:login_error] %>
-    <%= render(:partial => "shared/alert", :locals => {:alertType => "error", :message => flash[:login_error]}) %>
-<% end %>
-
-<% if flash[:login_success] %>
-    <%= render(:partial => "shared/alert", :locals => {:alertType => "success", :message => flash[:login_success]}) %>
-<% end %>
-
-<% if flash[:login_info] %>
-    <%= render(:partial => "shared/alert", :locals => {:alertType => "info", :message => flash[:login_info]}) %>
-<% end %>
 
 <%= form_tag({:controller => "users", :action => "post_login"}, :class => "contentBox loginBox") do %>
     <h2> Login </h2>
