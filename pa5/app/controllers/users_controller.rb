@@ -32,7 +32,8 @@ class UsersController < ApplicationController
   def post_login
 
     # don't allow HTTP GET requests to this URL, redirect to login page
-    if !validate_http_post(:users, :login)
+    unless request.post?
+      redirect_to(:controller => :users, :action => :login)
       return
     end
 

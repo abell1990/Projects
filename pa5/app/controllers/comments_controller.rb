@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   # URL access: logged in users
   # HTTP method: GET
   def new
-    if !validate_login
+    unless validate_login
       return
     end
 
@@ -18,6 +18,10 @@ class CommentsController < ApplicationController
   # URL access: logged in users
   # HTTP method: POST
   def create
+    unless validate_login
+      return
+    end
+
     @comment = Comment.create(params[:comment])
     if @comment.valid?
       redirect_to(:controller => :photos, :action => :index, :id => @comment.photo.user.id)
