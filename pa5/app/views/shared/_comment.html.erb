@@ -22,7 +22,7 @@
             </div>
             <div class="commentInternalRightColumn">
                 <span class="commentDate">
-                    <%= comment.date_time.to_formatted_s(:long) %>
+                    <%= comment.date_time.getlocal.to_formatted_s(:long) %>
                 </span>
             </div>
         </div>
