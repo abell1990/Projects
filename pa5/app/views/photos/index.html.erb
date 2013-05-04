@@ -14,6 +14,11 @@
         <%= @user.full_name %>'s Photos:
     </h1>
 
+    <!-- allow logged in users to upload pictures only to their profiles -->
+    <% if @logged_in and session[:current_user_id] == @user.id %>
+        <h2><%= link_to("Add new photo", :controller => :photos, :action => :new) %></h2>
+    <% end %>
+
     <% @user.photos.each do |photo| %>
         <div class="photoPanel">
 
@@ -30,7 +35,10 @@
 
                 <% end %>
 
-                <%= link_to("Add new comment", :controller => :comments, :action => :new, :id => photo) %>
+                <!-- only show the add new comment option to logged in users -->
+                <% if @logged_in %>
+                    <%= link_to("Add new comment", :controller => :comments, :action => :new, :id => photo) %>
+                <% end %>
 
             </div>
 
