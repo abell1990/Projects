@@ -24,6 +24,20 @@ class CommentsController < ApplicationController
       return
     end
 
+    # TODO: fix
+    ## don't allow HTTP GET requests to this URL
+    #unless request.post?
+    #if !validate_http_post(:users)
+    #if request.get?
+    #  if params[:id]
+    #    redirect_to(:action => :new, :id => @photo.id)
+    #  else
+    #
+    #  end
+    #
+    #  return
+    #end
+
     @comment = Comment.create(params[:comment])
     if @comment.valid?
       redirect_to(:controller => :photos, :action => :index, :id => @comment.photo.user.id)
@@ -32,4 +46,5 @@ class CommentsController < ApplicationController
       render(:action => :new, :id => @photo.id)
     end
   end
+
 end

@@ -3,4 +3,6 @@ class Photo < ActiveRecord::Base
   
   belongs_to :user
   has_many :comments
+
+  validates :user_id, :date_time, :file_name, :presence => true
 end
