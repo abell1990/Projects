@@ -4,6 +4,10 @@ class UsersController < ApplicationController
   # HTTP method: GET
   def index
   	@all_users = User.all
+
+    if @all_users.empty?
+      flash[:alert_info] = "There are no registered users."
+    end
   end
 
   # URL access: anyone

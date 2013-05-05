@@ -1,9 +1,10 @@
 <% content_for :head do %>
     <%= stylesheet_link_tag "users" %>
 <% end %>
+
 <% @pageTitle = "Index of Users" %>
 
-<% if !@all_users.empty? %>
+<% unless @all_users.empty? %>
     
     <h1 class="contentTitle">
         Index of Users
@@ -32,11 +33,5 @@
         <div class="clearBothDiv"></div>
 
     </div>
-
-<% else %>
-    
-    <p>
-        There are no users registered.
-    </p>
 
 <% end %>

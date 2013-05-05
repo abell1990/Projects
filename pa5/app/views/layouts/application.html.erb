@@ -39,8 +39,9 @@
               <%= render(:partial => "shared/alert", :locals => {:alertType => "info", :message => flash[:alert_info]}) %>
           <% end %>
 
-
+          <!-- body contents -->
           <%= yield %>
+
 	 	</div>
 
 	 	<div class="footer">
