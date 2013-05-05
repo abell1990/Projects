@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   	@all_users = User.all
 
     if @all_users.empty?
-      flash[:alert_info] = "There are no registered users."
+      @flash = {:alert_info => "There are no registered users."}
     end
   end
 
@@ -47,7 +47,7 @@ class UsersController < ApplicationController
       session[:current_user_id] = user.id
       redirect_to(:controller => :photos, :action => :index, :id => user.id)
     else     # invalid login, go back to login page with error msg
-      flash[:alert_error] = "Invalid username."
+      @flash = {:alert_error => "Invalid username."}
       render(:controller => :users, :action => :login)
     end
 
