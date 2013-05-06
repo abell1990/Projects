@@ -5,4 +5,5 @@ class Photo < ActiveRecord::Base
   has_many :comments
 
   validates :user_id, :date_time, :file_name, :presence => true
+  # TODO: add validation for file extension, and duplicate avoidance
 end
