@@ -45,4 +45,22 @@ pa4/log/*.log
 pa4/tmp
 pa4/.gitignore
 
-
+# Project 5 specific:
+pa5/.bundle
+pa5/db/*.sqlite3
+pa5/log/*.log
+pa5/tmp
+pa5/.gitignore
+pa5/public/images/*
+!pa5/public/images/bieber1.jpg
+!pa5/public/images/bieber2.jpg
+!pa5/public/images/cover.jpg
+!pa5/public/images/enigma.jpeg
+!pa5/public/images/grid.png
+!pa5/public/images/hilton1.jpg
+!pa5/public/images/hilton2.jpg
+!pa5/public/images/obama1.jpg
+!pa5/public/images/obama2.jpg
+!pa5/public/images/obama3.jpg
+!pa5/public/images/ouster.jpg
+!pa5/public/images/santa1.jpg
