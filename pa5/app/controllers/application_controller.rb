@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
 
   $project_number = 5
 
+  # TODO: move helpers to another file
   def validate_login
     if !session[:current_user_id]
       flash[:alert_info] = "You must be logged in to access this content."
@@ -31,5 +32,13 @@ class ApplicationController < ActionController::Base
 
     return true
   end
+
+  #def validate_passwords_match(params)
+  #  if params and params[:password] == params[:re_password]
+  #    return true
+  #  end
+  #
+  #  return false
+  #end
 
 end

@@ -53,4 +53,60 @@ class UsersController < ApplicationController
 
   end
 
+  # URL access: anyone
+  # HTTP method: GET
+  def new
+    @user = User.new()
+  end
+
+  # Action that handles HTTP POST requests to create/register users
+  # URL access: anyone
+  # HTTP method: POST
+  def create
+    # TODO: fix
+    ## don't allow HTTP GET requests to this URL
+    #unless request.post?
+    #if !validate_http_post(:users)
+    #if request.get?
+    #  if params[:id]
+    #    redirect_to(:action => :new, :id => @photo.id)
+    #  else
+    #
+    #  end
+    #
+    #  return
+    #end
+
+    #unless validate_passwords_match(params[:user])
+    #  @user = User.new()
+    #  @flash = {:alert_error => "Passwords did not match."}
+    #  render(:controller => :users, :action => :new)
+    #  return
+    #end
+
+    #params[:user].delete(:re_password)
+
+    #create_params = {}
+    #
+    #if params[:user]
+    #  create_params[:first_name] = params[:user][:first_name]
+    #  create_params[:last_name] = params[:user][:last_name]
+    #  create_params[:login] = params[:user][:login]
+    #  if params[:user][:password] == params[:user][:re_password]
+    #    create_params[:password] = params[:user][:password]
+    #  else
+    #    @password_mismatch = true
+    #  end
+    #end
+
+
+    @user = User.create(params[:user])
+    if @user.valid?
+      flash[:alert_success] = "Registration successful."
+      redirect_to(:controller => :users, :action => :login)
+    else
+      render(:controller => :users, :action => :new)
+    end
+  end
+
 end

@@ -1,0 +1,19 @@
+<% content_for :head do %>
+    <%= stylesheet_link_tag "users" %>
+<% end %>
+
+<% @pageTitle = "Register" %>
+
+<%= form_for(@user, :url => {:controller => :users, :action => :create}, :html => {:class => "contentBox loginBox"}) do |form| %>
+    <% @user.errors.full_messages.each do |msg| %>
+        <p><%= msg %></p>
+    <% end %>
+
+    <h2> Register </h2>
+    <%= form.text_field(:first_name, :placeholder => "First name", :class => "inputTextField") %>
+    <%= form.text_field(:last_name, :placeholder => "Last name", :class => "inputTextField") %>
+    <%= form.text_field(:login, :placeholder => "Username", :class => "inputTextField") %>
+    <%= form.password_field(:password, :placeholder => "Password", :class => "inputTextField") %>
+    <%= form.password_field(:password_confirmation, :placeholder => "Re-enter password", :class => "inputTextField") %>
+    <%= form.submit("Sign up", :class => "submitButton") %>
+<% end %>
