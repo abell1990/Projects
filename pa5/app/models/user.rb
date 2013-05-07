@@ -29,6 +29,10 @@ class User < ActiveRecord::Base
   end
 
   def password_valid?(candidate_password)
+    unless candidate_password # check for nil
+      return false
+    end
+
     candidate_digest = Digest::SHA1.hexdigest(candidate_password + self.salt)
     return candidate_digest == self.password_digest
   end

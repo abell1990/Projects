@@ -43,11 +43,11 @@ class UsersController < ApplicationController
 
     user = User.find_by_login(params[:login])
 
-    if user  # valid login, proceed to their photos page
+    if user and user.password_valid?(params[:password])  # valid login, proceed to their photos page
       session[:current_user_id] = user.id
       redirect_to(:controller => :photos, :action => :index, :id => user.id)
     else     # invalid login, go back to login page with error msg
-      @flash = {:alert_error => "Invalid username."}
+      @flash = {:alert_error => "Invalid username and/or password."}
       render(:controller => :users, :action => :login)
     end
 

@@ -47,25 +47,6 @@ class PhotosController < ApplicationController
     #  return
     #end
 
-    #create_params = {}
-    #
-    #if params[:photo]
-    #  create_params[:user_id] = params[:photo][:user_id]
-    #  create_params[:date_time] = params[:photo][:date_time]
-    #
-    #  if params[:photo][:file]
-    #    file = params[:photo][:file]
-    #    if file.respond_to?(:read)
-    #      file_name = file.original_filename()
-    #      file_path = "public/images/" + file_name
-    #      file_contents = file.read()
-    #
-    #      # TODO: this naming scheme has the weakness that if two files with same name are uploaded one will stomp another, alternatively use hashes of file contents
-    #      create_params[:file_name] = file_name
-    #    end
-    #  end
-    #end
-
     @photo = Photo.new(params[:photo])
     if @photo.save() # does it pass validation?
       # copy image to /public/images directory
