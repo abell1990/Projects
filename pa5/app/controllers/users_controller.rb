@@ -3,31 +3,53 @@ class UsersController < ApplicationController
   # URL access: anyone
   # HTTP method: GET
   def index
-  	@all_users = User.all
+
+    # validate we got a HTTP GET request
+    unless validate_http_get
+      return
+    end
+
+    @all_users = User.all
 
     if @all_users.empty?
       @flash = {:alert_info => "There are no registered users."}
     end
+
   end
 
   # URL access: anyone
   # HTTP method: GET
   def login
+
+    # validate we got a HTTP GET request
+    unless validate_http_get
+      return
+    end
+
     # if whoever made request is logged in already redirect to their photos page
     if session[:current_user_id]
       redirect_to(:controller => :photos, :action => :index, :id => session[:current_user_id])
     end
+
   end
 
   # URL access: anyone
   # HTTP method: GET
+  # TODO: this should be a post
   def logout
+
+    # validate we got a HTTP GET request
+    unless validate_http_get
+      return
+    end
+
     if session[:current_user_id]
       flash[:alert_success] = "You have successfully logged out."
     end
 
     session[:current_user_id] = nil
     redirect_to(:controller => :users, :action => :login)
+
   end
 
   # Action that handles HTTP POST requests to login users
@@ -35,9 +57,8 @@ class UsersController < ApplicationController
   # HTTP method: POST
   def post_login
 
-    # don't allow HTTP GET requests to this URL, redirect to login page
-    unless request.post?
-      redirect_to(:controller => :users, :action => :login)
+    # validate we got a HTTP POST request
+    unless validate_http_post
       return
     end
 
@@ -56,34 +77,35 @@ class UsersController < ApplicationController
   # URL access: anyone
   # HTTP method: GET
   def new
+
+    # validate we got a HTTP GET request
+    unless validate_http_get
+      return
+    end
+
     @user = User.new()
+
   end
 
   # Action that handles HTTP POST requests to create/register users
   # URL access: anyone
   # HTTP method: POST
   def create
-    # TODO: fix
-    ## don't allow HTTP GET requests to this URL
-    #unless request.post?
-    #if !validate_http_post(:users)
-    #if request.get?
-    #  if params[:id]
-    #    redirect_to(:action => :new, :id => @photo.id)
-    #  else
-    #
-    #  end
-    #
-    #  return
-    #end
+
+    # validate we got a HTTP POST request
+    unless validate_http_post
+      return
+    end
 
     @user = User.new(params[:user])
+
     if @user.save() # does it pass validation?
       flash[:alert_success] = "Registration successful."
       redirect_to(:controller => :users, :action => :login)
     else
       render(:controller => :users, :action => :new)
     end
+
   end
 
 end

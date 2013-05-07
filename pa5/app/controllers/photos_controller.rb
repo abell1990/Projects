@@ -3,6 +3,12 @@ class PhotosController < ApplicationController
   # URL access: anyone
   # HTTP method: GET
   def index
+
+    # validate we got a HTTP GET request
+    unless validate_http_get
+      return
+    end
+
     # check if whoever made request is logged in
     if session[:current_user_id]
       @logged_in = true
@@ -14,40 +20,43 @@ class PhotosController < ApplicationController
     else
       @flash = {:alert_error => "That user does not exist, or you did not provide a user id."}
     end
+
   end
 
   # URL access: logged in users
   # HTTP method: GET
   def new
+
+    # validate we got a HTTP GET request
+    unless validate_http_get
+      return
+    end
+
+    # require user to be logged in to upload a photo
     unless validate_login
       return
     end
 
     @photo = Photo.new()
+
   end
 
   # URL access: logged in users
   # HTTP method: POST
   def create
+
+    # validate we got a HTTP POST request
+    unless validate_http_post
+      return
+    end
+
+    # require user to be logged in to upload a photo
     unless validate_login
       return
     end
 
-    # TODO: fix
-    ## don't allow HTTP GET requests to this URL
-    #unless request.post?
-    #if !validate_http_post(:users)
-    #if request.get?
-    #  if params[:id]
-    #    redirect_to(:action => :new, :id => @photo.id)
-    #  else
-    #
-    #  end
-    #
-    #  return
-    #end
-
     @photo = Photo.new(params[:photo])
+
     if @photo.save() # does it pass validation?
       # copy image to /public/images directory
       file_path = "public/images/" + @photo.file_name
@@ -58,6 +67,7 @@ class PhotosController < ApplicationController
     else
       render(:controller => :photos, :action => :new)
     end
+
   end
 
 end

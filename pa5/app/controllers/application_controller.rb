@@ -15,18 +15,20 @@ class ApplicationController < ActionController::Base
     return true
   end
 
-  def validate_http_get(controller, action)
+  def validate_http_get
     if request.post?
-      redirect_to(:controller => controller, :action => action)
+      flash[:alert_error] = "Invalid HTTP request. Please only do GET requests to this URL."
+      redirect_to(:controller => :site, :action => :error)
       return false
     end
 
     return true
   end
 
-  def validate_http_post(controller, action)
+  def validate_http_post
     if request.get?
-      redirect_to(:controller => controller, :action => action)
+      flash[:alert_error] = "Invalid HTTP request. Please only do POST requests to this URL."
+      redirect_to(:controller => :site, :action => :error)
       return false
     end
 
