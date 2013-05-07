@@ -6,6 +6,7 @@
 <% if @photo %>
 
     <% @pageTitle = "New Comment" %>
+    <% @validation_errors = @comment.errors %>
 
     <div class="photoPanel">
 
@@ -24,10 +25,6 @@
 
 
             <%= form_for(@comment, :url => {:action => :create, :id => @photo.id}) do |form| %>
-                <% @comment.errors.full_messages.each do |msg| %>
-                      <p><%= msg %></p>
-                <% end %>
-
                 <%= form.hidden_field(:photo_id, :value => @photo.id) %>
                 <%= form.hidden_field(:user_id, :value => session[:current_user_id]) %>
                 <%= form.hidden_field(:date_time, :value => DateTime.now) %>

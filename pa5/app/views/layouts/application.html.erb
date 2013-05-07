@@ -30,15 +30,15 @@
 
             <!-- flash alerts were set in the previous request and this request was a redirection -->
             <% if flash[:alert_error] %>
-                <%= render(:partial => "shared/alert", :locals => {:alertType => "error", :message => flash[:alert_error]}) %>
+                <%= render(:partial => "shared/alert", :locals => {:alertType => "error", :messages => flash[:alert_error]}) %>
             <% end %>
 
             <% if flash[:alert_success] %>
-                <%= render(:partial => "shared/alert", :locals => {:alertType => "success", :message => flash[:alert_success]}) %>
+                <%= render(:partial => "shared/alert", :locals => {:alertType => "success", :messages => flash[:alert_success]}) %>
             <% end %>
 
             <% if flash[:alert_info] %>
-                <%= render(:partial => "shared/alert", :locals => {:alertType => "info", :message => flash[:alert_info]}) %>
+                <%= render(:partial => "shared/alert", :locals => {:alertType => "info", :messages => flash[:alert_info]}) %>
             <% end %>
 
             <!-- @flash is a local variable throughout the lifetime of the current request. It is similar to flash in that it is
@@ -48,16 +48,20 @@
                  to display alerts we do not have redirects on the controller and flash is useful when there are redirects. -->
             <% if @flash %>
                 <% if @flash[:alert_error] %>
-                    <%= render(:partial => "shared/alert", :locals => {:alertType => "error", :message => @flash[:alert_error]}) %>
+                    <%= render(:partial => "shared/alert", :locals => {:alertType => "error", :messages => @flash[:alert_error]}) %>
                 <% end %>
 
                 <% if @flash[:alert_success] %>
-                    <%= render(:partial => "shared/alert", :locals => {:alertType => "success", :message => @flash[:alert_success]}) %>
+                    <%= render(:partial => "shared/alert", :locals => {:alertType => "success", :messages => @flash[:alert_success]}) %>
                 <% end %>
 
                 <% if @flash[:alert_info] %>
-                    <%= render(:partial => "shared/alert", :locals => {:alertType => "info", :message => @flash[:alert_info]}) %>
+                    <%= render(:partial => "shared/alert", :locals => {:alertType => "info", :messages => @flash[:alert_info]}) %>
                 <% end %>
+            <% end %>
+
+            <% if @validation_errors %>
+                <%= render(:partial => "shared/alert", :locals => {:alertType => "error", :messages => @validation_errors.full_messages}) %>
             <% end %>
 
             <!-- body contents -->

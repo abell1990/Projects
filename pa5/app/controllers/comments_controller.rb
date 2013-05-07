@@ -19,7 +19,7 @@ class CommentsController < ApplicationController
       @photo = Photo.find(params[:id])
       @comment = Comment.new()
     else
-      @flash = {:alert_error => "That photo does not exist, or you did not provide a photo id."}
+      add_alert(false, :alert_error, "That photo does not exist, or you did not provide a photo id.")
     end
 
   end

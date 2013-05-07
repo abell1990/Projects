@@ -18,7 +18,7 @@ class PhotosController < ApplicationController
     if params[:id] and User.exists?(params[:id])
   		@user = User.find(params[:id])
     else
-      @flash = {:alert_error => "That user does not exist, or you did not provide a user id."}
+      add_alert(false, :alert_error, "That user does not exist, or you did not provide a user id.")
     end
 
   end
@@ -59,6 +59,7 @@ class PhotosController < ApplicationController
 
     if @photo.save() # does it pass validation?
       # copy image to /public/images directory
+      # TODO: do not write if it already exists
       file_path = "public/images/" + @photo.file_name
       file_contents = params[:photo][:file].read()
       File.open(file_path, "wb") {|f| f.write(file_contents)}

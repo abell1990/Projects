@@ -1,19 +1,25 @@
 <% if alertType == "error"%>
 
 	<div class="alert alertError">
-		<p><%= message %></p>
+        <% messages.each do |message|%>
+            <p><%= message %></p>
+        <% end %>
 	</div>
 
 <% elsif alertType == "success" %>
 
     <div class="alert alertSuccess">
-      <p><%= message %></p>
+        <% messages.each do |message|%>
+            <p><%= message %></p>
+        <% end %>
     </div>
 
 <% elsif alertType == "info" %>
 
     <div class="alert alertInfo">
-      <p><%= message %></p>
+        <% messages.each do |message|%>
+            <p><%= message %></p>
+        <% end %>
     </div>
 
 <% end %>

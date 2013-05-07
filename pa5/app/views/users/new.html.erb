@@ -3,10 +3,7 @@
 <% end %>
 
 <% @pageTitle = "Register" %>
-
-<% @user.errors.full_messages.each do |msg| %>
-    <p><%= msg %></p>
-<% end %>
+<% @validation_errors = @user.errors %>
 
 <%= form_for(@user, :url => {:controller => :users, :action => :create}, :html => {:class => "contentBox loginBox"}) do |form| %>
     <h2> Register </h2>

@@ -201,17 +201,23 @@ body
 
 .alertInfo
 {
+    color: #C09853;
+
+    background-color: #FCF8E3;
+
+    border: 1px solid #FBEED5;
+
     /*color: #3A87AD;*/
 
     /*background-color: #D9EDF7;*/
 
     /*border: 1px solid #BCE8F1;*/
 
-    color: #808080;
+    /*color: #808080;*/
 
-    background-color: #F0F0F0;
+    /*background-color: #F0F0F0;*/
 
-    border: 1px solid #D0D0D0;
+    /*border: 1px solid #D0D0D0;*/
 }
 
 /* END CSS for alerts */
