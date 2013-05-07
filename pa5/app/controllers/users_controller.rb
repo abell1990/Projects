@@ -77,31 +77,8 @@ class UsersController < ApplicationController
     #  return
     #end
 
-    #unless validate_passwords_match(params[:user])
-    #  @user = User.new()
-    #  @flash = {:alert_error => "Passwords did not match."}
-    #  render(:controller => :users, :action => :new)
-    #  return
-    #end
-
-    #params[:user].delete(:re_password)
-
-    #create_params = {}
-    #
-    #if params[:user]
-    #  create_params[:first_name] = params[:user][:first_name]
-    #  create_params[:last_name] = params[:user][:last_name]
-    #  create_params[:login] = params[:user][:login]
-    #  if params[:user][:password] == params[:user][:re_password]
-    #    create_params[:password] = params[:user][:password]
-    #  else
-    #    @password_mismatch = true
-    #  end
-    #end
-
-
-    @user = User.create(params[:user])
-    if @user.valid?
+    @user = User.new(params[:user])
+    if @user.save() # does it pass validation?
       flash[:alert_success] = "Registration successful."
       redirect_to(:controller => :users, :action => :login)
     else

@@ -47,31 +47,32 @@ class PhotosController < ApplicationController
     #  return
     #end
 
-    create_params = {}
+    #create_params = {}
+    #
+    #if params[:photo]
+    #  create_params[:user_id] = params[:photo][:user_id]
+    #  create_params[:date_time] = params[:photo][:date_time]
+    #
+    #  if params[:photo][:file]
+    #    file = params[:photo][:file]
+    #    if file.respond_to?(:read)
+    #      file_name = file.original_filename()
+    #      file_path = "public/images/" + file_name
+    #      file_contents = file.read()
+    #
+    #      # TODO: this naming scheme has the weakness that if two files with same name are uploaded one will stomp another, alternatively use hashes of file contents
+    #      create_params[:file_name] = file_name
+    #    end
+    #  end
+    #end
 
-    if params[:photo]
-      create_params[:user_id] = params[:photo][:user_id]
-      create_params[:date_time] = params[:photo][:date_time]
-
-      if params[:photo][:file]
-        file = params[:photo][:file]
-        if file.respond_to?(:read)
-          file_name = file.original_filename()
-          file_path = "public/images/" + file_name
-          file_contents = file.read()
-
-          # TODO: this naming scheme has the weakness that if two files with same name are uploaded one will stomp another, alternatively use hashes of file contents
-          create_params[:file_name] = file_name
-        end
-      end
-    end
-
-    @photo = Photo.create(create_params)
-    if @photo.valid?
-      #f = File.new(file_path,  "w+")
-      #f.write(file_contents)
-      #f.close()
+    @photo = Photo.new(params[:photo])
+    if @photo.save() # does it pass validation?
+      # copy image to /public/images directory
+      file_path = "public/images/" + @photo.file_name
+      file_contents = params[:photo][:file].read()
       File.open(file_path, "wb") {|f| f.write(file_contents)}
+
       redirect_to(:controller => :photos, :action => :index, :id => session[:current_user_id])
     else
       render(:controller => :photos, :action => :new)

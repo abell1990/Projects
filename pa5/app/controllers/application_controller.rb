@@ -33,12 +33,4 @@ class ApplicationController < ActionController::Base
     return true
   end
 
-  #def validate_passwords_match(params)
-  #  if params and params[:password] == params[:re_password]
-  #    return true
-  #  end
-  #
-  #  return false
-  #end
-
 end

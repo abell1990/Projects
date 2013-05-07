@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :first_name, :last_name, :login, :password, :password_confirmation, :password_digest, :salt
+  attr_accessible :first_name, :last_name, :login, :password, :password_confirmation
   attr_accessor :password_tmp_copy
 
   has_many :photos
