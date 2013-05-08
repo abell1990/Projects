@@ -44,14 +44,14 @@ class ApplicationController < ActionController::Base
         flash[alertType] = [message]
       end
     else
-      if @flash
-        if @flash[alertType]
-          @flash[alertType] << message
-        else
-          @flash[alertType] = [message]
-        end
-      else
+      if !@flash
         @flash = {}
+      end
+
+      if @flash[alertType]
+        @flash[alertType] << message
+      else
+        @flash[alertType] = [message]
       end
     end
 
