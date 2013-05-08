@@ -43,16 +43,16 @@ Calendar.prototype.render = function(date)
 
 Calendar.prototype.populate_table = function(date)
 {
-	var title = document.getElementById('calTitle');
+	var title = document.getElementById(this.id + '-calTitle');
 	title.innerHTML = Calendar.monthNames[date.getMonth()] + " " + String(date.getFullYear());
 
-	var leftcontrol = document.getElementById('lc');
+	var leftcontrol = document.getElementById(this.id + '-lc');
 	var prevMonth = new Date(date);
 	prevMonth.setMonth(prevMonth.getMonth() - 1);
 
 	leftcontrol.setAttribute("onclick", "c = new Calendar('" + String(this.id) + "'); c.render(new Date('" + String(prevMonth) + "'));");
 
-	var rightcontrol = document.getElementById('rc');
+	var rightcontrol = document.getElementById(this.id + '-rc');
 	var nextMonth = new Date(date);
 	nextMonth.setMonth(nextMonth.getMonth() + 1); //hack
 
@@ -65,7 +65,7 @@ Calendar.prototype.populate_table = function(date)
 	{	
 		for (var c = 0; c < 7; c++)
 		{
-			var id = String(r) + "-" + String(c);
+			var id = this.id + "-" + String(r) + "-" + String(c);
 			var cell = document.getElementById(id);
 			cell.innerHTML = String(start.getDate());
 
@@ -89,7 +89,7 @@ Calendar.prototype.create_empty_calendar = function()
 	var controlsRow = document.createElement("TR");
 	table.appendChild(controlsRow);
 
-	controlsRow.innerHTML = "<th><a href='javascript:void(0)' id='lc'>&lt;</a></th> <th id='calTitle' colspan='5'>Some title</th> <th><a href='javascript:void(0)' id='rc'>&gt;</a></th>";	
+	controlsRow.innerHTML = "<th><a href='javascript:void(0)' id='" + this.id + "-lc'>&lt;</a></th> <th id='" + this.id + "-calTitle' colspan='5'></th> <th><a href='javascript:void(0)' id='" + this.id + "-rc'>&gt;</a></th>";	
 
 	// var leftControl = document.createElement("TD");
 	// leftControl.id = "leftcontrol";
@@ -116,10 +116,12 @@ Calendar.prototype.create_empty_calendar = function()
 		{
 			var cell = document.createElement("TD");
 			cell.className = "cntr";
-			cell.id = String(r) + "-" + String(c);
+			cell.id = this.id + "-" + String(r) + "-" + String(c);
 			row.appendChild(cell);
 		}
 	}
 }
+
+// TODO: handle march 2014, need more rows
 
 

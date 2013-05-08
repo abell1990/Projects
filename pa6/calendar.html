@@ -6,70 +6,29 @@
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
       <link rel="stylesheet" type="text/css" href="calendar.css"/>
       <title>CS 142 Project 6, Problem 2</title>
+      <script type="text/javascript" src="Calendar.js"></script>
    </head>
 
    <body>
-      <table id="table">
-	 	<tr>
-	    	<td class="footer_elem">&lt;&lt;</td>
-		    <td class="footer_elem" colspan="5" align="center">March 2013</td>
-		    <td class="footer_elem">&gt;&gt;</td>
-	 	</tr>
-     	<tr class="header">
-	    	<td>Sun</td>
-		    <td>Mon</td>
-		    <td>Tues</td>
-		    <td>Wed</td>
-		    <td>Thurs</td>
-		    <td>Fri</td>
-	 	    <td>Sat</td>
-	 	</tr>
-	 	<tr class="content_even">
-	    	<td class="cntr">1</td>
-	    	<td class="cntr">2</td>
-	    	<td class="cntr">3</td>
-	    	<td class="cntr">4</td>
-	    	<td class="cntr">5</td>
-	    	<td class="cntr">6</td>
-	    	<td class="cntr">7</td>
-	 	</tr>
-	 	<tr class="content_even">
-	    	<td class="cntr">8</td>
-	    	<td class="cntr">9</td>
-	    	<td class="cntr">10</td>
-	    	<td class="cntr">11</td>
-	    	<td class="cntr">12</td>
-	    	<td class="cntr">13</td>
-	    	<td class="cntr">14</td>
-	 	</tr>
-	 	<tr class="content_even">
-	    	<td class="cntr">15</td>
-	    	<td class="cntr">16</td>
-	    	<td class="cntr">17</td>
-	    	<td class="cntr">18</td>
-	    	<td class="cntr">19</td>
-	    	<td class="cntr">20</td>
-	    	<td class="cntr">21</td>
-	 	</tr>
-	 	<tr class="content_even">
-	    	<td class="cntr">22</td>
-	    	<td class="cntr">23</td>
-	    	<td class="cntr">24</td>
-	    	<td class="cntr">25</td>
-	    	<td class="cntr">26</td>
-	    	<td class="cntr">27</td>
-	    	<td class="cntr">28</td>
-	 	</tr>
-	 	<tr class="content_even">
-	    	<td class="cntr">29</td>
-	    	<td class="cntr">30</td>
-	    	<td class="cntr">31</td>
-	    	<td class="cntr content_odd">1</td>
-	    	<td class="cntr content_odd">2</td>
-	    	<td class="cntr content_odd">3</td>
-	    	<td class="cntr content_odd">4</td>	 	
-	    </tr>
-      </table>
+      
+   	<h2>Current month:</h2>
+
+   	<div id="cal1"></div>
+
+   	<h2>January, 2009</h2>
+
+   	<div id="cal2"></div>
+
+	<script type="text/javascript">
+	//<![CDATA[
+	var c1 = new Calendar("cal1");
+	c1.render(new Date());
+
+	var c2 = new Calendar("cal2");
+	c2.render(new Date("January 1, 2009"));
+	//]]>
+	</script>
+
    </body>
 
 </html>
