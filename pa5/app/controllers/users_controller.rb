@@ -62,10 +62,16 @@ class UsersController < ApplicationController
       return
     end
 
+    # if whoever made request is logged in already redirect to their photos page
+    if session[:current_user_id]
+      redirect_to(:controller => :photos, :action => :index, :id => session[:current_user_id])
+    end
+
     user = User.find_by_login(params[:login])
 
     if user and user.password_valid?(params[:password])  # valid login, proceed to their photos page
       session[:current_user_id] = user.id
+      add_alert(true, :alert_info, "Welcome back #{user.first_name}!")
       redirect_to(:controller => :photos, :action => :index, :id => user.id)
     else     # invalid login, go back to login page with error msg
       add_alert(false, :alert_error, "Invalid username and/or password.")
@@ -83,6 +89,11 @@ class UsersController < ApplicationController
       return
     end
 
+    # if whoever made request is logged in already redirect to their photos page
+    if session[:current_user_id]
+      redirect_to(:controller => :photos, :action => :index, :id => session[:current_user_id])
+    end
+
     @user = User.new()
 
   end
@@ -95,6 +106,11 @@ class UsersController < ApplicationController
     # validate we got a HTTP POST request
     unless validate_http_post
       return
+    end
+
+    # if whoever made request is logged in already redirect to their photos page
+    if session[:current_user_id]
+      redirect_to(:controller => :photos, :action => :index, :id => session[:current_user_id])
     end
 
     @user = User.new(params[:user])
