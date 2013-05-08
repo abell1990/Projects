@@ -7,6 +7,11 @@ Date.prototype.addDays = function(days)
     return dat;
 }
 
+Date.prototype.tomorrow = function()
+{
+    return this.addDays(1);
+}
+
 function Calendar(id)
 {
 	// this.cal_id = id; // TODO: maybe get the element itself at this point
@@ -15,12 +20,13 @@ function Calendar(id)
 }
 
 Calendar.numDaysInCal = 35;
+Calendar.one_day=1000*60*60*24;
 Calendar.monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 Calendar.dayNames = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
 
 Calendar.start_of_cal = function(date)
 {
-	/* create date for the 1st of the month */
+	/* create date for the 1st day of the month */
 	var startOfMonth = new Date(date);
 	startOfMonth.setDate(1); 
 
@@ -29,6 +35,39 @@ Calendar.start_of_cal = function(date)
 	startOfCal.setDate(startOfMonth.getDate() - startOfMonth.getDay());
 
 	return startOfCal;
+}
+
+
+Calendar.end_of_cal = function(date)
+{
+	/* create date for the last day of the month */
+	var endOfMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+	
+	/* compute date for the end of the week */
+	var endOfCal = new Date(endOfMonth);
+	endOfCal.setDate(endOfMonth.getDate() + 6 - endOfMonth.getDay());
+
+	return endOfCal;
+}
+
+
+/* number of days from startDate (including startDay) to endDate */
+Calendar.day_difference = function(startDate, endDate)
+{
+	return Math.ceil((endDate.getTime()-startDate.getTime())/(Calendar.one_day)) + 1;
+}
+
+Calendar.days_in_cal = function(date)
+{
+	var startDate = Calendar.start_of_cal(date);
+	var endDate = Calendar.end_of_cal(date);
+
+	return Calendar.day_difference(startDate, endDate);
+}
+
+Calendar.weeks_in_cal = function(date)
+{
+	return Calendar.days_in_cal(date) / 7;
 }
 
 Calendar.prototype.render = function(date)
@@ -73,7 +112,7 @@ Calendar.prototype.populate_table = function(date)
 				cell.className = "cntr content_odd";
 			else
 				cell.className = "cntr";
-			start = start.addDays(1);
+			start = start.tomorrow();
 		}
 	}
 }
@@ -82,7 +121,6 @@ Calendar.prototype.create_empty_calendar = function()
 {
 	this.calendar.innerHTML = ''; // clear previous contents of the calendar div
 
-	
 	var table = document.createElement("TABLE");
 	this.calendar.appendChild(table);
 
