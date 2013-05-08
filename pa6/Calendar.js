@@ -82,6 +82,8 @@ Calendar.prototype.render = function(date)
 
 Calendar.prototype.populate_table = function(date)
 {
+	var table = document.getElementById(this.id  + "-calTable");
+
 	var title = document.getElementById(this.id + '-calTitle');
 	title.innerHTML = Calendar.monthNames[date.getMonth()] + " " + String(date.getFullYear());
 
@@ -100,12 +102,16 @@ Calendar.prototype.populate_table = function(date)
 	// leftcontrol.onclick = "document.getElementById('" + this.id + "')";
 
 	var start = Calendar.start_of_cal(date);
-	for (var r = 0; r < 5; r++)
+	for (var r = 0; r < Calendar.weeks_in_cal(date); r++)
 	{	
+		var row = document.createElement("TR");
+		row.className = "content_even";
+		table.appendChild(row);
 		for (var c = 0; c < 7; c++)
 		{
-			var id = this.id + "-" + String(r) + "-" + String(c);
-			var cell = document.getElementById(id);
+			var cell = document.createElement("TD");
+			row.appendChild(cell);
+
 			cell.innerHTML = String(start.getDate());
 
 			if (date.getMonth() != start.getMonth())
@@ -122,6 +128,7 @@ Calendar.prototype.create_empty_calendar = function()
 	this.calendar.innerHTML = ''; // clear previous contents of the calendar div
 
 	var table = document.createElement("TABLE");
+	table.id = this.id + "-calTable";
 	this.calendar.appendChild(table);
 
 	var controlsRow = document.createElement("TR");
@@ -145,19 +152,19 @@ Calendar.prototype.create_empty_calendar = function()
 	//dayNameRow.innerHTML = "<td>Sun</td><td>Mon</td><td>Tues</td><td>Wed</td><td>Thurs</td><td>Fri</td><td>Sat</td>";
 	dayNameRow.innerHTML = "<td>Su</td><td>Mo</td><td>Tu</td><td>We</td><td>Th</td><td>Fr</td><td>Sa</td>";
 
-	for (var r = 0; r < 5; r++)
-	{	
-		var row = document.createElement("TR");
-		row.className = "content_even";
-		table.appendChild(row);
-		for (var c = 0; c < 7; c++)
-		{
-			var cell = document.createElement("TD");
-			cell.className = "cntr";
-			cell.id = this.id + "-" + String(r) + "-" + String(c);
-			row.appendChild(cell);
-		}
-	}
+	// for (var r = 0; r < 5; r++)
+	// {	
+	// 	var row = document.createElement("TR");
+	// 	row.className = "content_even";
+	// 	table.appendChild(row);
+	// 	for (var c = 0; c < 7; c++)
+	// 	{
+	// 		var cell = document.createElement("TD");
+	// 		cell.className = "cntr";
+	// 		cell.id = this.id + "-" + String(r) + "-" + String(c);
+	// 		row.appendChild(cell);
+	// 	}
+	// }
 }
 
 // TODO: handle march 2014, need more rows
