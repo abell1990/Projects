@@ -18,14 +18,19 @@ td{
    color: white;
 }
 
+.header td{
+  width: 4px;
+}
+
 .cntr{
    text-align: center;
+   width: 4px;
 }
 
 .content_odd{
     background: #F5F5F5;
     /*background: #DFE1E7;*/
-    /*opacity: 0.3;*/
+    opacity: 0.3;
 }
 
 .content_even{
