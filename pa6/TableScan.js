@@ -4,7 +4,7 @@ TableScan.sumColumn = function(id, colName)
 {
 	var table = document.getElementById(id);
 
-	// factor out
+	// TODO: factor out?
 	// sanity checks
 	if (!table) return 0;
 	if (table.nodeName != "TABLE") return 0;
@@ -28,10 +28,10 @@ TableScan.sumColumn = function(id, colName)
 
 	// sum up values over all data rows for that column
 	var sum = 0;
-	var allRows = tbody.children;
+	var allRows = tbody.children; // use rows
 	for(var i = 1; i < allRows.length; i++)
 	{
-		var cell = allRows[i].children[index];		
+		var cell = allRows[i].children[index]; // use cells		
 		if (!cell) continue;
 		
 		var cellValue = +cell.textContent;
@@ -47,3 +47,5 @@ TableScan.sumColumn = function(id, colName)
 // TODO: check all vars are local (i.e. declared with var keyword)
 // Q: can I assume all tables will be complete? i.e. have the same number of cells per row. If not how to handle it?
 // should we worry about precision problems in the sum?  problems with TableScan.sumColumn("table2", "Unit Price") and TableScan.sumColumn("table1", "Weight")
+// use tagname intead of nodename. validate that cells are tds
+// use rows, cells methods on table
