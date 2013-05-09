@@ -26,7 +26,24 @@ TableScan.sumColumn = function(id, colName)
 	// Colname not found
 	if (index == -1) return 0;
 
+	// sum up values over all data rows for that column
+	var sum = 0;
+	var allRows = tbody.children;
+	for(var i = 1; i < allRows.length; i++)
+	{
+		var cell = allRows[i].children[index];		
+		if (!cell) continue;
+		
+		var cellValue = +cell.textContent;
+		if (isNaN(cellValue)) continue;
+
+		sum += cellValue;
+	}
+
+	return sum;
 }
 
 
-// TODO: check all vars are local
+// TODO: check all vars are local (i.e. declared with var keyword)
+// Q: can I assume all tables will be complete? i.e. have the same number of cells per row. If not how to handle it?
+// should we worry about precision problems in the sum?  problems with TableScan.sumColumn("table2", "Unit Price") and TableScan.sumColumn("table1", "Weight")
