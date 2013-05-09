@@ -47,6 +47,7 @@ pa4/.gitignore
 
 # Project 5 specific:
 pa5/.bundle
+pa5/submission
 pa5/db/*.sqlite3
 pa5/log/*.log
 pa5/tmp
@@ -64,3 +65,6 @@ pa5/public/images/*
 !pa5/public/images/obama3.jpg
 !pa5/public/images/ouster.jpg
 !pa5/public/images/santa1.jpg
+
+# Project 6 specific: 
+pa6/submission
