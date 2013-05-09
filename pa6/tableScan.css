@@ -10,3 +10,8 @@ body {font-family: Tahoma, Arial, sans-serif; font-size: 13px;
 .example tr.header td {border-top: none; background: #687291;
     color: #ffffff; white-space: nowrap;}
 .example tr.odd td {background: #dfe1e7;}
+.sumForm { border: 1px solid black; margin-top: 20px; width: 130px; padding: 10px; }
+.result { border: 1px solid red; margin-top: 20px; margin-bottom: 20px; float: left; padding: 10px; }
+#resCol { color: blue; }
+#resTable { color: orange; }
+#resSum { color: green; }

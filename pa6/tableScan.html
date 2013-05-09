@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
     <title>CS 142 Project 6, Problem 2</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" type="text/css" href="tableScan.css" />
+    <script type="text/javascript" src="TableScan.js"></script>
   </head>
   <body>
     <h1>First Table: id "table1"</h1>
@@ -56,5 +58,31 @@
       <tr class="even"><td>12</td><td>missing</td><td>10</td></tr>
       <tr class="odd"><td>3</td><td>4</td><td>6</td><td>5.5</td></tr>
     </table>
+
+    <!-- TODO: does form need to be case insensitive?  -->
+    <form class="sumForm">
+      Table id: <input type="text" id="tableId"/><br/>
+      Column name: <input type="text" id="colName"/><br/>
+      <button type="button" onclick="displaySum();">Add Column</button>
+    </form>
+
+    <div class="result"> Column <strong id="resCol">xxx</strong> in table <strong id="resTable">yyy</strong> sums to <strong id="resSum">zzz</strong>. </div>
+
+    <!-- TODO: is if OK to make displaySum() a global function ? -->
+    <script type="text/javascript">
+    //<![CDATA[
+    function displaySum()
+    {
+      var tableId = document.getElementById('tableId').value;
+      var colName = document.getElementById('colName').value;
+      var sum = TableScan.sumColumn(tableId, colName);
+
+      document.getElementById('resCol').innerHTML = colName;
+      document.getElementById('resTable').innerHTML = tableId;
+      document.getElementById('resSum').innerHTML = sum;
+    }
+    //]]>
+    </script>
+
   </body>
 </html>
