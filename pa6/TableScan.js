@@ -28,10 +28,10 @@ TableScan.sumColumn = function(id, colName)
 
 	// sum up values over all data rows for that column
 	var sum = 0;
-	var allRows = tbody.children; // use rows
+	var allRows = tbody.children; // TODO: use rows method
 	for(var i = 1; i < allRows.length; i++)
 	{
-		var cell = allRows[i].children[index]; // use cells		
+		var cell = allRows[i].children[index]; // TODO: use cells method		
 		if (!cell) continue;
 		
 		var cellValue = +cell.textContent;
