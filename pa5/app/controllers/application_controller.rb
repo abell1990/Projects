@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
 
   # TODO: move helpers to another file
 
+  private
+
   def add_alert(redirecting, alertType, message)
 
     if redirecting
@@ -23,8 +25,6 @@ class ApplicationController < ActionController::Base
     end
 
   end
-
-  private
 
   def require_login
     unless logged_in?

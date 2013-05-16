@@ -40,6 +40,9 @@
                 <%= render(:partial => "shared/alert", :locals => {:alertType => "info", :messages => flash.now[:alert_info]}) %>
             <% end %>
 
+            <!-- display alerts in flash only if they came from previous requests (otherwise if they are from they current request they are
+            also present in flash.now and we would duplicate the alerts) -->
+
             <% if flash[:alert_error] and !flash.now[:alert_error] %>
                 <%= render(:partial => "shared/alert", :locals => {:alertType => "error", :messages => flash[:alert_error]}) %>
             <% end %>
