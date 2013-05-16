@@ -1,16 +1,13 @@
 class PhotosController < ApplicationController
 
   before_filter :require_login, only: [:new, :create]
+  before_filter :require_http_get, only: [:index, :new]
+  before_filter :require_http_post, only: [:create]
 
 
   # URL access: anyone
   # HTTP method: GET
   def index
-
-    # validate we got a HTTP GET request
-    unless validate_http_get
-      return
-    end
 
     # check if whoever made request is logged in
     if session[:current_user_id]
@@ -30,11 +27,6 @@ class PhotosController < ApplicationController
   # HTTP method: GET
   def new
 
-    # validate we got a HTTP GET request
-    unless validate_http_get
-      return
-    end
-
     @photo = Photo.new()
 
   end
@@ -42,11 +34,6 @@ class PhotosController < ApplicationController
   # URL access: logged in users
   # HTTP method: POST
   def create
-
-    # validate we got a HTTP POST request
-    unless validate_http_post
-      return
-    end
 
     @photo = Photo.new(params[:photo])
 

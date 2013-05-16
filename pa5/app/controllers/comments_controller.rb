@@ -1,16 +1,13 @@
 class CommentsController < ApplicationController
 
   before_filter :require_login, only: [:new, :create]
+  before_filter :require_http_get, only: [:new]
+  before_filter :require_http_post, only: [:create]
 
 
   # URL access: logged in users
   # HTTP method: GET
   def new
-
-    # validate we got a HTTP GET request
-    unless validate_http_get
-      return
-    end
 
     # find photo to comment (if exists)
     if params[:id] and Photo.exists?(params[:id])
@@ -26,11 +23,6 @@ class CommentsController < ApplicationController
   # URL access: logged in users
   # HTTP method: POST
   def create
-
-    # validate we got a HTTP POST request
-    unless validate_http_post
-      return
-    end
 
     @comment = Comment.new(params[:comment])
 

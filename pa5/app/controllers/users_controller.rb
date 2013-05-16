@@ -1,13 +1,12 @@
 class UsersController < ApplicationController
 
+  before_filter :require_http_get, only: [:index, :login, :logout, :new]
+  before_filter :require_http_post, only: [:post_login, :create]
+
+
   # URL access: anyone
   # HTTP method: GET
   def index
-
-    # validate we got a HTTP GET request
-    unless validate_http_get
-      return
-    end
 
     @all_users = User.all
 
@@ -21,11 +20,6 @@ class UsersController < ApplicationController
   # HTTP method: GET
   def login
 
-    # validate we got a HTTP GET request
-    unless validate_http_get
-      return
-    end
-
     # if whoever made request is logged in already redirect to their photos page
     if session[:current_user_id]
       redirect_to(:controller => :photos, :action => :index, :id => session[:current_user_id])
@@ -37,11 +31,6 @@ class UsersController < ApplicationController
   # HTTP method: GET
   # TODO: this should be a post
   def logout
-
-    # validate we got a HTTP GET request
-    unless validate_http_get
-      return
-    end
 
     if session[:current_user_id]
       add_alert(true, :alert_success, "You have successfully logged out.")
@@ -56,11 +45,6 @@ class UsersController < ApplicationController
   # URL access: anyone
   # HTTP method: POST
   def post_login
-
-    # validate we got a HTTP POST request
-    unless validate_http_post
-      return
-    end
 
     # if whoever made request is logged in already redirect to their photos page
     if session[:current_user_id]
@@ -84,11 +68,6 @@ class UsersController < ApplicationController
   # HTTP method: GET
   def new
 
-    # validate we got a HTTP GET request
-    unless validate_http_get
-      return
-    end
-
     # if whoever made request is logged in already redirect to their photos page
     if session[:current_user_id]
       redirect_to(:controller => :photos, :action => :index, :id => session[:current_user_id])
@@ -102,11 +81,6 @@ class UsersController < ApplicationController
   # URL access: anyone
   # HTTP method: POST
   def create
-
-    # validate we got a HTTP POST request
-    unless validate_http_post
-      return
-    end
 
     # if whoever made request is logged in already redirect to their photos page
     if session[:current_user_id]

@@ -6,26 +6,6 @@ class ApplicationController < ActionController::Base
 
   # TODO: move helpers to another file
 
-  def validate_http_get
-    if request.post?
-      add_alert(true, :alert_error, "Invalid HTTP request. Please only do GET requests to this URL.")
-      redirect_to(:controller => :site, :action => :error)
-      return false
-    end
-
-    return true
-  end
-
-  def validate_http_post
-    if request.get?
-      add_alert(true, :alert_error, "Invalid HTTP request. Please only do POST requests to this URL.")
-      redirect_to(:controller => :site, :action => :error)
-      return false
-    end
-
-    return true
-  end
-
   def add_alert(redirecting, alertType, message)
 
     if redirecting
@@ -59,6 +39,20 @@ class ApplicationController < ActionController::Base
 
   def logged_in?
     return session[:current_user_id] != nil
+  end
+
+  def require_http_get
+    unless request.get?
+      add_alert(true, :alert_error, "Invalid HTTP request. Please only do GET requests to this URL.")
+      redirect_to(:controller => :site, :action => :error)
+    end
+  end
+
+  def require_http_post
+    unless request.post?
+      add_alert(true, :alert_error, "Invalid HTTP request. Please only do POST requests to this URL.")
+      redirect_to(:controller => :site, :action => :error)
+    end
   end
 
 end
