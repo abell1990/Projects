@@ -40,7 +40,7 @@ class User < ActiveRecord::Base
   # validates password and password_confirmation entered at registration match
   validates :password, :confirmation => true
   # validates login element is unique
-  validates :login, :uniqueness => {:case_sensitive => false, :message => "That username is already registered."}
+  validates :login, :uniqueness => {:case_sensitive => false, :message => "name is already registered."}
   # validate presence of all fields
   validates :first_name, :last_name, :login, :password, :password_confirmation, :presence => true
 end

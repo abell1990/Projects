@@ -5,15 +5,6 @@ class ApplicationController < ActionController::Base
   $project_number = 5
 
   # TODO: move helpers to another file
-  def validate_login
-    if !session[:current_user_id]
-      add_alert(true, :alert_info, "You must be logged in to access this content.")
-      redirect_to(:controller => :users, :action => :login)
-      return false
-    end
-
-    return true
-  end
 
   def validate_http_get
     if request.post?
@@ -55,6 +46,19 @@ class ApplicationController < ActionController::Base
       end
     end
 
+  end
+
+  private
+
+  def require_login
+    unless logged_in?
+      add_alert(true, :alert_info, "You must be logged in to access this content.")
+      redirect_to(:controller => :users, :action => :login)
+    end
+  end
+
+  def logged_in?
+    return session[:current_user_id] != nil
   end
 
 end

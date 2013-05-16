@@ -1,16 +1,14 @@
 class CommentsController < ApplicationController
 
+  before_filter :require_login, only: [:new, :create]
+
+
   # URL access: logged in users
   # HTTP method: GET
   def new
 
     # validate we got a HTTP GET request
     unless validate_http_get
-      return
-    end
-
-    # require user to be logged in to create a comment
-    unless validate_login
       return
     end
 
@@ -31,10 +29,6 @@ class CommentsController < ApplicationController
 
     # validate we got a HTTP POST request
     unless validate_http_post
-      return
-    end
-
-    unless validate_login
       return
     end
 

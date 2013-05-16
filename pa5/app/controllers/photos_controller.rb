@@ -1,5 +1,8 @@
 class PhotosController < ApplicationController
 
+  before_filter :require_login, only: [:new, :create]
+
+
   # URL access: anyone
   # HTTP method: GET
   def index
@@ -32,11 +35,6 @@ class PhotosController < ApplicationController
       return
     end
 
-    # require user to be logged in to upload a photo
-    unless validate_login
-      return
-    end
-
     @photo = Photo.new()
 
   end
@@ -47,11 +45,6 @@ class PhotosController < ApplicationController
 
     # validate we got a HTTP POST request
     unless validate_http_post
-      return
-    end
-
-    # require user to be logged in to upload a photo
-    unless validate_login
       return
     end
 
