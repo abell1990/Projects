@@ -28,18 +28,6 @@
 
             <!-- display alerts and validation errors (if any) at top of the page -->
 
-            <% if flash[:alert_error] %>
-                <%= render(:partial => "shared/alert", :locals => {:alertType => "error", :messages => flash[:alert_error]}) %>
-            <% end %>
-
-            <% if flash[:alert_success] %>
-                <%= render(:partial => "shared/alert", :locals => {:alertType => "success", :messages => flash[:alert_success]}) %>
-            <% end %>
-
-            <% if flash[:alert_info] %>
-                <%= render(:partial => "shared/alert", :locals => {:alertType => "info", :messages => flash[:alert_info]}) %>
-            <% end %>
-
             <% if flash.now[:alert_error] %>
                 <%= render(:partial => "shared/alert", :locals => {:alertType => "error", :messages => flash.now[:alert_error]}) %>
             <% end %>
@@ -50,6 +38,18 @@
 
             <% if flash.now[:alert_info] %>
                 <%= render(:partial => "shared/alert", :locals => {:alertType => "info", :messages => flash.now[:alert_info]}) %>
+            <% end %>
+
+            <% if flash[:alert_error] and !flash.now[:alert_error] %>
+                <%= render(:partial => "shared/alert", :locals => {:alertType => "error", :messages => flash[:alert_error]}) %>
+            <% end %>
+
+            <% if flash[:alert_success] and !flash.now[:alert_success] %>
+                <%= render(:partial => "shared/alert", :locals => {:alertType => "success", :messages => flash[:alert_success]}) %>
+            <% end %>
+
+            <% if flash[:alert_info] and !flash.now[:alert_info] %>
+                <%= render(:partial => "shared/alert", :locals => {:alertType => "info", :messages => flash[:alert_info]}) %>
             <% end %>
 
             <% if @validation_errors and !@validation_errors.empty?%>
