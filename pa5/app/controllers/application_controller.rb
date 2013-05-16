@@ -15,14 +15,10 @@ class ApplicationController < ActionController::Base
         flash[alertType] = [message]
       end
     else
-      if !@flash
-        @flash = {}
-      end
-
-      if @flash[alertType]
-        @flash[alertType] << message
+      if flash.now[alertType]
+        flash.now[alertType] << message
       else
-        @flash[alertType] = [message]
+        flash.now[alertType] = [message]
       end
     end
 

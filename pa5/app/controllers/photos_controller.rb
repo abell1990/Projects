@@ -14,7 +14,9 @@ class PhotosController < ApplicationController
       @logged_in = true
     end
 
-    # find user they are looking for (if exists)
+    # Check if whoever made request is logged in, this will be useful for the view to know if it
+    # should display the create comment option next to the photos. Logged in users should be
+    # this option and non-logged in users should not.
     if params[:id] and User.exists?(params[:id])
   		@user = User.find(params[:id])
     else
