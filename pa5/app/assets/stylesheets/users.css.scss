@@ -51,10 +51,28 @@
   width: 200px;
   margin: 0px auto;
   margin-top: 40px;
+  padding: 10px;
 }
 
 .loginBox h2
 {
   text-align: center;
   margin: 8px 0px 40px 0px;
+}
+
+.loginBox fieldset
+{
+  border: 0px;
+}
+
+.loginBox button
+{
+  padding: 4px;
+  font-size: 11px;
+}
+
+
+.submitButton
+{
+  margin: 20px 10px 20px 35px;
 }
