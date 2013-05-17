@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
   end
 
   def password_valid?(candidate_password)
-    unless candidate_password # check for nil
+    unless candidate_password and self.salt and self.password_digest # check for nils
       return false
     end
 
