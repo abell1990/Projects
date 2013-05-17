@@ -44,3 +44,25 @@
 	width: 35%;
 	float: left;
 }
+
+.addPhotoBox
+{
+  background-color: #D9EDF7;
+
+  width: 260px;
+  height: 40px;
+
+  padding-top: 20px;
+  margin: 0px auto;
+  margin-bottom: 15px;
+
+  border-radius: 8px 8px 8px 8px;
+  border: 1px dotted #3A87AD;
+
+  box-shadow: 4px 4px 8px rgba(0,0,0,.15);
+
+  clear: both;
+
+  text-align: center;
+  font-weight: bold;
+}
