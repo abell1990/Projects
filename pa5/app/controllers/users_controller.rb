@@ -49,6 +49,7 @@ class UsersController < ApplicationController
     # if whoever made request is logged in already redirect to their photos page
     if session[:current_user_id]
       redirect_to(:controller => :photos, :action => :index, :id => session[:current_user_id])
+      return
     end
 
     user = User.find_by_login(params[:login])
