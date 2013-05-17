@@ -72,7 +72,31 @@
 }
 
 
-.submitButton
+.loginBox .submitButton
 {
   margin: 20px 10px 20px 35px;
+}
+
+.registerBox
+{
+  width: 270px;
+  margin: 0px auto;
+  margin-top: 40px;
+  padding: 10px;
+}
+
+.registerBox h2
+{
+  text-align: center;
+  margin: 8px 0px 40px 0px;
+}
+
+.registerBox fieldset
+{
+  border: 0px;
+}
+
+.registerBox .submitButton
+{
+  margin: 20px 0px 30px 101px;
 }
