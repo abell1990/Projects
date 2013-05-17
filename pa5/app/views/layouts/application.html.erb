@@ -18,9 +18,11 @@
 	 		<h2>CS142 Project <%= $project_number %></h2>
 
             <% if session[:current_user_id] %>
-                Hi <%= User.find(session[:current_user_id]).first_name %>! <a href="/users/logout">Logout</a>
+                <p>Hi <%= User.find(session[:current_user_id]).first_name %>! <a href="/users/logout"><b>Logout</b></a></p>
+                <p class="backLink"><a href="/users/index">Index of Users</a> | <a href="/photos/index/<%= session[:current_user_id] %>">My Profile</a></p>
             <% elsif %>
-                <a href="/users/login">Login</a>
+                <p><a href="/users/login"><b>Login</b></a></p>
+                <p class="backLink"><a href="/users/index">Index of Users</a></p>
             <% end %>
 	 	</div>
 
