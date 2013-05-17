@@ -30,13 +30,16 @@
 
                 <% photo.comments.each do |comment| %>
 
-                    <%= render(:partial => "shared/comment", :locals => {:commentClass => cycle('commentOddPanel', 'commentEvenPanel'), :comment => comment}) %>
+                    <%= render(:partial => "shared/comment", :locals => {:commentClass => cycle('commentOddPanel', 'commentEvenPanel'), :comment => comment, :new => false}) %>
 
                 <% end %>
 
                 <!-- only show the add new comment option to logged in users -->
                 <% if @logged_in %>
-                    <%= link_to("Add new comment", :controller => :comments, :action => :new, :id => photo) %>
+
+                    <% @new_comment.photo = photo %>
+                    <%= render(:partial => "shared/comment", :locals => {:commentClass => cycle('commentOddPanel', 'commentEvenPanel'), :comment => @new_comment, :new => true}) %>
+
                 <% end %>
 
             </div>

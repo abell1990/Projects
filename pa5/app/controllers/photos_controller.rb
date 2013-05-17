@@ -9,9 +9,12 @@ class PhotosController < ApplicationController
   # HTTP method: GET
   def index
 
-    # check if whoever made request is logged in
-    if session[:current_user_id]
+    # the view needs to know if whoever made request is logged in, to display options such as
+    # adding new comments
+    if logged_in?
       @logged_in = true
+      @new_comment = Comment.new()
+      @new_comment.user = User.find(session[:current_user_id])
     end
 
     # Check if whoever made request is logged in, this will be useful for the view to know if it

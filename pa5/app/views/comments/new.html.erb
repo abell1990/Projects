@@ -17,13 +17,6 @@
 
         <div class="photoRightColumn">
 
-            <!--<% @photo.comments.each do |comment| %>-->
-
-                <!--<%= render(:partial => "shared/comment", :locals => {:commentClass => cycle('commentOddPanel', 'commentEvenPanel'), :comment => comment}) %>-->
-
-            <!--<% end %>-->
-
-
             <%= form_for(@comment, :url => {:action => :create, :id => @photo.id}) do |form| %>
                 <%= form.hidden_field(:photo_id, :value => @photo.id) %>
                 <%= form.hidden_field(:user_id, :value => session[:current_user_id]) %>
