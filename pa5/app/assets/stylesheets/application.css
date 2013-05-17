@@ -26,6 +26,11 @@ body
     background-repeat: repeat-x;
 }
 
+fieldset
+{
+    border: 0px;
+}
+
 /* This is the styling for a div that wraps all the
    content (except the header) inside the body. 
    It creates a sort of white sheet/page on top
