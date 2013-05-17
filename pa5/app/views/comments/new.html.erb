@@ -8,6 +8,10 @@
     <% @pageTitle = "New Comment" %>
     <% @validation_errors = @comment.errors %>
 
+    <h1 class="contentTitle">
+      New Comment
+    </h1>
+
     <div class="photoPanel">
 
         <div class="photoLeftColumn">
@@ -21,7 +25,7 @@
                 <%= form.hidden_field(:photo_id, :value => @photo.id) %>
                 <%= form.hidden_field(:user_id, :value => session[:current_user_id]) %>
                 <%= form.hidden_field(:date_time, :value => DateTime.now) %>
-                <%= form.text_field(:comment) %>
+                <%= form.text_area(:comment, :class => "formTextareaField") %>
                 <%= form.submit "Create Comment" %>
             <% end %>
 

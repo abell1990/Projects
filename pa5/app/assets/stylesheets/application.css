@@ -153,6 +153,19 @@ body
     margin-bottom: 15px;
 }
 
+.formTextareaField
+{
+    display: block;
+    margin: 0px auto;
+    border-radius: 4px 4px 4px 4px;
+    height: 250px;
+    width: 300px;
+    font-size: 13px;
+    border: 1px solid #E0E0E0;
+    padding: 3px;
+    margin-bottom: 15px;
+}
+
 .formLabel
 {
     display: block;
