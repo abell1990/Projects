@@ -35,6 +35,10 @@ class ApplicationController < ActionController::Base
     return session[:current_user_id] != nil
   end
 
+  def current_user_id
+    return session[:current_user_id]
+  end
+
   def require_http_get
     unless request.get?
       add_alert(true, :alert_error, "Invalid HTTP request. Please only do GET requests to this URL.")

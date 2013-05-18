@@ -21,8 +21,8 @@ class UsersController < ApplicationController
   def login
 
     # if whoever made request is logged in already redirect to their photos page
-    if session[:current_user_id]
-      redirect_to(:controller => :photos, :action => :index, :id => session[:current_user_id])
+    if logged_in?
+      redirect_to(:controller => :photos, :action => :index, :id => current_user_id)
     end
 
   end
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
   # HTTP method: GET
   def logout
 
-    if session[:current_user_id]
+    if logged_in?
       add_alert(true, :alert_success, "You have successfully logged out.")
     end
 
@@ -46,8 +46,9 @@ class UsersController < ApplicationController
   def post_login
 
     # if whoever made request is logged in already redirect to their photos page
-    if session[:current_user_id]
-      redirect_to(:controller => :photos, :action => :index, :id => session[:current_user_id])
+    if logged_in?
+      add_alert(true, :alert_info, "To login in again, you must first log out.")
+      redirect_to(:controller => :photos, :action => :index, :id => current_user_id)
       return
     end
 
@@ -69,8 +70,8 @@ class UsersController < ApplicationController
   def new
 
     # if whoever made request is logged in already redirect to their photos page
-    if session[:current_user_id]
-      redirect_to(:controller => :photos, :action => :index, :id => session[:current_user_id])
+    if logged_in?
+      redirect_to(:controller => :photos, :action => :index, :id => current_user_id)
     end
 
     @user = User.new()
@@ -83,8 +84,8 @@ class UsersController < ApplicationController
   def create
 
     # if whoever made request is logged in already redirect to their photos page
-    if session[:current_user_id]
-      redirect_to(:controller => :photos, :action => :index, :id => session[:current_user_id])
+    if logged_in?
+      redirect_to(:controller => :photos, :action => :index, :id => current_user_id)
     end
 
     @user = User.new(params[:user])

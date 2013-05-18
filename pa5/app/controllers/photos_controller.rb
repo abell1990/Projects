@@ -14,7 +14,7 @@ class PhotosController < ApplicationController
     if logged_in?
       @logged_in = true
       @new_comment = Comment.new()
-      @new_comment.user = User.find(session[:current_user_id])
+      @new_comment.user = User.find(current_user_id)
     end
 
     # Check if whoever made request is logged in, this will be useful for the view to know if it
@@ -47,7 +47,7 @@ class PhotosController < ApplicationController
       file_contents = params[:photo][:file].read()
       File.open(file_path, "wb") {|f| f.write(file_contents)}
 
-      redirect_to(:controller => :photos, :action => :index, :id => session[:current_user_id])
+      redirect_to(:controller => :photos, :action => :index, :id => current_user_id)
     else
       render(:controller => :photos, :action => :new)
     end
