@@ -23,28 +23,36 @@
     <% @user.photos.each do |photo| %>
         <div class="photoPanel">
 
-            <div class="photoLeftColumn">
+            <% if !@logged_in and photo.comments.empty? %>
+                <% firstColumnClass = "photoSingleColumn"%>
+            <% else %>
+                <% firstColumnClass = "photoLeftColumn"%>
+            <% end %>
+
+            <div class="<%= firstColumnClass %>">
                 <img class="photoImg" src="/images/<%= photo.file_name %>" alt="Photo of <%= @user.full_name %>"/>
                 <div class="photoCreationDate">Date Created: <%= photo.date_time.getlocal.to_formatted_s(:long) %></div>
             </div>
 
-            <div class="photoRightColumn">
+            <% if firstColumnClass != "photoSingleColumn" %>
+                <div class="photoRightColumn">
 
-                <% photo.comments.each do |comment| %>
+                    <% photo.comments.each do |comment| %>
 
-                    <%= render(:partial => "shared/comment", :locals => {:commentClass => cycle('commentOddPanel', 'commentEvenPanel'), :comment => comment, :new => false}) %>
+                        <%= render(:partial => "shared/comment", :locals => {:commentClass => cycle('commentOddPanel', 'commentEvenPanel'), :comment => comment, :new => false}) %>
 
-                <% end %>
+                    <% end %>
 
-                <!-- only show the add new comment option to logged in users -->
-                <% if @logged_in %>
+                    <!-- only show the add new comment option to logged in users -->
+                    <% if @logged_in %>
 
-                    <% @new_comment.photo = photo %>
-                    <%= render(:partial => "shared/comment", :locals => {:commentClass => cycle('commentOddPanel', 'commentEvenPanel'), :comment => @new_comment, :new => true}) %>
+                        <% @new_comment.photo = photo %>
+                        <%= render(:partial => "shared/comment", :locals => {:commentClass => cycle('commentOddPanel', 'commentEvenPanel'), :comment => @new_comment, :new => true}) %>
 
-                <% end %>
+                    <% end %>
 
-            </div>
+                </div>
+            <% end %>
 
             <div class="clearBothDiv"></div>
 
