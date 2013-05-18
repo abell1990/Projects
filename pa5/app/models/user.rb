@@ -16,12 +16,10 @@ class User < ActiveRecord::Base
     return self.password_tmp_copy
   end
 
-  # TODO: I want to restrict access to password_digest and salt fields, they should only be settable by calling password=
   def password=(password)
     self.salt = Random.rand(@@SALT_RANGE).to_s
     self.password_digest = Digest::SHA1.hexdigest(password + self.salt)
 
-    # TODO: should return something??
     # this is not a field in database so it does not get saved persistently
     # we only saved it around to check it against the password_confirmation field
     # provided in the registration form for validation

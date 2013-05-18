@@ -4,8 +4,6 @@ class ApplicationController < ActionController::Base
 
   $project_number = 5
 
-  # TODO: move helpers to another file
-
   private
 
   def add_alert(redirecting, alertType, message)

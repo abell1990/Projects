@@ -29,7 +29,6 @@ class UsersController < ApplicationController
 
   # URL access: anyone
   # HTTP method: GET
-  # TODO: this should be a post
   def logout
 
     if session[:current_user_id]

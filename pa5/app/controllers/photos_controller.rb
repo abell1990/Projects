@@ -43,7 +43,6 @@ class PhotosController < ApplicationController
     @photo = Photo.new(params[:photo])
 
     if @photo.save() # does it pass validation? if so, copy image to /public/images directory
-      # TODO: do not write if it already exists
       file_path = "public/images/" + @photo.file_name
       file_contents = params[:photo][:file].read()
       File.open(file_path, "wb") {|f| f.write(file_contents)}
