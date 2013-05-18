@@ -1,0 +1,23 @@
+<% content_for :head do %>
+    <%= stylesheet_link_tag "users" %>
+<% end %>
+
+<% @pageTitle = "Register" %>
+<% @validation_errors = @user.errors %>
+
+<%= form_for(@user, :url => {:controller => :users, :action => :create}, :html => {:class => "contentBox registerBox"}) do |form| %>
+    <h2> Register </h2>
+    <fieldset>
+        <%= form.label(:first_name, "First name:", :class => "formLabel")%>
+        <%= form.text_field(:first_name, :class => "formInputField") %>
+        <%= form.label(:last_name, "Last name:", :class => "formLabel")%>
+        <%= form.text_field(:last_name, :class => "formInputField") %>
+        <%= form.label(:login, "Username:", :class => "formLabel")%>
+        <%= form.text_field(:login, :class => "formInputField") %>
+        <%= form.label(:password, "Password:", :class => "formLabel")%>
+        <%= form.password_field(:password, :class => "formInputField") %>
+        <%= form.label(:password_confirmation, "Re-enter password:", :class => "formLabel")%>
+        <%= form.password_field(:password_confirmation, :class => "formInputField") %>
+        <%= form.submit("Sign up", :class => "submitButton") %>
+    </fieldset>
+<% end %>

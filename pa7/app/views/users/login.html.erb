@@ -1,0 +1,17 @@
+<% content_for :head do %>
+    <%= stylesheet_link_tag "users" %>
+<% end %>
+
+<% @pageTitle = "Login" %>
+
+<%= form_tag({:controller => "users", :action => "post_login"}, :class => "contentBox loginBox") do %>
+    <h2> Login </h2>
+    <fieldset>
+        <%= label_tag(:login, "Username", :class => "formLabel") %>
+        <%= text_field_tag(:login, nil, :class => "formInputField") %>
+        <%= label_tag(:password, nil, :class => "formLabel") %>
+        <%= password_field_tag(:password, nil, :class => "formInputField") %>
+        <%= submit_tag("Sign in", :class => "submitButton") %>
+        <a href="/users/new"><button type="button">Register</button></a>
+    </fieldset>
+<% end %>

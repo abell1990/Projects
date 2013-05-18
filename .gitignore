@@ -68,3 +68,24 @@ pa5/public/images/*
 
 # Project 6 specific: 
 pa6/submission
+
+# Project 7 specific:
+pa7/.bundle
+pa7/submission
+pa7/db/*.sqlite3
+pa7/log/*.log
+pa7/tmp
+pa7/.gitignore
+pa7/public/images/*
+!pa7/public/images/bieber1.jpg
+!pa7/public/images/bieber2.jpg
+!pa7/public/images/cover.jpg
+!pa7/public/images/enigma.jpeg
+!pa7/public/images/grid.png
+!pa7/public/images/hilton1.jpg
+!pa7/public/images/hilton2.jpg
+!pa7/public/images/obama1.jpg
+!pa7/public/images/obama2.jpg
+!pa7/public/images/obama3.jpg
+!pa7/public/images/ouster.jpg
+!pa7/public/images/santa1.jpg
