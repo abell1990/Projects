@@ -1,9 +1,19 @@
+<% content_for :head do %>
+    <%= stylesheet_link_tag "photos" %>
+<% end %>
+
 <% @pageTitle = "Add Photo" %>
 <% @validation_errors = @photo.errors %>
 
-<%= form_for(@photo, :url => {:controller => :photos, :action => :create}) do |form| %>
-    <%= form.hidden_field(:user_id, :value => session[:current_user_id]) %>
-    <%= form.hidden_field(:date_time, :value => DateTime.now) %>
-    <%= form.file_field(:file) %>
-    <%= form.submit "Upload Photo" %>
+<h1 class="contentTitle">
+  New Photo
+</h1>
+
+<%= form_for(@photo, :url => {:controller => :photos, :action => :create}, :html => {:class => "contentBox addPhotoForm"}) do |form| %>
+    <fieldset>
+        <%= form.hidden_field(:user_id, :value => session[:current_user_id]) %>
+        <%= form.hidden_field(:date_time, :value => DateTime.now) %>
+        <%= form.file_field(:file, :class => "fileInputField") %>
+        <%= form.submit("Upload Photo", :class => "submitButton") %>
+    </fieldset>
 <% end %>

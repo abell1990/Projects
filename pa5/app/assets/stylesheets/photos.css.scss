@@ -66,3 +66,26 @@
   text-align: center;
   font-weight: bold;
 }
+
+.addPhotoForm
+{
+  display: block;
+  margin: 0px auto;
+  width: 300px;
+  hegith: 100px;
+  padding: 30px;
+}
+
+.addPhotoForm .fileInputField
+{
+  padding: 10px;
+  display: block;
+  margin: 0px auto;
+}
+
+.addPhotoForm .submitButton
+{
+  display: block;
+  margin: 0px auto;
+  margin-top: 20px;
+}

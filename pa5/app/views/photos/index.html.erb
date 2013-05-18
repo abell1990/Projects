@@ -15,9 +15,9 @@
 
     <!-- allow logged in users to upload pictures only to their profiles -->
     <% if @logged_in and session[:current_user_id] == @user.id %>
-        <a href="/photos/new">
-            <div class="addPhotoBox">Add new photo</div>
-        </a>
+        <div class="addPhotoBox">
+            <a href="/photos/new">Add new photo</a>
+        </div>
     <% end %>
 
     <% @user.photos.each do |photo| %>
