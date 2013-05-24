@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+   <head>
+      <title>CS 142 Project 6, Problem 1</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <link rel="stylesheet" type="text/css" href="calendar.css"/>
+      <script type="text/javascript" src="Calendar.js"></script>
+   </head>
+
+   <body>
+      
+   	<h2>Starting at current month:</h2>
+
+   	<div id="cal1"></div>
+
+   	<h2>Starting at January, 2009:</h2>
+
+   	<div id="cal2"></div>
+
+	<script type="text/javascript">
+	//<![CDATA[
+	var c1 = new Calendar("cal1");
+	c1.render(new Date());
+
+	var c2 = new Calendar("cal2");
+	c2.render(new Date("January 1, 2009"));
+	//]]>
+	</script>
+
+   </body>
+
+</html>

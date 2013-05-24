@@ -1,0 +1,42 @@
+body{
+   font-family: Tahoma;
+   font-size: 13px;
+}
+
+td{
+   white-space: nowrap;
+   border-top: 1px solid white;
+   padding-top: 2px;
+   padding-left: 10px;
+   padding-right: 10px;
+   padding-bottom: 2px;
+}
+
+.header{
+   background: #687291;
+   font-weight: bold;
+   color: white;
+}
+
+.header td{
+  width: 4px;
+}
+
+.cntr{
+   text-align: center;
+   width: 4px;
+}
+
+.content_odd{
+    background: #F5F5F5;
+    /*background: #DFE1E7;*/
+    opacity: 0.3;
+}
+
+.content_even{
+    background: #EEEFF2;
+}
+
+#hidden_row{
+    display: none;
+}
