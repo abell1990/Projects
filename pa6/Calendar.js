@@ -17,21 +17,23 @@ Calendar.prototype.populate_table = function(date)
 {
 	var table = document.getElementById(this.cal_id  + "-calTable");
 
+	/* Set Calendar title */
 	var title = document.getElementById(this.cal_id + '-calTitle');
 	title.innerHTML = Calendar.monthNames[date.getMonth()] + " " + String(date.getFullYear());
 
+	/* Set event handler for left control */
 	var leftcontrol = document.getElementById(this.cal_id + '-lc');
 	var prevMonth = new Date(date);
 	prevMonth.setMonth(prevMonth.getMonth() - 1);
-
 	leftcontrol.setAttribute("onclick", "c = new Calendar('" + String(this.cal_id) + "'); c.render(new Date('" + String(prevMonth) + "'));");
 
+	/* Set event handler for right control */
 	var rightcontrol = document.getElementById(this.cal_id + '-rc');
 	var nextMonth = new Date(date);
-	nextMonth.setMonth(nextMonth.getMonth() + 1); //hack
-
+	nextMonth.setMonth(nextMonth.getMonth() + 1);
 	rightcontrol.setAttribute("onclick", "c = new Calendar('" + String(this.cal_id) + "'); c.render(new Date('" + String(nextMonth) + "'));");
 
+	/* Populate calendar with the actual days */
 	var start = Calendar.start_of_cal(date);
 	for (var r = 0; r < Calendar.weeks_in_cal(date); r++)
 	{	
@@ -56,8 +58,10 @@ Calendar.prototype.populate_table = function(date)
 
 Calendar.prototype.create_empty_calendar = function()
 {
-	this.calendar.innerHTML = ''; // clear previous contents of the calendar div
+	/* clear previous contents of the calendar div */
+	this.calendar.innerHTML = ''; 
 
+	/* create a new table with header row, controls row, and days of the week row*/ 
 	var table = document.createElement("TABLE");
 	table.id = this.cal_id + "-calTable";
 	this.calendar.appendChild(table);
