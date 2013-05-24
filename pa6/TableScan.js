@@ -35,12 +35,19 @@ TableScan.sumColumn = function(id, colName)
 		if (!cell) continue;
 		
 		var cellValue = +cell.textContent;
-		if (isNaN(cellValue)) continue;
-
-		sum += cellValue;
+		
+		if (TableScan.isNumber(cellValue))
+		{
+			sum += cellValue;
+		}
 	}
 
-	return sum;
+	return Math.round(sum * 1E6) / 1E6;
+}
+
+TableScan.isNumber = function (n) 
+{   
+	return !isNaN(parseFloat(n)) && isFinite(n); 
 }
 
 

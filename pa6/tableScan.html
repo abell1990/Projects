@@ -59,16 +59,16 @@
       <tr class="odd"><td>3</td><td>4</td><td>6</td><td>5.5</td></tr>
     </table>
 
-    <!-- TODO: does form need to be case insensitive?  -->
-    <form class="sumForm">
-      Table id: <input type="text" id="tableId"/><br/>
-      Column name: <input type="text" id="colName"/><br/>
-      <button type="button" onclick="displaySum();">Add Column</button>
+    <form class="sumForm" action="">
+      <fieldset>
+        Table id: <input type="text" id="tableId"/><br/>
+        Column name: <input type="text" id="colName"/><br/>
+        <button type="button" onclick="displaySum();">Add Column</button>
+      </fieldset>
     </form>
 
     <div class="result"> Column <strong id="resCol">xxx</strong> in table <strong id="resTable">yyy</strong> sums to <strong id="resSum">zzz</strong>. </div>
 
-    <!-- TODO: is if OK to make displaySum() a global function ? -->
     <script type="text/javascript">
     //<![CDATA[
     function displaySum()
