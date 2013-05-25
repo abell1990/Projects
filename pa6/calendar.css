@@ -1,42 +1,57 @@
-body{
-   font-family: Tahoma;
-   font-size: 13px;
+*
+{
+  margin: 0px;
+  padding: 0px;
 }
 
-td{
-   white-space: nowrap;
-   border-top: 1px solid white;
-   padding-top: 2px;
-   padding-left: 10px;
-   padding-right: 10px;
-   padding-bottom: 2px;
+body
+{
+  font-family: Tahoma;
+  font-size: 13px;
 }
 
-.header{
-   background: #687291;
-   font-weight: bold;
-   color: white;
-}
-
-.header td{
+td
+{
+  white-space: nowrap;
+  border-top: 1px solid white;
+  padding-top: 2px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 2px; 
   width: 4px;
+  text-align: center;
 }
 
-.cntr{
-   text-align: center;
-   width: 4px;
+.dayNamesRow
+{
+  background: #687291;
+  font-weight: bold;
+  color: white;
 }
 
-.content_odd{
-    background: #F5F5F5;
-    /*background: #DFE1E7;*/
-    opacity: 0.3;
+.dayNotInCurrentMonth
+{
+  background: #F5F5F5;
+  opacity: 0.3;
 }
 
-.content_even{
-    background: #EEEFF2;
+.dayInCurrentMonth
+{
+  background: #EEEFF2;
 }
 
-#hidden_row{
-    display: none;
+.column
+{
+  float: left;
+  width: 275px;
+  padding: 20px;
+}
+
+.calendarPanel
+{
+  clear: both;
+  width: 630px;
+  height: 240px;
+  margin: 35px;
+  border: 1px dotted red;
 }
