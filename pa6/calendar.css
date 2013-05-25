@@ -40,6 +40,11 @@ td
   background: #EEEFF2;
 }
 
+.today
+{
+  background: #63B6AB;
+}
+
 .column
 {
   float: left;

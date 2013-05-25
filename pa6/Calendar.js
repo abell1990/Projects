@@ -87,7 +87,12 @@ Calendar.prototype.populate_calendar = function(date)
 			   depending on whether its on the month we are displaying or not. */
 			var cell = document.createElement("TD");
 			cell.innerHTML = String(currDay.getDate());
-			cell.className = currDay.getMonth() == date.getMonth() ? "dayInCurrentMonth" : "dayNotInCurrentMonth";
+			
+			if (Calendar.is_same_date(currDay, new Date()))
+				cell.className = "today";
+			else
+				cell.className = currDay.getMonth() == date.getMonth() ? "dayInCurrentMonth" : "dayNotInCurrentMonth";
+			
 			row.appendChild(cell);
 
 			currDay = currDay.tomorrow();
@@ -141,6 +146,13 @@ Calendar.days_in_calendar = function(date)
 	var endDate = Calendar.end_of_calendar(date);
 
 	return Calendar.day_difference(startDate, endDate);
+}
+
+Calendar.is_same_date = function(date1, date2)
+{
+	return (date1.getDate() == date2.getDate() 
+        && date1.getMonth() == date2.getMonth()
+        && date1.getFullYear() == date2.getFullYear());
 }
 
 Calendar.weeks_in_calendar = function(date)
