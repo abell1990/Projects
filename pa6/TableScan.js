@@ -1,5 +1,8 @@
 function TableScan () {}
 
+/* Takes in a table id and a column name. Looks for a table with that id and
+   a column in that table with the given name in the header row. If found
+   it will add up all the numeric entries in that column and return the sum */
 TableScan.sumColumn = function (id, colName)
 {
 	var table = document.getElementById (id);

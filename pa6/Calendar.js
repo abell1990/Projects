@@ -87,7 +87,7 @@ Calendar.prototype.populate_calendar = function(date)
 			   depending on whether its on the month we are displaying or not. */
 			var cell = document.createElement("TD");
 			cell.innerHTML = String(currDay.getDate());
-			cell.className = currDay.getMonth() == date.getMonth() ? "dayInCurrentMonth" : "dayNotInCurrentMonth"
+			cell.className = currDay.getMonth() == date.getMonth() ? "dayInCurrentMonth" : "dayNotInCurrentMonth";
 			row.appendChild(cell);
 
 			currDay = currDay.tomorrow();
