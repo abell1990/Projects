@@ -20,42 +20,40 @@ Calendar.prototype.populate_table = function(date)
 	title.innerHTML = Calendar.monthNames[date.getMonth()] + " " + String(date.getFullYear());
 
 	/* Set event handler for left control */
-	var leftcontrol = document.getElementById(this.cal_id + '-leftControl');
-	var prevMonth = new Date(date);
-	prevMonth.setMonth(prevMonth.getMonth() - 1);
-	leftcontrol.onclick = function(event) {
-		calendar.render(prevMonth);
+	var leftControl = document.getElementById(this.cal_id + '-leftControl');
+	leftControl.onclick = function(event) {
+		calendar.render( Calendar.previous_month(date) );
 		event.preventDefault();
 	}
 
 	/* Set event handler for right control */
-	var rightcontrol = document.getElementById(this.cal_id + '-rightControl');
-	var nextMonth = new Date(date);
-	nextMonth.setMonth(nextMonth.getMonth() + 1);
-	rightcontrol.onclick = function(event) {
-		calendar.render(nextMonth);
+	var rightControl = document.getElementById(this.cal_id + '-rightControl');
+	rightControl.onclick = function(event) {
+		calendar.render( Calendar.next_month(date) );
 		event.preventDefault();
 	}	
 
 	/* Populate calendar with the actual days */
-	var start = Calendar.start_of_cal(date);
+	var currDay = Calendar.start_of_cal(date);
 	for (var r = 0; r < Calendar.weeks_in_cal(date); r++)
 	{	
+		/* create a new row for each week */
 		var row = document.createElement("TR");
 		row.className = "content_even";
 		table.appendChild(row);
-		for (var c = 0; c < 7; c++)
+
+		for (var c = 0; c < Calendar.DAYS_IN_WEEK; c++)
 		{
 			var cell = document.createElement("TD");
 			row.appendChild(cell);
 
-			cell.innerHTML = String(start.getDate());
+			cell.innerHTML = String(currDay.getDate());
 
-			if (date.getMonth() != start.getMonth())
+			if (date.getMonth() != currDay.getMonth())
 				cell.className = "cntr content_odd";
 			else
 				cell.className = "cntr";
-			start = start.tomorrow();
+			currDay = currDay.tomorrow();
 		}
 	}
 }
@@ -89,8 +87,8 @@ Calendar.prototype.create_empty_calendar = function()
 /* Helper function section */
 
 
-Calendar.days_in_week = 7;
-Calendar.one_day=1000*60*60*24;
+Calendar.DAYS_IN_WEEK = 7;
+Calendar.DAY_IN_MSECS = 1000*60*60*24;
 Calendar.monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
 Calendar.start_of_cal = function(date)
@@ -123,7 +121,7 @@ Calendar.end_of_cal = function(date)
 /* number of days from startDate (including startDay) to endDate */
 Calendar.day_difference = function(startDate, endDate)
 {
-	return Math.ceil((endDate.getTime()-startDate.getTime())/(Calendar.one_day)) + 1;
+	return Math.ceil((endDate.getTime()-startDate.getTime())/(Calendar.DAY_IN_MSECS)) + 1;
 }
 
 Calendar.days_in_cal = function(date)
@@ -139,6 +137,20 @@ Calendar.weeks_in_cal = function(date)
 	return Calendar.days_in_cal(date) / 7;
 }
 
+Calendar.previous_month = function(date)
+{
+	var prevMonth = new Date(date);
+	prevMonth.setMonth(prevMonth.getMonth() - 1);
+	return prevMonth;
+}
+
+Calendar.next_month = function(date)
+{
+	var nextMonth = new Date(date);
+	nextMonth.setMonth(nextMonth.getMonth() + 1);
+	return nextMonth;
+}
+
 /* Taken from http://stackoverflow.com/questions/563406/add-days-to-datetime-using-javascript */
 Date.prototype.addDays = function(days)
 {
@@ -152,5 +164,3 @@ Date.prototype.tomorrow = function()
 {
     return this.addDays(1);
 }
-
-/* Fix id names */
