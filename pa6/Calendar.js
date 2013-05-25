@@ -15,6 +15,7 @@ Calendar.prototype.render = function(date)
 
 Calendar.prototype.populate_table = function(date)
 {
+	var calendar = this;
 	var table = document.getElementById(this.cal_id  + "-calTable");
 
 	/* Set Calendar title */
@@ -25,13 +26,21 @@ Calendar.prototype.populate_table = function(date)
 	var leftcontrol = document.getElementById(this.cal_id + '-lc');
 	var prevMonth = new Date(date);
 	prevMonth.setMonth(prevMonth.getMonth() - 1);
-	leftcontrol.setAttribute("onclick", "c = new Calendar('" + String(this.cal_id) + "'); c.render(new Date('" + String(prevMonth) + "'));");
+	leftcontrol.onclick = function(event) {
+		calendar.render(prevMonth);
+		event.preventDefault();
+	}
+	//leftcontrol.setAttribute("onclick", "c = new Calendar('" + String(this.cal_id) + "'); c.render(new Date('" + String(prevMonth) + "'));");
 
 	/* Set event handler for right control */
 	var rightcontrol = document.getElementById(this.cal_id + '-rc');
 	var nextMonth = new Date(date);
 	nextMonth.setMonth(nextMonth.getMonth() + 1);
-	rightcontrol.setAttribute("onclick", "c = new Calendar('" + String(this.cal_id) + "'); c.render(new Date('" + String(nextMonth) + "'));");
+	rightcontrol.onclick = function(event) {
+		calendar.render(nextMonth);
+		event.preventDefault();
+	}	
+	//rightcontrol.setAttribute("onclick", "c = new Calendar('" + String(this.cal_id) + "'); c.render(new Date('" + String(nextMonth) + "'));");
 
 	/* Populate calendar with the actual days */
 	var start = Calendar.start_of_cal(date);
@@ -69,7 +78,7 @@ Calendar.prototype.create_empty_calendar = function()
 	var controlsRow = document.createElement("TR");
 	table.appendChild(controlsRow);
 
-	controlsRow.innerHTML = "<th><a href='javascript:void(0)' id='" + this.cal_id + "-lc'>&lt;</a></th> <th id='" + this.cal_id + "-calTitle' colspan='5'></th> <th><a href='javascript:void(0)' id='" + this.cal_id + "-rc'>&gt;</a></th>";	
+	controlsRow.innerHTML = "<th><a href='' id='" + this.cal_id + "-lc'>&lt;</a></th> <th id='" + this.cal_id + "-calTitle' colspan='5'></th> <th><a href='' id='" + this.cal_id + "-rc'>&gt;</a></th>";
 
 	var dayNameRow = document.createElement("TR");
 	dayNameRow.className = "header";
@@ -144,3 +153,5 @@ Date.prototype.tomorrow = function()
 {
     return this.addDays(1);
 }
+
+/* Fix id names */
