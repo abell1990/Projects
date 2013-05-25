@@ -4,9 +4,6 @@ function Calendar(id)
 	this.cal_id = id;
 }
 
-Calendar.one_day=1000*60*60*24;
-Calendar.monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-
 Calendar.prototype.render = function(date)
 {
 	this.create_empty_calendar();
@@ -16,31 +13,29 @@ Calendar.prototype.render = function(date)
 Calendar.prototype.populate_table = function(date)
 {
 	var calendar = this;
-	var table = document.getElementById(this.cal_id  + "-calTable");
+	var table = document.getElementById(this.cal_id  + "-calendarTable");
 
 	/* Set Calendar title */
-	var title = document.getElementById(this.cal_id + '-calTitle');
+	var title = document.getElementById(this.cal_id + '-calendarTitle');
 	title.innerHTML = Calendar.monthNames[date.getMonth()] + " " + String(date.getFullYear());
 
 	/* Set event handler for left control */
-	var leftcontrol = document.getElementById(this.cal_id + '-lc');
+	var leftcontrol = document.getElementById(this.cal_id + '-leftControl');
 	var prevMonth = new Date(date);
 	prevMonth.setMonth(prevMonth.getMonth() - 1);
 	leftcontrol.onclick = function(event) {
 		calendar.render(prevMonth);
 		event.preventDefault();
 	}
-	//leftcontrol.setAttribute("onclick", "c = new Calendar('" + String(this.cal_id) + "'); c.render(new Date('" + String(prevMonth) + "'));");
 
 	/* Set event handler for right control */
-	var rightcontrol = document.getElementById(this.cal_id + '-rc');
+	var rightcontrol = document.getElementById(this.cal_id + '-rightControl');
 	var nextMonth = new Date(date);
 	nextMonth.setMonth(nextMonth.getMonth() + 1);
 	rightcontrol.onclick = function(event) {
 		calendar.render(nextMonth);
 		event.preventDefault();
 	}	
-	//rightcontrol.setAttribute("onclick", "c = new Calendar('" + String(this.cal_id) + "'); c.render(new Date('" + String(nextMonth) + "'));");
 
 	/* Populate calendar with the actual days */
 	var start = Calendar.start_of_cal(date);
@@ -70,21 +65,21 @@ Calendar.prototype.create_empty_calendar = function()
 	/* clear previous contents of the calendar div */
 	this.calendar.innerHTML = ''; 
 
-	/* create a new table with header row, controls row, and days of the week row*/ 
+	/* create a new table */ 
 	var table = document.createElement("TABLE");
-	table.id = this.cal_id + "-calTable";
+	table.id = this.cal_id + "-calendarTable";
 	this.calendar.appendChild(table);
 
+	/* create header row which contains the table title and the controls */
 	var controlsRow = document.createElement("TR");
+	controlsRow.innerHTML = "<th><a href='' id='" + this.cal_id + "-leftControl'>&lt;</a></th> <th id='" + this.cal_id + "-calendarTitle' colspan='5'></th> <th><a href='' id='" + this.cal_id + "-rightControl'>&gt;</a></th>";
 	table.appendChild(controlsRow);
-
-	controlsRow.innerHTML = "<th><a href='' id='" + this.cal_id + "-lc'>&lt;</a></th> <th id='" + this.cal_id + "-calTitle' colspan='5'></th> <th><a href='' id='" + this.cal_id + "-rc'>&gt;</a></th>";
-
+	
+	/* create a second row with the abbreviations for the days of the week */
 	var dayNameRow = document.createElement("TR");
 	dayNameRow.className = "header";
-	table.appendChild(dayNameRow);
-
 	dayNameRow.innerHTML = "<td>Su</td><td>Mo</td><td>Tu</td><td>We</td><td>Th</td><td>Fr</td><td>Sa</td>";
+	table.appendChild(dayNameRow);
 }
 
 
@@ -93,6 +88,10 @@ Calendar.prototype.create_empty_calendar = function()
 
 /* Helper function section */
 
+
+Calendar.days_in_week = 7;
+Calendar.one_day=1000*60*60*24;
+Calendar.monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
 Calendar.start_of_cal = function(date)
 {
