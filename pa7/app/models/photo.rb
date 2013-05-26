@@ -4,6 +4,7 @@ class Photo < ActiveRecord::Base
 
   belongs_to :user
   has_many :comments
+  has_many :tags
 
   @@accepted_file_formats = [".png", ".gif", ".jpg", ".jpeg", ".bmp", ".tiff"]
 

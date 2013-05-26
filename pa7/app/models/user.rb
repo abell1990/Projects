@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
 
   has_many :photos
   has_many :comments
+  has_many :tags
 
   @@SALT_RANGE = 1000000000
 
