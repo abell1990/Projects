@@ -1,10 +1,10 @@
-function Tagger(parentDivId, feedbackDivId, hiddenField1Id, hiddenField2Id, hiddenField3Id, hiddenField4Id) {
+function Tagger(parentDivId, feedbackDivId, xFieldId, yFieldId, widthFieldId, heightFieldId) {
     this.element = document.getElementById(feedbackDivId);
     this.parentElement = document.getElementById(parentDivId);
-    this.hiddenElement1 = document.getElementById(hiddenField1Id);
-    this.hiddenElement2 = document.getElementById(hiddenField2Id);
-    this.hiddenElement3 = document.getElementById(hiddenField3Id);
-    this.hiddenElement4 = document.getElementById(hiddenField4Id);
+    this.xField = document.getElementById(xFieldId);
+    this.yField = document.getElementById(yFieldId);
+    this.widthField = document.getElementById(widthFieldId);
+    this.heightField = document.getElementById(heightFieldId);
     this.isMouseDown = false;
 
     var obj = this;
@@ -36,6 +36,8 @@ Tagger.prototype.mouseDown = function(event) {
     this.element.style.height = "0px"
     this.element.style.left = (event.pageX - Tagger.absoluteXOffset(this.parentElement))+ "px";
     this.element.style.top = (event.pageY - Tagger.absoluteYOffset(this.parentElement))+ "px";
+
+    this.updateHiddenFields();
 
     this.isMouseDown = true;
 }
@@ -72,6 +74,8 @@ Tagger.prototype.mouseMove = function(event) {
         this.element.style.top = (this.origY + newHeight - Tagger.absoluteYOffset(this.parentElement)) + "px";
         this.element.style.height = (-newHeight) + "px";
     }
+
+    this.updateHiddenFields();
 }
 
 Tagger.prototype.mouseUp = function(event) {
@@ -80,14 +84,22 @@ Tagger.prototype.mouseUp = function(event) {
     document.body.onmouseup = this.oldUpHandler;
 }
 
+Tagger.prototype.updateHiddenFields = function ()
+{
+    this.xField.value = this.element.offsetLeft;
+    this.yField.value = this.element.offsetTop;
+    this.widthField.value = this.element.offsetWidth;
+    this.heightField.value = this.element.offsetHeight;
+}
 
 
 
 
 
 
-
-
+// TODO: name things better
+// TODO: fix release mouse outside browser widnow bug
+// TODO: make this nonstatic functions
 
 Tagger.absoluteXOffset = function(element) {
     var top = 0, left = 0;
