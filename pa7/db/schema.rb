@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130506040256) do
+ActiveRecord::Schema.define(:version => 20130526013216) do
 
   create_table "comments", :force => true do |t|
     t.integer  "photo_id"
@@ -35,6 +35,15 @@ ActiveRecord::Schema.define(:version => 20130506040256) do
 
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
+
+  create_table "tags", :force => true do |t|
+    t.integer "photo_id"
+    t.integer "user_id"
+    t.integer "x_coord"
+    t.integer "y_coord"
+    t.integer "width"
+    t.integer "height"
+  end
 
   create_table "users", :force => true do |t|
     t.string "first_name"
