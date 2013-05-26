@@ -42,11 +42,7 @@ class PhotosController < ApplicationController
 
     @photo = Photo.new(params[:photo])
 
-    if @photo.save() # does it pass validation? if so, copy image to /public/images directory
-      file_path = "public/images/" + @photo.file_name
-      file_contents = params[:photo][:file].read()
-      File.open(file_path, "wb") {|f| f.write(file_contents)}
-
+    if @photo.save()
       redirect_to(:controller => :photos, :action => :index, :id => current_user_id)
     else
       render(:controller => :photos, :action => :new)

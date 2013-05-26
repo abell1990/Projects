@@ -2,6 +2,9 @@ class Photo < ActiveRecord::Base
   attr_accessible :user_id, :date_time, :file_name, :file
   attr_accessor :file_tmp_copy
 
+  after_save :save_photo_file
+  skip_callback :save, :after, :save_photo_file, :if => lambda { self.file_tmp_copy == nil }
+
   belongs_to :user
   has_many :comments
 
@@ -33,6 +36,13 @@ class Photo < ActiveRecord::Base
         errors.add(:file, "Incorrect file extension.")
       end
     end
+  end
+
+  def save_photo_file
+    # if object passed validation, copy image to /public/images directory
+    file_path = "public/images/" + self.file_name
+    file_contents = self.file_tmp_copy.read()
+    File.open(file_path, "wb") {|f| f.write(file_contents)}
   end
 
 
