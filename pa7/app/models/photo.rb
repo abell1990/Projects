@@ -45,8 +45,7 @@ class Photo < ActiveRecord::Base
   end
 
 
-  validates :file, :presence => true, :on => :create
-  validates :user_id, :date_time, :file_name, :presence => true
+  validates :user_id, :date_time, :file, :file_name, :presence => true
   validates :user, :presence => true
   validate :validate_file_extension
 end
