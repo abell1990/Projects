@@ -71,6 +71,7 @@ pa6/submission
 pa6/prev_submissions
 
 # Project 7 specific:
+pa7/app/assets/javascripts/tagger.html
 pa7/.bundle
 pa7/submission
 pa7/db/*.sqlite3

@@ -1,4 +1,4 @@
-class TagController < ApplicationController
+class TagsController < ApplicationController
   before_filter :require_login, only: [:new, :create]
   before_filter :require_http_get, only: [:new]
   before_filter :require_http_post, only: [:create]
