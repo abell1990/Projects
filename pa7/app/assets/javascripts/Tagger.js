@@ -14,6 +14,8 @@ function Tagger(parentDivId, feedbackDivId, xFieldId, yFieldId, widthFieldId, he
 }
 
 Tagger.prototype.mouseDown = function(event) {
+    event.preventDefault()
+
     var obj = this;
 
     this.oldMoveHandler = document.body.onmousemove;
