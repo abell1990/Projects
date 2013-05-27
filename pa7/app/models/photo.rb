@@ -18,8 +18,6 @@ class Photo < ActiveRecord::Base
 
   def file=(file)
     if file and file.respond_to?(:original_filename) and file.respond_to?(:read)
-      format = File.extname(file.original_filename()).downcase
-
       # name file after its content hash and timestamp
       self.file_name = Digest::SHA1.hexdigest( file.read() ) + "-" + DateTime.now.strftime("%s") + format
       file.rewind()
@@ -31,7 +29,7 @@ class Photo < ActiveRecord::Base
   def validate_file_extension
     # validate image file extension
     if file_name
-      format = File.extname(file_name)
+      format = File.extname(file_name).downcase
 
       if !@@accepted_file_formats.include?(format)
         errors.add(:file, "Incorrect file extension.")
@@ -47,6 +45,8 @@ class Photo < ActiveRecord::Base
   end
 
 
-  validates :user_id, :date_time, :file, :presence => true
+  validates :file, :presence => true, :on => :create
+  validates :user_id, :date_time, :file_name, :presence => true
+  validates :user, :presence => true
   validate :validate_file_extension
 end
