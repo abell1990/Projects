@@ -18,6 +18,8 @@ class Photo < ActiveRecord::Base
 
   def file=(file)
     if file and file.respond_to?(:original_filename) and file.respond_to?(:read)
+      format = File.extname(file.original_filename()).downcase
+
       # name file after its content hash and timestamp
       self.file_name = Digest::SHA1.hexdigest( file.read() ) + "-" + DateTime.now.strftime("%s") + format
       file.rewind()
