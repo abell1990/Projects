@@ -5,4 +5,5 @@ class Comment < ActiveRecord::Base
   belongs_to :photo
 
   validates :photo_id, :user_id, :date_time, :comment, :presence => true
+  validates :user, :photo, :presence => true
 end
