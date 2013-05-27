@@ -52,6 +52,7 @@ Tagger.prototype.mouseMove = function(event) {
     var minWidth = this.parentLeftX - this.origX;
     newWidth = Math.max(newWidth, minWidth);
     newWidth = Math.min(newWidth, maxWidth);
+
     if (newWidth >= 0){
         this.element.style.left = (this.origX - Tagger.absoluteXOffset(this.parentElement))+ "px";
         this.element.style.width = newWidth + "px";

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>project7</title>
+
+  <script src="tagger.js" type="text/javascript" ></script>
+  <style type="text/css">
+    #outer {
+      width: 600px;
+      height: 480px;
+      border: 5px solid #000000;
+      left: 100px;
+      top: 100px;
+      margin: 0px;
+      padding: 0px;
+      position: absolute;
+    }
+
+    #inner {
+      width: 0px;
+      height: 0px;
+      background-color: #C0C0C0;
+      position: absolute;
+    }    
+
+    #outer2 {
+      width: 600px;
+      height: 480px;
+      border: 5px solid #000000;
+      left: 800px;
+      top: 100px;
+      margin: 0px;
+      padding: 0px;
+      position: absolute;
+    }
+
+    #inner2 {
+      width: 0px;
+      height: 0px;
+      background-color: #C0C0C0;
+      position: absolute;
+    }
+
+    body {
+      height: 1200px;
+    }
+  </style>
+
+</head>
+<body>
+  <div id="outer">
+    <div id="inner">
+
+    </div>
+  </div> 
+
+  <form>
+    X: <input type="text" id="x">
+    Y: <input type="text" id="y">
+    Width: <input type="text" id="w">
+    Height: <input type="text" id="h">
+  </form>
+
+  <script type="text/javascript">
+    var outer = document.getElementById("outer");
+    var inner = document.getElementById("inner");
+    var outer2 = document.getElementById("outer2");
+    var inner2 = document.getElementById("inner2");
+
+    var tagger = new Tagger("outer", "inner", "x", "y", "w", "h");
+    
+  </script>
+
+  
+</body>
+</html>
