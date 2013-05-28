@@ -1,6 +1,5 @@
 <% content_for :head do %>
     <%= stylesheet_link_tag "photos" %>
-    <%= stylesheet_link_tag "comments" %>
 <% end %>
 
 <div class="clearBothDiv"></div>
@@ -10,49 +9,41 @@
     <% @pageTitle = @user.full_name + "'s Photos" %>
 
     <h1 class="contentTitle">
-        <%= @user.full_name %>'s Photos:
+        <%= @user.full_name %>'s Photos
     </h1>
 
     <!-- allow logged in users to upload pictures only to their profiles -->
     <% if @logged_in and session[:current_user_id] == @user.id %>
-        <div class="addPhotoBox">
-            <a href="/photos/new">Add new photo</a>
-        </div>
+        <a href="/photos/new">
+            <span class="addBox">
+                Add new photo
+            </span>
+        </a>
     <% end %>
 
     <% @user.photos.each do |photo| %>
         <div class="photoPanel">
 
-            <% if !@logged_in and photo.comments.empty? %>
-                <% firstColumnClass = "photoSingleColumn"%>
-            <% else %>
-                <% firstColumnClass = "photoLeftColumn"%>
-            <% end %>
-
-            <div class="<%= firstColumnClass %>">
-                <img class="photoImg" src="/images/<%= photo.file_name %>" alt="Photo of <%= @user.full_name %>"/>
-                <div class="photoCreationDate">Date Created: <%= photo.date_time.getlocal.to_formatted_s(:long) %></div>
-            </div>
-
-            <% if firstColumnClass != "photoSingleColumn" %>
-                <div class="photoRightColumn">
-
-                    <% photo.comments.each do |comment| %>
-
-                        <%= render(:partial => "shared/comment", :locals => {:commentClass => cycle('commentOddPanel', 'commentEvenPanel'), :comment => comment, :new => false}) %>
-
+            <div class="photoSingleColumn">
+                <img class="photoImg" src="/images/<%= photo.file_name %>" alt="Photo of <%= @user.full_name %>" onclick="location.href = '/photos/view/<%= photo.id %>'"/>
+                <div class="photoCreationDate">
+                    Date Created: <%= photo.date_time.getlocal.to_formatted_s(:long) %><br/>
+                    <% if photo.comments.size > 0 %>
+                        <% if photo.comments.size > 1%>
+                            <strong><%= photo.comments.size %></strong> comments<br/>
+                        <% else %>
+                            <strong>1</strong> comment<br/>
+                        <% end %>
                     <% end %>
-
-                    <!-- only show the add new comment option to logged in users -->
-                    <% if @logged_in %>
-
-                        <% @new_comment.photo = photo %>
-                        <%= render(:partial => "shared/comment", :locals => {:commentClass => cycle('commentOddPanel', 'commentEvenPanel'), :comment => @new_comment, :new => true}) %>
-
+                    <% if photo.tags.size > 0 %>
+                        <% if photo.tags.size > 1%>
+                            <strong><%= photo.tags.size %></strong> people tagged
+                        <% else %>
+                            <strong>1</strong> person tagged
+                        <% end %>
                     <% end %>
-
                 </div>
-            <% end %>
+            </div>
 
             <div class="clearBothDiv"></div>
 
