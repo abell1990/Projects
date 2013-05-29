@@ -38,6 +38,8 @@ class User < ActiveRecord::Base
 
   # validates password and password_confirmation entered at registration match
   validates :password, :confirmation => true
+  # validates has a standard length
+  validates :password, :length => { :within => 6..40 }
   # validates login element is unique
   validates :login, :uniqueness => {:case_sensitive => false, :message => "name is already registered."}
   # validate presence of all fields
