@@ -27,7 +27,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new(params[:comment])
 
     if @comment.save() # does it pass validation?
-      redirect_to(:controller => :photos, :action => :index, :id => @comment.photo.user.id)
+      redirect_to(:controller => :photos, :action => :view, :id => @comment.photo.id)
     else
       @photo = Photo.find(params[:id])
       render(:action => :new, :id => @photo.id)

@@ -1,2 +1,54 @@
-<h1>Tag#new</h1>
-<p>Find me in app/views/tag/new.html.erb</p>
+<% content_for :head do %>
+    <%= stylesheet_link_tag "photos" %>
+    <%= stylesheet_link_tag "tags" %>
+<% end %>
+
+<% if @photo %>
+
+    <% @pageTitle = "New Tag" %>
+    <% @validation_errors = @tag.errors %>
+
+    <h1 class="contentTitle">
+        Tag Photo
+    </h1>
+
+    <div class="photoPanel">
+
+        <div class="photoLeftColumn">
+            <div class="tagCanvas" id="tagCanvas">
+                <img class="photoImg photoImgLarge" src="/images/<%= @photo.file_name %>" alt="Photo of <%= @photo.user.full_name %>"/>
+                <div class="tagFeedbackDiv" id="tagFeedbackDiv"></div>
+            </div>
+            <div class="photoFooter">Date Created: <%= @photo.date_time.getlocal.to_formatted_s(:long) %></div>
+        </div>
+
+        <div class="photoRightColumn">
+            <%= form_for(@tag, :url => {:action => :create, :id => @photo.id}, :html => {:class => "contentBox addTagForm"}) do |form| %>
+                <fieldset>
+                    <%= form.hidden_field(:photo_id, :value => @photo.id) %>
+                    <%= form.hidden_field(:x_coord) %>
+                    <%= form.hidden_field(:y_coord) %>
+                    <%= form.hidden_field(:width) %>
+                    <%= form.hidden_field(:height) %>
+                    <%= form.label(:user_id, "Tagged user:", :class => "formInlineLabel")%>
+                    <%= form.select(:user_id, options_for_select(@select_options), {}, :class => "formInlineField") %>
+                    <%= form.submit("Create tag", :class => "submitButton") %>
+                </fieldset>
+            <% end %>
+        </div>
+
+        <div class="clearBothDiv"></div>
+
+    </div>
+
+    <script type="text/javascript">
+        //<![CDATA[
+        var tagger = new Tagger("tagCanvas", "tagFeedbackDiv", "tag_x_coord", "tag_y_coord", "tag_width", "tag_height");
+        //]]>
+    </script>
+
+<% else %>
+
+    <% @pageTitle = "Photo not found" %>
+
+<% end %>

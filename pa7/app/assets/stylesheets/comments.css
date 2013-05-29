@@ -24,6 +24,12 @@
     clear: both;
 }
 
+.commentCenteredContainer
+{
+    width: 360px;
+    margin: 0px auto;
+}
+
 .commentThumbnail 
 {
 	background-repeat: no-repeat; 

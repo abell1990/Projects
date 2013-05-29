@@ -1,3 +1,57 @@
 // Place all the styles related to the Tags controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.tagCanvas
+{
+    position: relative;
+}
+
+.tagFeedbackDiv
+{
+    background-color: #FF5555;
+    border: 2px solid white;
+    opacity: 0.3;
+    position: absolute;
+
+    border-radius: 6px 6px 6px 6px;
+}
+
+.tagDiv
+{
+    position: absolute;
+    border-radius: 6px 6px 6px 6px;
+    box-shadow: 2px 2px 4px rgba(0,0,0,.20);
+    border: 2px solid white;
+}
+
+.tagName
+{
+    border: 1px solid darkgreen;
+    border-radius: 4px 4px 4px 4px;
+    background-color: white;
+    z-index: 1000;
+    position: absolute;
+    padding: 3px;
+    display:none;
+    font-size: 13px;
+}
+
+.taggedUserList
+{
+    margin-left: 20px;
+}
+
+.taggedUserItem
+{
+    font-size: 15px;
+}
+
+.addTagForm
+{
+    width: 240px;
+    margin: 0px auto;
+    padding: 20px;
+    font-size: 14px;
+}

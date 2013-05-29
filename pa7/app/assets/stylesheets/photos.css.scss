@@ -4,23 +4,37 @@
 
 .photoPanel
 {
-	margin-bottom: 30px;
-	padding: 35px;
+    margin: 10px 0px 55px 0px;
+    padding: 0px 45px 0px 45px;
 }
 
 .photoImg
 {
-	display: block;
-    margin: 0px auto; 
+    display: block;
+    position: relative;
 
-    max-width: 450px;
-    min-width: 350px;
-
-	border-radius: 10px 10px 10px 10px;
-	box-shadow: 4px 4px 8px rgba(0,0,0,.15);
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 4px 4px 8px rgba(0,0,0,.15);
 }
 
-.photoCreationDate
+.photoImgMedium
+{
+    min-width: 350px;
+    max-width: 450px;
+}
+
+.photoImgLarge
+{
+    min-width: 480px;
+    max-width: 510px;
+}
+
+.photoImgClickable:hover
+{
+  cursor: pointer;
+}
+
+.photoFooter
 {
 	margin-top: 10px;
 	text-align: center;
@@ -35,57 +49,59 @@
 
 .photoLeftColumn
 {
-	width: 65%;
-	float: left;
+    float:left;
 }
+
 
 .photoRightColumn
 {
-	width: 35%;
-	float: left;
+    width: 265px;
+    float: right;
 }
 
-.addPhotoBox
+.addBox
 {
-  background-color: #D9EDF7;
+    display: block;
 
-  width: 260px;
-  height: 40px;
+    background-color: #D9EDF7;
 
-  padding-top: 20px;
-  margin: 0px auto;
-  margin-bottom: 15px;
+    width: 260px;
+    height: 40px;
 
-  border-radius: 8px 8px 8px 8px;
-  border: 1px dotted #3A87AD;
+    padding-top: 20px;
+    margin: 0px auto;
+    margin-bottom: 25px;
 
-  box-shadow: 4px 4px 8px rgba(0,0,0,.15);
+    border-radius: 8px 8px 8px 8px;
+    border: 1px dotted #3A87AD;
 
-  clear: both;
+    box-shadow: 4px 4px 8px rgba(0,0,0,.15);
 
-  text-align: center;
-  font-weight: bold;
+    clear: both;
+
+    text-align: center;
+    font-weight: bold;
 }
 
 .addPhotoForm
 {
-  display: block;
-  margin: 0px auto;
-  width: 300px;
-  hegith: 100px;
-  padding: 30px;
+    display: block;
+    margin: 0px auto;
+    width: 300px;
+    hegith: 100px;
+    padding: 30px;
 }
 
 .addPhotoForm .fileInputField
 {
-  padding: 10px;
-  display: block;
-  margin: 0px auto;
+    padding: 10px;
+    display: block;
+    margin: 0px auto;
 }
 
 .addPhotoForm .submitButton
 {
-  display: block;
-  margin: 0px auto;
-  margin-top: 20px;
+    display: block;
+    margin: 0px auto;
+    margin-top: 20px;
 }

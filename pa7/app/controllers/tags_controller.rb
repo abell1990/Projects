@@ -7,7 +7,16 @@ class TagsController < ApplicationController
   # URL access: logged in users
   # HTTP method: GET
   def new
-    # TODO: fill in
+    # find photo to comment (if exists)
+    if params[:id] and Photo.exists?(params[:id])
+      @photo = Photo.find(params[:id])
+      @select_options = []
+      User.all.each{ |u| @select_options << [u.full_name, u.id]}
+      @select_options.sort!
+      @tag = Tag.new()
+    else
+      add_alert(false, :alert_error, "That photo does not exist, or you did not provide a photo id.")
+    end
   end
 
   # Action that handles HTTP POST requests to create tags
@@ -15,12 +24,16 @@ class TagsController < ApplicationController
   # HTTP method: POST
   def create
 
-    @tag = Tag.new(params[:comment])
+    @tag = Tag.new(params[:tag])
 
     if @tag.save() # does it pass validation?
-      redirect_to(:controller => :photos, :action => :index, :id => @comment.photo.user.id)
+      redirect_to(:controller => :photos, :action => :view, :id => @tag.photo.id)
     else
-      # TODO: fill in
+      @photo = Photo.find(params[:id])
+      @select_options = []
+      User.all.each{ |u| @select_options << [u.full_name, u.id]}
+      @select_options.sort!
+      render(:controller => :tags, :action => :new, :id => @photo.id)  # TODO: fully qualify :controller elsewhere
     end
 
   end

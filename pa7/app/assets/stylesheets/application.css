@@ -31,6 +31,12 @@ fieldset
     border: 0px;
 }
 
+.cntr-div
+{
+    margin-left: auto;
+    margin-right: auto;
+}
+
 /* This is the styling for a div that wraps all the
    content (except the header) inside the body. 
    It creates a sort of white sheet/page on top
@@ -93,6 +99,11 @@ fieldset
 {
     text-align: center;
     padding-bottom: 50px;
+}
+
+.contentSubtitle
+{
+    text-align: center;
 }
 
 .backLink
@@ -158,17 +169,24 @@ fieldset
     margin-bottom: 15px;
 }
 
+.formInlineField
+{
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
 .formTextareaField
 {
     display: block;
     margin: 0px auto;
     border-radius: 4px 4px 4px 4px;
-    height: 250px;
-    width: 300px;
+    height: 200px;
+    width: 270px;
     font-size: 13px;
     border: 1px solid #E0E0E0;
     padding: 3px;
     margin-bottom: 15px;
+    resize: none;
 }
 
 .formLabel
@@ -177,6 +195,12 @@ fieldset
     margin: 0px auto;
     text-align: center;
     margin-bottom: 10px;
+}
+
+.formInlineLabel
+{
+    margin-left: 5px;
+    margin-right: 10px;
 }
 
 .submitButton

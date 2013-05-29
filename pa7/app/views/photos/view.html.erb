@@ -1,0 +1,99 @@
+<% content_for :head do %>
+    <%= stylesheet_link_tag "photos" %>
+    <%= stylesheet_link_tag "comments" %>
+    <%= stylesheet_link_tag "tags" %>
+<% end %>
+
+<% if @photo %>
+
+    <% @pageTitle = @photo.user.full_name + "'s Photo" %>
+
+    <div class="photoPanel">
+
+        <% if !@logged_in and @photo.tags.size == 0 %>
+            <img class="photoImg photoImgLarge cntr-div" src="/images/<%= @photo.file_name %>" alt="Photo of <%= @photo.user.full_name %>"/>
+            <div class="photoFooter">Date Created: <%= @photo.date_time.getlocal.to_formatted_s(:long) %></div>
+        <% else %>
+            <div class="photoLeftColumn">
+                <div class="tagCanvas">
+                    <img class="photoImg photoImgLarge" src="/images/<%= @photo.file_name %>" alt="Photo of <%= @photo.user.full_name %>"/>
+                    <% @photo.tags.each do |tag| %>
+                        <div class="tagName" id="tagName-<%= tag.id.to_s %>" style="left: <%= tag.x_coord %>px; top: <%= tag.y_coord - 26 %>px;">
+                          <%= tag.user.full_name %>
+                        </div>
+                        <div class="tagDiv" id="tagDiv-<%= tag.id.to_s %>" style="left: <%= tag.x_coord %>px; top: <%= tag.y_coord %>px; width: <%= tag.width %>px; height: <%= tag.height %>px;">
+                        </div>
+                    <% end %>
+                </div>
+                <div class="photoFooter">Date Created: <%= @photo.date_time.getlocal.to_formatted_s(:long) %></div>
+            </div>
+
+            <div class="photoRightColumn">
+
+                <% if @logged_in %>
+                    <a href="/tags/new/<%= @photo.id %>">
+                        <span class="addBox">
+                            Tag photo
+                        </span>
+                    </a>
+                <% end %>
+
+                <% if @photo.tags.size > 0 %>
+                    <br/><h3>People tagged in this photo</h3><br/>
+
+                    <ul class="taggedUserList">
+                        <% @tagged_users.each do |u| %>
+                            <li class="taggedUserItem"><%= u %></li>
+                        <% end %>
+                    </ul>
+                <% end %>
+
+            </div>
+
+            <div class="clearBothDiv"></div>
+        <% end %>
+    </div>
+
+    <% if @logged_in or @photo.comments.size > 0 %>
+        <div class="commentCenteredContainer">
+            <h2 class="contentSubtitle" >Comments</h2>
+
+            <% @photo.comments.each do |comment| %>
+
+                <%= render(:partial => "shared/comment", :locals => {:commentClass => cycle('commentOddPanel', 'commentEvenPanel'), :comment => comment, :new => false}) %>
+
+            <% end %>
+
+            <!-- only show the add new comment option to logged in users -->
+            <% if @logged_in %>
+
+                <% @new_comment.photo = @photo %>
+                <%= render(:partial => "shared/comment", :locals => {:commentClass => cycle('commentOddPanel', 'commentEvenPanel'), :comment => @new_comment, :new => true}) %>
+
+            <% end %>
+        </div>
+    <% end %>
+
+
+    <script type="text/javascript">
+        //<![CDATA[
+        <% @photo.tags.each do |tag| %>
+            var tagDiv = document.getElementById('tagDiv-' + <%= tag.id %>);
+
+            tagDiv.onmouseover = function (){
+                var tagName = document.getElementById('tagName-' + <%= tag.id %>);
+                tagName.style.display = "block";
+            }
+            tagDiv.onmouseout = function (){
+                var tagName = document.getElementById('tagName-' + <%= tag.id %>);
+                tagName.style.display = "none";
+            }
+        <% end %>
+        //]]>
+    </script>
+
+<% else %>
+
+    <% @pageTitle = "Photo not found" %>
+
+<% end %>

@@ -15,8 +15,8 @@
     <div class="photoPanel">
 
         <div class="photoLeftColumn">
-            <img class="photoImg" src="/images/<%= @photo.file_name %>" alt="Photo of <%= @photo.user.full_name %>"/>
-            <div class="photoCreationDate">Date Created: <%= @photo.date_time.getlocal.to_formatted_s(:long) %></div>
+            <img class="photoImg photoImgLarge cntr-div" src="/images/<%= @photo.file_name %>" alt="Photo of <%= @photo.user.full_name %>"/>
+            <div class="photoFooter">Date Created: <%= @photo.date_time.getlocal.to_formatted_s(:long) %></div>
         </div>
 
         <div class="photoRightColumn">
