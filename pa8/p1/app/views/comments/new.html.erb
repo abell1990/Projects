@@ -1,0 +1,47 @@
+<% content_for :head do %>
+    <%= stylesheet_link_tag "photos" %>
+    <%= stylesheet_link_tag "comments" %>
+<% end %>
+
+<% if @photo %>
+
+    <% @pageTitle = "New Comment" %>
+    <% @validation_errors = @comment.errors %>
+
+    <div class="backLink"><a href="/photos/view/<%= @photo.id %>">&lt;&lt; back to photo</a></div>
+    <div class="clearBothDiv"></div>
+
+    <h1 class="contentTitle">
+      New Comment
+    </h1>
+
+    <div class="photoPanel">
+
+        <div class="photoLeftColumn">
+            <img class="photoImg photoImgLarge cntr-div" src="/images/<%= @photo.file_name %>" alt="Photo of <%= @photo.user.full_name %>"/>
+            <div class="photoFooter">Date Created: <%= @photo.date_time.getlocal.to_formatted_s(:long) %></div>
+        </div>
+
+        <div class="photoRightColumn">
+
+            <%= form_for(@comment, :url => {:controller => :comments, :action => :create, :id => @photo.id}) do |form| %>
+                <fieldset>
+                    <%= form.hidden_field(:photo_id, :value => @photo.id) %>
+                    <%= form.hidden_field(:user_id, :value => session[:current_user_id]) %>
+                    <%= form.hidden_field(:date_time, :value => DateTime.now) %>
+                    <%= form.text_area(:comment, :class => "formTextareaField") %>
+                    <%= form.submit "Create Comment" %>
+                </fieldset>
+            <% end %>
+
+        </div>
+
+        <div class="clearBothDiv"></div>
+
+    </div>
+
+<% else %>
+
+    <% @pageTitle = "Photo not found" %>
+
+<% end %>

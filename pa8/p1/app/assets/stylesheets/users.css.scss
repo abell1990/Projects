@@ -1,0 +1,92 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.mugshotGrid
+{
+	margin-left: 65px;
+}
+
+.mugshotFrame
+{
+	float: left;
+	margin-bottom: 25px;
+}
+
+.mugshotName
+{
+	text-align: center;
+	display: block;
+	font-weight: bold;
+}
+
+.mugshot 
+{
+	background-repeat: no-repeat; 
+	background-position: center; 
+	background-size: cover;
+	
+	width: 190px;
+	height: 190px;
+	
+	float: left;
+	
+	margin: 20px 25px;
+	padding: 15px;
+	
+	border-radius: 10px 10px 10px 10px;
+	box-shadow: 4px 4px 8px rgba(0,0,0,.15);
+
+	opacity: 0.68
+}
+
+.mugshot:hover
+{
+	/* opacity: 0.5; */
+	opacity: 1.0
+}
+
+.loginBox
+{
+  width: 200px;
+  margin: 0px auto;
+  margin-top: 40px;
+  padding: 10px;
+}
+
+.loginBox h2
+{
+  text-align: center;
+  margin: 8px 0px 40px 0px;
+}
+
+.loginBox button
+{
+  padding: 4px;
+  font-size: 11px;
+}
+
+
+.loginBox .submitButton
+{
+  margin: 20px 10px 20px 35px;
+}
+
+.registerBox
+{
+  width: 270px;
+  margin: 0px auto;
+  margin-top: 40px;
+  padding: 10px;
+}
+
+.registerBox h2
+{
+  text-align: center;
+  margin: 8px 0px 40px 0px;
+}
+
+.registerBox .submitButton
+{
+  margin: 20px 0px 30px 101px;
+}

@@ -1,0 +1,288 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ */
+
+*
+{
+    margin: 0px;
+    padding: 0px;
+}
+
+body 
+{
+    font-family: Tahoma;
+
+    background-color: #F4F4F4;
+    background-image: url("/images/grid.png");
+    background-repeat: repeat-x;
+}
+
+fieldset
+{
+    border: 0px;
+}
+
+.cntr-div
+{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* This is the styling for a div that wraps all the
+   content (except the header) inside the body. 
+   It creates a sort of white sheet/page on top
+   of the grey background. */
+.bodyContent
+{
+    background-color: #FFFFFF;
+
+    min-height: 600px;
+    width: 940px;
+
+    margin: 0px auto;
+    margin-bottom: 40px;
+    padding: 45px;
+
+    border-top: 1px solid #DBDBDB;
+    border-left: 1px solid #DBDBDB;
+    border-right: 1px solid #DBDBDB;
+
+    box-shadow: 2px 2px 2px #CCCCCC;
+}
+
+.header
+{
+    background-image: url("/images/cover.jpg");
+
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    text-align: right;
+    color: #FFFFFF;
+
+    width: 1100px;
+    height: 125px;
+    line-height: 40px;
+
+    margin: 0px auto;
+    margin-top: 18px;
+    margin-bottom: 20px;
+    padding: 15px;
+
+    border-radius: 10px;
+    box-shadow: 4px 4px 8px rgba(0,0,0,.15);
+}
+
+.header p
+{
+    text-align: right;
+}
+
+.footer
+{
+    margin: 0px auto;
+    padding-bottom: 30px;
+    width: 600px;
+    text-align: center;
+    font-size: 13px;
+}
+
+.contentTitle
+{
+    text-align: center;
+    padding-bottom: 50px;
+}
+
+.contentSubtitle
+{
+    text-align: center;
+}
+
+.backLink
+{
+    float: right;
+    font-size: 13px;
+    margin-top: -17px;
+    padding: 0px;
+    margin-bottom: 25px;
+
+}
+
+.bodyContent a
+{
+    color: #000000;
+    text-decoration: none;  
+}
+
+
+.bodyContent a:hover
+{
+    color: #CC6600;
+    cursor: pointer;
+}
+
+.header a
+{
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+
+
+.header a:hover
+{
+    color: #CC6600;
+    cursor: pointer;
+}
+
+.clearBothDiv
+{
+    clear: both;
+}
+
+.smallAnnotation
+{
+    font-size: 13px;
+}
+
+.contentBox
+{
+    background-color: #F4F4F4;
+
+    border-radius: 8px 8px 8px 8px;
+    box-shadow: 4px 4px 8px rgba(0,0,0,.15);
+
+    clear: both;
+}
+
+.formInputField
+{
+    display: block;
+    margin: 0px auto;
+    border-radius: 4px 4px 4px 4px;
+    height: 20px;
+    font-size: 13px;
+    border: 1px solid #E0E0E0;
+    padding: 3px;
+    margin-bottom: 15px;
+}
+
+.formInstructions
+{
+    margin-bottom: 12px;
+}
+
+.formInlineField
+{
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.formTextareaField
+{
+    display: block;
+    margin: 0px auto;
+    border-radius: 4px 4px 4px 4px;
+    height: 200px;
+    width: 270px;
+    font-size: 13px;
+    border: 1px solid #E0E0E0;
+    padding: 3px;
+    margin-bottom: 15px;
+    resize: none;
+}
+
+.formLabel
+{
+    display: block;
+    margin: 0px auto;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.formInlineLabel
+{
+    margin-left: 5px;
+    margin-right: 10px;
+}
+
+.submitButton
+{
+    font-size: 16px;
+}
+
+
+/*  CSS for distinct alert message banners */
+
+.alert
+{
+    font-size: 13px;
+
+    border-radius: 4px;
+
+    padding: 15px 15px 20px 15px;
+
+    margin-top: 0px;
+    margin-bottom: 25px;
+    margin-left: 30%;
+    margin-right: 30%;
+}
+
+.alert h2
+{
+    margin-bottom: 10px
+}
+
+.alert h2, p
+{
+    text-align: center;
+}
+
+.alertError
+{
+    color: #B94A48;
+
+    background-color: #F2DEDE;
+
+    border: 1px solid #EED3D7;
+}
+
+.alertSuccess
+{
+    color: #468847;
+
+    background-color: #DFF0D8;
+
+    border: 1px solid #D6E9C6;
+}
+
+.alertInfo
+{
+    color: #C09853;
+
+    background-color: #FCF8E3;
+
+    border: 1px solid #FBEED5;
+
+    /*color: #3A87AD;*/
+
+    /*background-color: #D9EDF7;*/
+
+    /*border: 1px solid #BCE8F1;*/
+
+    /*color: #808080;*/
+
+    /*background-color: #F0F0F0;*/
+
+    /*border: 1px solid #D0D0D0;*/
+}
+
+/* END CSS for alerts */

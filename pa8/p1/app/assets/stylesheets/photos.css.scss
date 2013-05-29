@@ -1,0 +1,107 @@
+// Place all the styles related to the Photos controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.photoPanel
+{
+    margin: 10px 0px 55px 0px;
+    padding: 0px 45px 0px 45px;
+}
+
+.photoImg
+{
+    display: block;
+    position: relative;
+
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 4px 4px 8px rgba(0,0,0,.15);
+}
+
+.photoImgMedium
+{
+    min-width: 350px;
+    max-width: 450px;
+}
+
+.photoImgLarge
+{
+    min-width: 480px;
+    max-width: 510px;
+}
+
+.photoImgClickable:hover
+{
+  cursor: pointer;
+}
+
+.photoFooter
+{
+	margin-top: 10px;
+	text-align: center;
+	font-size: 13px;
+}
+
+.photoSingleColumn
+{
+	width: 100%;
+	float: left;
+}
+
+.photoLeftColumn
+{
+    float:left;
+}
+
+
+.photoRightColumn
+{
+    width: 265px;
+    float: right;
+}
+
+.addBox
+{
+    display: block;
+
+    background-color: #D9EDF7;
+
+    width: 260px;
+    height: 40px;
+
+    padding-top: 20px;
+    margin: 0px auto;
+    margin-bottom: 25px;
+
+    border-radius: 8px 8px 8px 8px;
+    border: 1px dotted #3A87AD;
+
+    box-shadow: 4px 4px 8px rgba(0,0,0,.15);
+
+    clear: both;
+
+    text-align: center;
+    font-weight: bold;
+}
+
+.addPhotoForm
+{
+    display: block;
+    margin: 0px auto;
+    width: 300px;
+    hegith: 100px;
+    padding: 30px;
+}
+
+.addPhotoForm .fileInputField
+{
+    padding: 10px;
+    display: block;
+    margin: 0px auto;
+}
+
+.addPhotoForm .submitButton
+{
+    display: block;
+    margin: 0px auto;
+    margin-top: 20px;
+}
