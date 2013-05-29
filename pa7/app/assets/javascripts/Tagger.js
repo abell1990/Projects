@@ -9,6 +9,7 @@ function Tagger(canvasDivId, feedbackDivId, xFieldId, yFieldId, widthFieldId, he
     this.yField = document.getElementById(yFieldId);
     this.widthField = document.getElementById(widthFieldId);
     this.heightField = document.getElementById(heightFieldId);
+    this.elementBorderWidth = parseInt(getComputedStyle(this.element).borderWidth);
     this.isMouseDown = false;
 
     var obj = this;
@@ -59,7 +60,7 @@ Tagger.prototype.mouseMove = function(event) {
     var newWidth = event.pageX - this.anchorXAbsolute;
 
     /* clip feedback div if mouse moves outside the canvas element */
-    var maxWidth = this.parentRightXAbsolute - this.anchorXAbsolute;
+    var maxWidth = this.parentRightXAbsolute - this.anchorXAbsolute - 2 * this.elementBorderWidth; /* adjust for border on both sides */
     var minWidth = this.parentLeftXAbsolute - this.anchorXAbsolute;
     newWidth = Math.max(newWidth, minWidth);
     newWidth = Math.min(newWidth, maxWidth);
@@ -78,7 +79,7 @@ Tagger.prototype.mouseMove = function(event) {
     var newHeight = event.pageY - this.anchorYAbsolute;
 
     /* clip feedback div if mouse moves outside the canvas element */
-    var maxHeight = this.parentBottomYAbsolute - this.anchorYAbsolute;
+    var maxHeight = this.parentBottomYAbsolute - this.anchorYAbsolute - 2 * this.elementBorderWidth;  /* adjust for border on both sides */
     var minHeight = this.parentTopYAbsolute - this.anchorYAbsolute;
     newHeight = Math.max(newHeight, minHeight);
     newHeight = Math.min(newHeight, maxHeight);
@@ -105,8 +106,8 @@ Tagger.prototype.updateHiddenFields = function ()
 {
     this.xField.value = this.element.offsetLeft;
     this.yField.value = this.element.offsetTop;
-    this.widthField.value = this.element.offsetWidth;
-    this.heightField.value = this.element.offsetHeight;
+    this.widthField.value = this.element.clientWidth;
+    this.heightField.value = this.element.clientHeight;
 }
 
 
@@ -117,12 +118,24 @@ Tagger.prototype.updateHiddenFields = function ()
 
 Tagger.prototype.xCoordRelativeToCanvas = function (xCoord)
 {
-   return xCoord - Tagger.absoluteXOffset(this.canvasElement);
+    var result = xCoord - Tagger.absoluteXOffset(this.canvasElement);
+
+    /* Clip coordinate to be inside canvas */
+    result = Math.min(this.canvasElement.clientWidth, result);
+    result = Math.max(0, result);
+
+    return result;
 }
 
 Tagger.prototype.yCoordRelativeToCanvas = function (yCoord)
 {
-   return yCoord - Tagger.absoluteYOffset(this.canvasElement);
+    var result = yCoord - Tagger.absoluteYOffset(this.canvasElement);
+
+    /* Clip coordinate to be inside canvas */
+    result = Math.min(this.canvasElement.clientHeight, result);
+    result = Math.max(0, result);
+
+    return result;
 }
 
 
