@@ -1,7 +1,7 @@
 class PhotosController < ApplicationController
 
   before_filter :require_login, only: [:new, :create]
-  before_filter :require_http_get, only: [:index, :new, :view]
+  before_filter :require_http_get, only: [:index, :new, :view, :search]
   before_filter :require_http_post, only: [:create]
 
 
@@ -68,6 +68,46 @@ class PhotosController < ApplicationController
     else
       add_alert(false, :alert_error, "That photo does not exist, or you did not provide a photo id.")
     end
+  end
+
+  # URL access: anyone
+  # HTTP method: GET
+  def search
+
+    @matches = []
+
+    unless params[:search_str]
+      render :text => @matches.to_json
+      return
+    end
+
+    pattern = Regexp.new(Regexp.quote(params[:search_str].downcase))
+
+    Photo.all.each do |p|
+
+      comment_matches = false
+
+      p.comments.each do |c|
+        if c.comment.downcase =~ pattern
+          comment_matches = true
+          @matches << "/images/#{p.file_name}"
+          break
+        end
+      end
+
+      if !comment_matches
+        p.tags.each do |t|
+          if t.user.full_name.downcase =~ pattern
+            @matches << "/images/#{p.file_name}"
+            break
+          end
+        end
+      end
+
+    end
+
+    render :text => @matches.to_json
+
   end
 
 end
