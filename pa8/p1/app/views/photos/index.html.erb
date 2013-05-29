@@ -19,21 +19,23 @@
         </a><br/>
     <% end %>
 
-    <p class="smallAnnotation"><i>Click on a photo to see its comments and tags</i></p><br/>
+    <% unless @user.photos.empty? %>
+        <p class="smallAnnotation"><i>Click on a photo to see its comments and tags</i></p><br/>
+    <% end %>
 
     <% @user.photos.each do |photo| %>
         <div class="photoPanel">
             <img class="photoImg photoImgMedium photoImgClickable cntr-div" src="/images/<%= photo.file_name %>" alt="Photo of <%= @user.full_name %>" onclick="location.href = '/photos/view/<%= photo.id %>'"/>
             <div class="photoFooter">
                 Date Created: <%= photo.date_time.getlocal.to_formatted_s(:long) %><br/>
-                <% if photo.comments.size > 0 %>
+                <% if !photo.comments.empty? %>
                     <% if photo.comments.size > 1%>
                         <strong><%= photo.comments.size %></strong> comments<br/>
                     <% else %>
                         <strong>1</strong> comment<br/>
                     <% end %>
                 <% end %>
-                <% if photo.tags.size > 0 %>
+                <% if !photo.tags.empty? %>
                     <% if photo.tags.size > 1%>
                         <strong><%= photo.tags.size %></strong> people tagged
                     <% else %>

@@ -17,7 +17,7 @@
 
     <div class="photoPanel">
 
-        <% if !@logged_in and @photo.tags.size == 0 %>
+        <% if !@logged_in and @photo.tags.empty? %>
             <img class="photoImg photoImgLarge cntr-div" src="/images/<%= @photo.file_name %>" alt="Photo of <%= @photo.user.full_name %>"/>
             <div class="photoFooter">Date Created: <%= @photo.date_time.getlocal.to_formatted_s(:long) %></div>
         <% else %>
@@ -45,7 +45,7 @@
                     </a>
                 <% end %>
 
-                <% if @photo.tags.size > 0 %>
+                <% if !@photo.tags.empty? %>
                     <br/><h3>People tagged in this photo</h3><br/>
 
                     <ul class="taggedUserList">
@@ -61,7 +61,7 @@
         <% end %>
     </div>
 
-    <% if @logged_in or @photo.comments.size > 0 %>
+    <% if @logged_in or !@photo.comments.empty? %>
         <div class="commentCenteredContainer">
             <h2 class="contentSubtitle" >Comments</h2>
 
