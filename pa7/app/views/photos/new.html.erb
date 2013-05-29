@@ -5,6 +5,9 @@
 <% @pageTitle = "Add Photo" %>
 <% @validation_errors = @photo.errors %>
 
+<div class="backLink"><a href="/photos/index/<%= session[:current_user_id] %>">&lt;&lt; back to my photos</a></div>
+<div class="clearBothDiv"></div>
+
 <h1 class="contentTitle">
   New Photo
 </h1>

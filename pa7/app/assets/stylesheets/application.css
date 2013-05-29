@@ -148,6 +148,11 @@ fieldset
     clear: both;
 }
 
+.smallAnnotation
+{
+    font-size: 13px;
+}
+
 .contentBox
 {
     background-color: #F4F4F4;
@@ -225,8 +230,8 @@ fieldset
 
     padding: 15px 15px 20px 15px;
 
-    margin-top: 30px;
-    margin-bottom: 50px;
+    margin-top: 0px;
+    margin-bottom: 25px;
     margin-left: 30%;
     margin-right: 30%;
 }

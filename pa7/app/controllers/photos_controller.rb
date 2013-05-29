@@ -39,6 +39,7 @@ class PhotosController < ApplicationController
     @photo = Photo.new(params[:photo])
 
     if @photo.save()
+      add_alert(true, :alert_success, "Photo added")
       redirect_to(:controller => :photos, :action => :index, :id => current_user_id)
     else
       render(:controller => :photos, :action => :new)

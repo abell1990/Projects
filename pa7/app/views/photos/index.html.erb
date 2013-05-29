@@ -19,6 +19,8 @@
         </a><br/>
     <% end %>
 
+    <p class="smallAnnotation"><i>Click on a photo to see its comments and tags</i></p><br/>
+
     <% @user.photos.each do |photo| %>
         <div class="photoPanel">
             <img class="photoImg photoImgMedium photoImgClickable cntr-div" src="/images/<%= photo.file_name %>" alt="Photo of <%= @user.full_name %>" onclick="location.href = '/photos/view/<%= photo.id %>'"/>

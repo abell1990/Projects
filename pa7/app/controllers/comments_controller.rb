@@ -27,6 +27,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new(params[:comment])
 
     if @comment.save() # does it pass validation?
+      add_alert(true, :alert_success, "Comment created")
       redirect_to(:controller => :photos, :action => :view, :id => @comment.photo.id)
     else
       @photo = Photo.find(params[:id])

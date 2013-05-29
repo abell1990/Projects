@@ -27,6 +27,7 @@ class TagsController < ApplicationController
     @tag = Tag.new(params[:tag])
 
     if @tag.save() # does it pass validation?
+      add_alert(true, :alert_success, "You tagged #{ @tag.user.full_name }")
       redirect_to(:controller => :photos, :action => :view, :id => @tag.photo.id)
     else
       @photo = Photo.find(params[:id])
