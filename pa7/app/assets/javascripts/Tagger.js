@@ -1,6 +1,10 @@
-function Tagger(parentDivId, feedbackDivId, xFieldId, yFieldId, widthFieldId, heightFieldId) {
+/* Class: Tagger
+ * TODO: comment
+ */
+
+function Tagger(canvasDivId, feedbackDivId, xFieldId, yFieldId, widthFieldId, heightFieldId) {
     this.element = document.getElementById(feedbackDivId);
-    this.parentElement = document.getElementById(parentDivId);
+    this.canvasElement = document.getElementById(canvasDivId);
     this.xField = document.getElementById(xFieldId);
     this.yField = document.getElementById(yFieldId);
     this.widthField = document.getElementById(widthFieldId);
@@ -8,13 +12,13 @@ function Tagger(parentDivId, feedbackDivId, xFieldId, yFieldId, widthFieldId, he
     this.isMouseDown = false;
 
     var obj = this;
-    this.parentElement.onmousedown = function(event) {
+    this.canvasElement.onmousedown = function(event) {
         obj.mouseDown(event);
     }
 }
 
 Tagger.prototype.mouseDown = function(event) {
-    event.preventDefault()
+    event.preventDefault();
 
     var obj = this;
 
@@ -27,17 +31,20 @@ Tagger.prototype.mouseDown = function(event) {
         obj.mouseUp(event);
     }
 
-    this.origX = event.pageX;
-    this.origY = event.pageY;
-    this.parentLeftX = Tagger.absoluteXOffset(this.parentElement);
-    this.parentRightX = Tagger.absoluteXOffset(this.parentElement) + this.parentElement.clientWidth;
-    this.parentTopY = Tagger.absoluteYOffset(this.parentElement);
-    this.parentBottomY = Tagger.absoluteYOffset(this.parentElement) + this.parentElement.clientHeight;
+    /* remember anchor point */
+    this.anchorXAbsolute = event.pageX;
+    this.anchorYAbsolute = event.pageY;
+
+    /* remember canvas element's limit for clipping the feedback div */
+    this.parentLeftXAbsolute = Tagger.absoluteXOffset(this.canvasElement);
+    this.parentRightXAbsolute = Tagger.absoluteXOffset(this.canvasElement) + this.canvasElement.clientWidth;
+    this.parentTopYAbsolute = Tagger.absoluteYOffset(this.canvasElement);
+    this.parentBottomYAbsolute = Tagger.absoluteYOffset(this.canvasElement) + this.canvasElement.clientHeight;
 
     this.element.style.width = "0px";
-    this.element.style.height = "0px"
-    this.element.style.left = (event.pageX - Tagger.absoluteXOffset(this.parentElement))+ "px";
-    this.element.style.top = (event.pageY - Tagger.absoluteYOffset(this.parentElement))+ "px";
+    this.element.style.height = "0px";
+    this.element.style.left = this.xCoordRelativeToCanvas(this.anchorXAbsolute) + "px";
+    this.element.style.top = this.yCoordRelativeToCanvas(this.anchorYAbsolute) + "px";
 
     this.updateHiddenFields();
 
@@ -49,33 +56,40 @@ Tagger.prototype.mouseMove = function(event) {
         return;
     }
 
-    var newWidth = event.pageX - this.origX;
-    var maxWidth = this.parentRightX - this.origX;
-    var minWidth = this.parentLeftX - this.origX;
+    var newWidth = event.pageX - this.anchorXAbsolute;
+
+    /* clip feedback div if mouse moves outside the canvas element */
+    var maxWidth = this.parentRightXAbsolute - this.anchorXAbsolute;
+    var minWidth = this.parentLeftXAbsolute - this.anchorXAbsolute;
     newWidth = Math.max(newWidth, minWidth);
     newWidth = Math.min(newWidth, maxWidth);
 
     if (newWidth >= 0){
-        this.element.style.left = (this.origX - Tagger.absoluteXOffset(this.parentElement))+ "px";
+        this.element.style.left = this.xCoordRelativeToCanvas(this.anchorXAbsolute) + "px";
         this.element.style.width = newWidth + "px";
     }
-    else{
-        this.element.style.left = (this.origX + newWidth - Tagger.absoluteXOffset(this.parentElement)) + "px";
-        this.element.style.width = (-newWidth) + "px";
+    else{ /* if mouse moved to the left of anchor we have to move the anchor x coord to the x coord of the event */
+        this.element.style.left = this.xCoordRelativeToCanvas(this.anchorXAbsolute - Math.abs(newWidth)) + "px";
+        this.element.style.width = Math.abs(newWidth) + "px";
     }
 
-    var newHeight = event.pageY - this.origY;
-    var maxHeight = this.parentBottomY - this.origY;
-    var minHeight = this.parentTopY - this.origY;
+    /* repeat for the y coord... */
+
+    var newHeight = event.pageY - this.anchorYAbsolute;
+
+    /* clip feedback div if mouse moves outside the canvas element */
+    var maxHeight = this.parentBottomYAbsolute - this.anchorYAbsolute;
+    var minHeight = this.parentTopYAbsolute - this.anchorYAbsolute;
     newHeight = Math.max(newHeight, minHeight);
     newHeight = Math.min(newHeight, maxHeight);
+
     if (newHeight >= 0){
-        this.element.style.top = (this.origY - Tagger.absoluteYOffset(this.parentElement))+ "px";
+        this.element.style.top = this.yCoordRelativeToCanvas(this.anchorYAbsolute) + "px";
         this.element.style.height = newHeight + "px";
     }
-    else{
-        this.element.style.top = (this.origY + newHeight - Tagger.absoluteYOffset(this.parentElement)) + "px";
-        this.element.style.height = (-newHeight) + "px";
+    else{ /* if mouse moved to the above anchor we have to move the anchor y coord to the y coord of the event */
+        this.element.style.top = this.yCoordRelativeToCanvas(this.anchorYAbsolute - Math.abs(newHeight)) + "px";
+        this.element.style.height = Math.abs(newHeight) + "px";
     }
 
     this.updateHiddenFields();
@@ -99,15 +113,23 @@ Tagger.prototype.updateHiddenFields = function ()
 
 
 
+/******* Helper method section ******/
 
-// TODO: name things better
-// TODO: fix release mouse outside browser widnow bug
-// TODO: make this nonstatic functions
+Tagger.prototype.xCoordRelativeToCanvas = function (xCoord)
+{
+   return xCoord - Tagger.absoluteXOffset(this.canvasElement);
+}
+
+Tagger.prototype.yCoordRelativeToCanvas = function (yCoord)
+{
+   return yCoord - Tagger.absoluteYOffset(this.canvasElement);
+}
+
 
 Tagger.absoluteXOffset = function(element) {
-    var top = 0, left = 0;
+    var left = 0;
+
     do {
-        top += element.offsetTop  || 0;
         left += element.offsetLeft || 0;
         element = element.offsetParent;
     } while(element);
@@ -115,12 +137,15 @@ Tagger.absoluteXOffset = function(element) {
     return left;
 }
 Tagger.absoluteYOffset = function(element) {
-    var top = 0, left = 0;
+    var top = 0;
+
     do {
         top += element.offsetTop  || 0;
-        left += element.offsetLeft || 0;
         element = element.offsetParent;
     } while(element);
 
     return top;
 }
+
+/******* END Helper method section ******/
+
