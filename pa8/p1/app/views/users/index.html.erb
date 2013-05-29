@@ -10,6 +10,8 @@
         Index of Users
     </h1>
 
+    <input type="text" id="searchBar"/>
+
     <div class="mugshotGrid">
         
         <% @all_users.each do |user| %>
@@ -33,5 +35,11 @@
         <div class="clearBothDiv"></div>
 
     </div>
+
+    <script type="text/javascript">
+        //<![CDATA[
+        new Searcher("searchBar", "/photos/search", "search_str");
+        //]]>
+    </script>
 
 <% end %>
