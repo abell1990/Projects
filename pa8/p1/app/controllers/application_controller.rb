@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
 
-  $project_number = 7
+  $project_number = 8
 
   private
 
