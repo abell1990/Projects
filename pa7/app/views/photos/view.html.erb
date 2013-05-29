@@ -8,6 +8,13 @@
 
     <% @pageTitle = @photo.user.full_name + "'s Photo" %>
 
+    <% if session[:current_user_id] == @photo.user.id %>
+        <div class="backLink"><a href="/photos/index/<%= @photo.user.id %>">&lt;&lt; back to my photos</a></div>
+    <% else %>
+        <div class="backLink"><a href="/photos/index/<%= @photo.user.id %>">&lt;&lt; back to <%= @photo.user.full_name %>'s Photos</a></div>
+    <% end %>
+    <div class="clearBothDiv"></div>
+
     <div class="photoPanel">
 
         <% if !@logged_in and @photo.tags.size == 0 %>

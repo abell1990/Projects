@@ -112,6 +112,7 @@ fieldset
     font-size: 13px;
     margin-top: -17px;
     padding: 0px;
+    margin-bottom: 25px;
 
 }
 
@@ -167,6 +168,11 @@ fieldset
     border: 1px solid #E0E0E0;
     padding: 3px;
     margin-bottom: 15px;
+}
+
+.formInstructions
+{
+    margin-bottom: 12px;
 }
 
 .formInlineField

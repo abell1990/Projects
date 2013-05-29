@@ -8,6 +8,9 @@
     <% @pageTitle = "New Comment" %>
     <% @validation_errors = @comment.errors %>
 
+    <div class="backLink"><a href="/photos/view/<%= @photo.id %>">&lt;&lt; back to photo</a></div>
+    <div class="clearBothDiv"></div>
+
     <h1 class="contentTitle">
       New Comment
     </h1>
