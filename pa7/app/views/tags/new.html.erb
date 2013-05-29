@@ -23,7 +23,7 @@
         </div>
 
         <div class="photoRightColumn">
-            <%= form_for(@tag, :url => {:action => :create, :id => @photo.id}, :html => {:class => "contentBox addTagForm"}) do |form| %>
+            <%= form_for(@tag, :url => {:controller => :tags, :action => :create, :id => @photo.id}, :html => {:class => "contentBox addTagForm"}) do |form| %>
                 <fieldset>
                     <%= form.hidden_field(:photo_id, :value => @photo.id) %>
                     <%= form.hidden_field(:x_coord) %>

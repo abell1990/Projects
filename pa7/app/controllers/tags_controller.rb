@@ -33,7 +33,7 @@ class TagsController < ApplicationController
       @select_options = []
       User.all.each{ |u| @select_options << [u.full_name, u.id]}
       @select_options.sort!
-      render(:controller => :tags, :action => :new, :id => @photo.id)  # TODO: fully qualify :controller elsewhere
+      render(:controller => :tags, :action => :new, :id => @photo.id)
     end
 
   end

@@ -30,7 +30,7 @@ class CommentsController < ApplicationController
       redirect_to(:controller => :photos, :action => :view, :id => @comment.photo.id)
     else
       @photo = Photo.find(params[:id])
-      render(:action => :new, :id => @photo.id)
+      render(:controller => :comments, :action => :new, :id => @photo.id)
     end
 
   end

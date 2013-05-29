@@ -4,7 +4,7 @@
 
 <% @pageTitle = "Login" %>
 
-<%= form_tag({:controller => "users", :action => "post_login"}, :class => "contentBox loginBox") do %>
+<%= form_tag({:controller => :users, :action => :post_login}, :class => "contentBox loginBox") do %>
     <h2> Login </h2>
     <fieldset>
         <%= label_tag(:login, "Username", :class => "formLabel") %>
