@@ -17,7 +17,7 @@
         <div class="photoLeftColumn">
             <div class="tagCanvas" id="tagCanvas">
                 <img class="photoImg photoImgLarge" src="/images/<%= @photo.file_name %>" alt="Photo of <%= @photo.user.full_name %>"/>
-                <div class="tagFeedbackDiv" id="tagFeedbackDiv"></div>
+                <div class="tagFeedbackDiv tagDiv" id="tagFeedbackDiv"></div>
             </div>
             <div class="photoFooter">Date Created: <%= @photo.date_time.getlocal.to_formatted_s(:long) %></div>
         </div>
