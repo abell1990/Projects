@@ -91,3 +91,25 @@ pa7/public/images/*
 !pa7/public/images/obama3.jpg
 !pa7/public/images/ouster.jpg
 !pa7/public/images/santa1.jpg
+
+# Project 8 specific
+pa8/p1/app/assets/javascripts/tagger.html
+pa8/p1/.bundle
+pa8/p1/submission
+pa8/p1/db/*.sqlite3
+pa8/p1/log/*.log
+pa8/p1/tmp
+pa8/p1/.gitignore
+pa8/p1/public/images/*
+!pa8/p1/public/images/bieber1.jpg
+!pa8/p1/public/images/bieber2.jpg
+!pa8/p1/public/images/cover.jpg
+!pa8/p1/public/images/enigma.jpeg
+!pa8/p1/public/images/grid.png
+!pa8/p1/public/images/hilton1.jpg
+!pa8/p1/public/images/hilton2.jpg
+!pa8/p1/public/images/obama1.jpg
+!pa8/p1/public/images/obama2.jpg
+!pa8/p1/public/images/obama3.jpg
+!pa8/p1/public/images/ouster.jpg
+!pa8/p1/public/images/santa1.jpg
