@@ -1,5 +1,18 @@
 /* Class: Tagger
- * TODO: comment
+ * This class provides tagging functionality. The client will
+ * create a Tagger object and pass in the following ids for HTML elements
+ * in his page:
+ * - id for a div element that delimits the region where tagging occurs, 
+ *   which we call the canvasElement. A rectangle will be drawn over this area
+ *   as the user clicks and drags the tag region
+ * - if for a div element that will delimit the selected/tagged region. As
+ *   the user clicks and drags over the canvasElement this div will dynamically
+ *   resize and reposition itself to cover the region selected by the user. Notice
+ *   this area will be clipped/forced to stay inside the canvasElement region.
+ * - the last 4 ids are for input fields in some form in the client's page. 
+ *   these fields will be populated and dyamically updated by the tagger object 
+ *   on the fly with the feedbackDiv's current origin's x and y coordinates as 
+ *   well as its width and height.
  */
 
 function Tagger(canvasDivId, feedbackDivId, xFieldId, yFieldId, widthFieldId, heightFieldId) {
