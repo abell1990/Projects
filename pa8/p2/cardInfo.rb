@@ -70,3 +70,6 @@ customer_info.each_with_index do |customer, i|
 	puts "3-digit security code:\t" + customer[4] + "\n\n"
 end
 
+
+# TODO: cleanup and comment
+
