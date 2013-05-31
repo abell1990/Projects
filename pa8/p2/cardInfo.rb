@@ -42,7 +42,7 @@ request2 = "POST /movies/showGenre HTTP/1.1\n" \
 		  "Host: localhost:3000\n" \
 		  "Connection: close\n" \
 		  "Content-Type: application/x-www-form-urlencoded\n" \
-		  "Content-Length: " + String(body.size) + "\n" \
+		  "Content-Length: " + body.size.to_s + "\n" \
 		  "Cookie: _session_id=" + cookie + "\n" \
 		  "\r\n"
 
@@ -55,4 +55,11 @@ s2.puts request2
 response2 = s2.read
 
 
-puts response2
+customer_info = []
+
+regex_cc = /<td><a href="\/movies\/rent\/0">([0-9]*)<\/a><\/td>/
+regex = /<td><a href="\/movies\/rent\/0">([0-9]*)<\/a><\/td>\n *<td>([0-9]*)<\/td>\n *<td>([0-9]*)<\/td>\n *<td>([0-9]*)<\/td>/
+
+response2.scan(regex) {|e| customer_info << e}
+
+puts customer_info.to_s
