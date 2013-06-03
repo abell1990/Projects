@@ -10,7 +10,14 @@
         Index of Users
     </h1>
 
-    <input type="text" id="searchBar"/>
+    <div class="searchDiv" style="margin: 0px auto; width: 320px; position: relative; top: -28px;">
+        <div style="margin: 0px auto; width: 160px;">
+        <input type="text" style="width: 160px" id="searchBar"/>
+        </div>
+
+        <div id="resultsDiv" class="mugshotGridSmall">
+        </div>
+    </div>
 
     <div class="mugshotGrid">
         
@@ -38,7 +45,43 @@
 
     <script type="text/javascript">
         //<![CDATA[
-        new Searcher("searchBar", "/photos/search", "search_str");
+        var resultsContainer = document.getElementById("resultsDiv");
+        var inputField = document.getElementById("searchBar");
+        inputField.onfocus = function ()
+        {
+            document.getElementById("resultsDiv").style.display = "block";
+        }
+//        inputField.onblur = function ()
+//        {
+//            document.getElementById("resultsDiv").style.display = "none";
+//        }
+
+
+        var callback = function (responseArray){
+            if (!Object.prototype.toString.call( responseArray ) === '[object Array]'){
+                // TODO: handle error...
+                return;
+            }
+
+            resultsContainer.innerHTML = "";
+
+
+            if (responseArray.length == 0){
+                return;
+            }
+
+            resultsContainer.style.display = "block";
+
+            for (var i = 0; i < responseArray.length; i++){
+                var res = responseArray[i];
+                var elem = document.createElement("DIV");
+
+                elem.innerHTML = "<a href=\"/photos/index/" + res[0] +  "?photo_search=" + res[1] + "\"><span class=\"mugshotSmall\" style=\" width: 30px; height: 30px; background-image: url('" + res[2] + "');\"></span></a>";
+                resultsContainer.appendChild(elem);
+            }
+        }
+
+        new Searcher("searchBar", callback, "/photos/search", "search_str");
         //]]>
     </script>
 

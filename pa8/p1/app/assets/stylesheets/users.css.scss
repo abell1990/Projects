@@ -40,6 +40,39 @@
 	opacity: 0.68
 }
 
+
+.mugshotSmall
+{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    width: 30px;
+    height: 30px;
+
+    float: left;
+
+    margin: 4px 4px;
+    padding: 15px;
+
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 4px 4px 8px rgba(0,0,0,.15);
+}
+
+.mugshotGridSmall
+{
+    margin: 0px auto;
+    width: 275px;
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 4px 4px 8px rgba(0,0,0,.15);
+    position: absolute;
+    z-index: 1000;
+    background-color: #C8C8C8;
+    top: 30px;
+    left: 15px;
+    display: none;
+}
+
 .mugshot:hover
 {
 	/* opacity: 0.5; */

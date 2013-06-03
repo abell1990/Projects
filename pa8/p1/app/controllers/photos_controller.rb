@@ -18,6 +18,11 @@ class PhotosController < ApplicationController
 
     if params[:id] and User.exists?(params[:id])
   		@user = User.find(params[:id])
+      if params[:photo_search] and Photo.exists?(params[:photo_search])
+        photo = Photo.find(params[:photo_search])
+        @user.photos.unshift @user.photos.delete_at(@user.photos.index(photo))
+        @highlight_first_photo = true
+      end
     else
       add_alert(false, :alert_error, "That user does not exist, or you did not provide a user id.")
     end
@@ -76,7 +81,7 @@ class PhotosController < ApplicationController
 
     @matches = []
 
-    unless params[:search_str]
+    unless params[:search_str] and params[:search_str] != ""
       render :text => @matches.to_json
       return
     end
@@ -90,7 +95,7 @@ class PhotosController < ApplicationController
       p.comments.each do |c|
         if c.comment.downcase =~ pattern
           comment_matches = true
-          @matches << "/images/#{p.file_name}"
+          @matches << [p.user.id, p.id, "/images/#{p.file_name}"]
           break
         end
       end
@@ -98,7 +103,7 @@ class PhotosController < ApplicationController
       if !comment_matches
         p.tags.each do |t|
           if t.user.full_name.downcase =~ pattern
-            @matches << "/images/#{p.file_name}"
+            @matches << [p.user.id, p.id, "/images/#{p.file_name}"]
             break
           end
         end
