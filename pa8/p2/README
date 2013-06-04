@@ -1,1 +1,56 @@
-TODO: write me
+SUNet ID: rmferrer
+
+
+README for Project 8 -- Part 2
+
+Problem:
+
+	The problem that a user-supplied string is used without any escaping to 
+	construct a SQL query. This SQL query is issued directly to the DB through the 
+	function find_by_sql, bypassing all the ORM querying functions that escape all 
+	user input safely.
+
+	Details:
+
+	The Netslip site vulnerability is located in the movies_controller.rb file. 
+	Specifically in the 'showGenre' action method. Here is a snippet of the 
+	vulnerability:
+
+	    genre = params[:genre]
+	    if genre == "All" then
+	      clause = ""
+	    else
+	      clause = " WHERE genre='" + genre + "'"
+	    end
+	    @movies = Movie.find_by_sql("SELECT * from movies" +
+	        clause + " ORDER BY title;")
+
+	Notice that the variable 'genre''s value is directly provided by the user
+	as a query parameter value to the HTTP POST request. 
+
+	A couple of lines, after that this value is used without any escaping to 
+	construct a SQL query. Assuming that params[:genre] != 'All' (which is 
+	true for an exploit input) the SQL command executed is 
+
+	"SELCT * from movies WHERE genre='" + params[:genre] + "' ORDER BY title;"
+
+	Obviously by providing an input for params[:genre] that has meaningful SQL
+	syntax one can issue commands to the DB to for example drop tables or get 
+	credit card info.
+
+
+The Fix:
+	
+	The fix is to simply not to construct our own SQL and/or use the function
+	find_by_sql to query the DB. Instead we use the ActiveRecord high level
+	function find_by_genre, which will safely escape all the input it takes, 
+	and avoids having any user input being interpreted as meaningful SQL
+	syntax. The new code looks like:
+
+		genre = params[:genre]
+
+	    if genre == "All" then
+	      @movies = Movie.order('title').all
+	    else
+	      @movies = Movie.order('title').find_all_by_genre(genre)
+	    end
