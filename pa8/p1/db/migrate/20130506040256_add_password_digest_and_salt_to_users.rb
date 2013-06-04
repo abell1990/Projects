@@ -3,7 +3,6 @@ class AddPasswordDigestAndSaltToUsers < ActiveRecord::Migration
     add_column :users, :password_digest, :string
     add_column :users, :salt, :string
 
-    # TODO: initialize password info for registered users before migration
     User.reset_column_information
 
     # Initialize password info for registered users to their down-cased first name
