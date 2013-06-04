@@ -40,6 +40,73 @@
 	opacity: 0.68
 }
 
+.mugshot:hover
+{
+	opacity: 1.0
+}
+
+.loginBox
+{
+    width: 200px;
+    margin: 0px auto;
+    margin-top: 40px;
+    padding: 10px;
+}
+
+.loginBox h2
+{
+    text-align: center;
+    margin: 8px 0px 40px 0px;
+}
+
+.loginBox button
+{
+    padding: 4px;
+    font-size: 11px;
+}
+
+.loginBox .submitButton
+{
+    margin: 20px 10px 20px 35px;
+}
+
+.registerBox
+{
+    width: 270px;
+    margin: 0px auto;
+    margin-top: 40px;
+    padding: 10px;
+}
+
+.registerBox h2
+{
+    text-align: center;
+    margin: 8px 0px 40px 0px;
+}
+
+.registerBox .submitButton
+{
+    margin: 20px 0px 30px 101px;
+}
+
+.searchBar
+{
+    margin: 0px auto;
+    width: 320px;
+    position: relative;
+    top: -28px;
+}
+
+.searchFieldContainer
+{
+    margin: 0px auto;
+    width: 160px;
+}
+
+.searchField
+{
+    width: 160px;
+}
 
 .mugshotSmall
 {
@@ -71,55 +138,4 @@
     top: 30px;
     left: 15px;
     display: none;
-}
-
-.mugshot:hover
-{
-	/* opacity: 0.5; */
-	opacity: 1.0
-}
-
-.loginBox
-{
-  width: 200px;
-  margin: 0px auto;
-  margin-top: 40px;
-  padding: 10px;
-}
-
-.loginBox h2
-{
-  text-align: center;
-  margin: 8px 0px 40px 0px;
-}
-
-.loginBox button
-{
-  padding: 4px;
-  font-size: 11px;
-}
-
-
-.loginBox .submitButton
-{
-  margin: 20px 10px 20px 35px;
-}
-
-.registerBox
-{
-  width: 270px;
-  margin: 0px auto;
-  margin-top: 40px;
-  padding: 10px;
-}
-
-.registerBox h2
-{
-  text-align: center;
-  margin: 8px 0px 40px 0px;
-}
-
-.registerBox .submitButton
-{
-  margin: 20px 0px 30px 101px;
 }
